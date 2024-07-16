@@ -6,15 +6,15 @@ import DateGrid from "../components/DateGrid";
 import BoxWrapper from "../components/BoxWrapper";
 
 function Home() {
-  // return (
-  //   <div>
-  //     <Navbar />
-  //     <Cover />
-  //     <Event />
-  //     <DateGrid />
-  //   </div>
-  // );
-  return <Navbar />;
+  return (
+    <div>
+      <Navbar />
+      <Cover />
+      <Event />
+      <DateGrid />
+      <BoxWrapper />
+    </div>
+  );
 }
 
 export default Home;
