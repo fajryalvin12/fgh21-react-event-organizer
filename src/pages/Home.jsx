@@ -4,6 +4,7 @@ import Cover from "../components/Cover";
 import Event from "../components/Event";
 import DateGrid from "../components/DateGrid";
 import BoxWrapper from "../components/BoxWrapper";
+import Location from "../components/Location";
 
 function Home() {
   return (
@@ -13,6 +14,7 @@ function Home() {
       <Event />
       <DateGrid />
       <BoxWrapper />
+      <Location />
     </div>
   );
 }
