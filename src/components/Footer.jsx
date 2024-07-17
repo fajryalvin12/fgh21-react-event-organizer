@@ -19,7 +19,7 @@ function Footer() {
             </div>
           </div>
         </div>
-        <div>
+        <div className="flex flex-col gap-[20px]">
           <div>Wetick</div>
           <ul className="p-none m-none flex flex-col gap-[15px] text-[#c1c5d0]">
             <li>About Us</li>
@@ -29,7 +29,7 @@ function Footer() {
             <li>Mobile Apps</li>
           </ul>
         </div>
-        <div>
+        <div className="flex flex-col gap-[20px]">
           <div>Features</div>
           <ul className="p-none m-none flex flex-col gap-[15px] text-[#c1c5d0]">
             <li>Booking</li>
@@ -38,7 +38,7 @@ function Footer() {
             <li>Register</li>
           </ul>
         </div>
-        <div>
+        <div className="flex flex-col gap-[20px]">
           <div>Company</div>
           <ul className="p-none m-none flex flex-col gap-[15px] text-[#c1c5d0]">
             <li>Partnership</li>

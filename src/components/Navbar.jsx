@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from "../assets/icons/logo.png";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -18,7 +19,7 @@ function Navbar() {
       </div>
       <div className="px-[10px] flex gap-[10px]">
         <button className="px-[50px] py-[10px] rounded-xl border font-semibold">
-          Login
+          <Link to={"/Login"}>Login</Link>
         </button>
         <button className="px-[50px] py-[10px] rounded-xl border font-semibold bg-[#3366ff] text-white">
           Sign Up
