@@ -2,6 +2,7 @@ import React from "react";
 import Footer from "../components/Footer";
 import EventFour from "../assets/images/event-4.jpg";
 import { Link } from "react-router-dom";
+import { FaRegHeart, FaLocationDot, FaClock } from "react-icons/fa6";
 
 function ContentEvent() {
   return (
@@ -13,9 +14,11 @@ function ContentEvent() {
             src={EventFour}
             alt=""
           />
-          <div>
-            <div>Heart Icons</div>
-            <div>Add to Wishlist</div>
+          <div className="flex items-center gap-[10px]">
+            <div>
+              <FaRegHeart />
+            </div>
+            <div className="font-semibold">Add to Wishlist</div>
           </div>
         </div>
         <div className="flex-1 flex flex-col gap-[30px]">
@@ -25,11 +28,15 @@ function ContentEvent() {
             </div>
             <div className="flex justify-between font-semibold">
               <div className="flex gap-[5px]">
-                <img src="" alt="P" />
+                <div className="text-red-500 items-center flex">
+                  <FaLocationDot />
+                </div>
                 <div>Jakarta, Indonesia</div>
               </div>
               <div className="flex gap-[5px]">
-                <img src="" alt="T" />
+                <div className="text-red-500 items-center flex">
+                  <FaClock />
+                </div>
                 <div>Wed, 15 Nov, 4:00 PM</div>
               </div>
             </div>
