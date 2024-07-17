@@ -21,6 +21,10 @@ function ContentProfile() {
     window.alert("Your account has been logged out!");
     navigate("/Login");
   }
+  function clickMy(e) {
+    e.preventDefault();
+    navigate("/MyBooking");
+  }
 
   return (
     <div className="bg-[#f4f7ff] py-[50px]">
@@ -58,7 +62,7 @@ function ContentProfile() {
             </div>
             <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
               <FaRectangleList />
-              <div>My Booking</div>
+              <div onClick={clickMy}>My Booking</div>
             </div>
             <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
               <FaHeart />

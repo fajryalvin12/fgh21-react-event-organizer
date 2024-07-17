@@ -25,6 +25,10 @@ function ContentPass() {
     e.preventDefault();
     navigate("/ProfilePage");
   }
+  function clickMy(e) {
+    e.preventDefault();
+    navigate("/MyBooking");
+  }
 
   return (
     <div className="bg-[#f4f7ff] py-[50px]">
@@ -62,7 +66,7 @@ function ContentPass() {
             </div>
             <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
               <FaRectangleList />
-              <div>My Booking</div>
+              <div onClick={clickMy}>My Booking</div>
             </div>
             <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
               <FaHeart />
