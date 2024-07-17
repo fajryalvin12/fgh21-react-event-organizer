@@ -5,6 +5,7 @@ import EventPage from "./pages/EventPage";
 import BookingPage from "./pages/BookingPage";
 import PaymentPage from "./pages/PaymentPage";
 import ProfilePage from "./pages/ProfilePage";
+import ChangePassword from "./pages/ChangePassword";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const arrayRouter = [
@@ -31,6 +32,10 @@ const arrayRouter = [
   {
     path: "/ProfilePage",
     element: <ProfilePage />,
+  },
+  {
+    path: "/ChangePassword",
+    element: <ChangePassword />,
   },
 ];
 

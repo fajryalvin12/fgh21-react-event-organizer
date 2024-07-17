@@ -52,7 +52,9 @@ function ContentProfile() {
             </div>
             <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#3366FF]">
               <FaLock />
-              <div>Change Password</div>
+              <div>
+                <Link to={"/ChangePassword"}>Change Password</Link>
+              </div>
             </div>
             <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
               <FaRectangleList />
