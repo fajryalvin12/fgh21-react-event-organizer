@@ -2,6 +2,15 @@ import React from "react";
 import Footer from "./Footer";
 import CreditCard from "../assets/images/credit-card.png";
 import { Link } from "react-router-dom";
+import {
+  FaCreditCard,
+  FaBuildingColumns,
+  FaShop,
+  FaDollarSign,
+  FaPlus,
+  FaAngleUp,
+  FaAngleDown,
+} from "react-icons/fa6";
 
 function ContentPayment() {
   return (
@@ -13,55 +22,65 @@ function ContentPayment() {
               Payment Method
             </div>
             <div className="flex items-center gap-[15px] justify-between">
-              <div className="flex gap-[10px]">
+              <div className="flex gap-[10px] items-center">
                 <input type="radio" id="card" name="payment" />
-                <img className="w-[24px] h-[24px]" src="" alt="Card" />
+                <div className="p-[10px] bg-[#F1EAFF] text-[#884DFF] rounded-[10px]">
+                  <FaCreditCard />
+                </div>
                 <label className="font-bold" for="card">
                   Card
                 </label>
               </div>
               <div>
-                <img src="" alt="arrow" />
+                <FaAngleUp />
               </div>
             </div>
             <div className="flex gap-[10px] items-center pl-[50px]">
               <img src={CreditCard} alt="" />
-              <img src="" alt="plus" />
+              <div className="border border-dotted border-[#3366FF] p-[10px] rounded-[10px] text-[#3366FF]">
+                <FaPlus />
+              </div>
             </div>
             <div className="flex items-center gap-[15px] justify-between">
-              <div className="flex gap-[10px]">
-                <input type="radio" id="card" name="payment" />
-                <img className="w-[24px] h-[24px]" src="" alt="Bank" />
-                <label className="font-bold" for="card">
+              <div className="flex gap-[10px] items-center">
+                <input type="radio" id="bank" name="payment" />
+                <div className="p-[10px] bg-[#FFEAEF] text-[#FF3D71] rounded-[10px]">
+                  <FaBuildingColumns />
+                </div>
+                <label className="font-bold" for="bank">
                   Bank Transfer
                 </label>
               </div>
               <div>
-                <img src="" alt="arrow" />
+                <FaAngleDown />
               </div>
             </div>
             <div className="flex items-center gap-[15px] justify-between">
               <div className="flex gap-[10px]">
-                <input type="radio" id="card" name="payment" />
-                <img className="w-[24px] h-[24px]" src="" alt="Retail" />
-                <label className="font-bold" for="card">
+                <input type="radio" id="retail" name="payment" />
+                <div className="p-[10px] bg-[#FFF4E7] text-[#FF8900] rounded-[10px]">
+                  <FaShop />
+                </div>
+                <label className="font-bold" for="retail">
                   Retail
                 </label>
               </div>
               <div>
-                <img src="" alt="arrow" />
+                <FaAngleDown />
               </div>
             </div>
             <div className="flex items-center gap-[15px] justify-between">
-              <div className="flex gap-[10px]">
-                <input type="radio" id="card" name="payment" />
-                <img className="w-[24px] h-[24px]" src="" alt="E-Money" />
-                <label className="font-bold" for="card">
+              <div className="flex gap-[10px] items-center">
+                <input type="radio" id="money" name="payment" />
+                <div className="p-[10px] bg-[#D6E0FF] text-[#3366FF] rounded-[10px]">
+                  <FaDollarSign />
+                </div>
+                <label className="font-bold" for="money">
                   E-Money
                 </label>
               </div>
               <div>
-                <img src="" alt="arrow" />
+                <FaAngleDown />
               </div>
             </div>
           </div>
