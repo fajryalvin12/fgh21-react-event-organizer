@@ -3,15 +3,38 @@ import Logo from "../assets/icons/logo.png";
 import Google from "../assets/icons/google.png";
 import Facebook from "../assets/icons/facebook.png";
 import Mascot from "../assets/images/mascot.png";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
+  function processLogin(e) {
+    e.preventDefault();
+    const formName = e.target.name.value;
+    const formEmail = e.target.email.value;
+    const formPass = e.target.password.value;
+
+    if (
+      formName === "Admin" &&
+      formEmail === "admin@gmail.com" &&
+      formPass === "1234"
+    ) {
+      window.alert("Welcome back, " + formName + "!");
+      navigate("/");
+    } else {
+      window.alert("Please input the appropriate data");
+    }
+  }
+
   return (
     <div className="flex h-[100vh] ">
       <div className="bg-[#3366ff] flex-[60%] flex justify-center items-center">
         <img src={Mascot} alt="" />
       </div>
       <div className="flex-[40%]">
-        <form className="flex flex-col justify-center gap-[20px] m-[175px]">
+        <form
+          onSubmit={processLogin}
+          className="flex flex-col justify-center gap-[20px] m-[175px]"
+        >
           <div className="flex items-center text-2xl font-bold">
             <img src={Logo} alt="logo" />
             <span className="text-[#3366ff]">We</span>

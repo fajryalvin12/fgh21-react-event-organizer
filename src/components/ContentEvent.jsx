@@ -1,6 +1,7 @@
 import React from "react";
 import Footer from "../components/Footer";
 import EventFour from "../assets/images/event-4.jpg";
+import { Link } from "react-router-dom";
 
 function ContentEvent() {
   return (
@@ -59,7 +60,7 @@ function ContentEvent() {
               </div>
               <div>
                 <button className="py-[15px] px-[82px] font-semibold text-[#ffff] bg-[#3366ff] rounded-[15px] text-[16px]">
-                  Buy Tickets
+                  <Link to={"/BookingPage"}>Buy Tickets</Link>
                 </button>
               </div>
             </div>

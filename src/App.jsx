@@ -2,6 +2,8 @@ import React from "react";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import EventPage from "./pages/EventPage";
+import BookingPage from "./pages/BookingPage";
+import PaymentPage from "./pages/PaymentPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const arrayRouter = [
@@ -16,6 +18,14 @@ const arrayRouter = [
   {
     path: "/EventPage",
     element: <EventPage />,
+  },
+  {
+    path: "/BookingPage",
+    element: <BookingPage />,
+  },
+  {
+    path: "/PaymentPage",
+    element: <PaymentPage />,
   },
 ];
 
