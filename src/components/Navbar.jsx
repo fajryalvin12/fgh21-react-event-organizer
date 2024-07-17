@@ -13,9 +13,9 @@ function Navbar() {
         </div>
       </div>
       <div className="flex list-none gap-[50px] font-semibold">
-        <li>Home</li>
-        <li>Create Event</li>
-        <li>Location</li>
+        <li className="hover:text-[#3366FF]">Home</li>
+        <li className="hover:text-[#3366FF]">Create Event</li>
+        <li className="hover:text-[#3366FF]">Location</li>
       </div>
       <div className="px-[10px] flex gap-[10px]">
         <button className="px-[50px] py-[10px] rounded-xl border font-semibold">

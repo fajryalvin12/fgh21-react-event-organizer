@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import EventPage from "./pages/EventPage";
 import BookingPage from "./pages/BookingPage";
 import PaymentPage from "./pages/PaymentPage";
+import ProfilePage from "./pages/ProfilePage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const arrayRouter = [
@@ -26,6 +27,10 @@ const arrayRouter = [
   {
     path: "/PaymentPage",
     element: <PaymentPage />,
+  },
+  {
+    path: "/ProfilePage",
+    element: <ProfilePage />,
   },
 ];
 

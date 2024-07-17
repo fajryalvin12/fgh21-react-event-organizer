@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 function NavbarProfile() {
   return (
-    <div className="flex justify-between items-center p-[10px] mb-[20px]">
+    <div className="flex justify-between items-center p-[10px]">
       <div>
         <div className="flex items-center text-2xl font-bold">
           <img src={Logo} alt="logo" />
@@ -14,11 +14,11 @@ function NavbarProfile() {
         </div>
       </div>
       <div className="flex list-none gap-[50px] font-semibold">
-        <li>
+        <li className="hover:text-[#3366FF]">
           <Link to={"/"}>Home</Link>
         </li>
-        <li>Create Event</li>
-        <li>Location</li>
+        <li className="hover:text-[#3366FF]">Create Event</li>
+        <li className="hover:text-[#3366FF]">Location</li>
       </div>
       <div className="px-[10px] flex gap-[10px] items-center font-semibold">
         <div>
@@ -28,7 +28,9 @@ function NavbarProfile() {
             alt="ap"
           />
         </div>
-        <div> Jhon Thomson</div>
+        <div>
+          <Link to={"/ProfilePage"}>Jhon Thomson</Link>
+        </div>
       </div>
     </div>
   );
