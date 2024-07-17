@@ -34,6 +34,10 @@ function ContentMyBooking() {
     e.preventDefault();
     navigate("/EventPage");
   }
+  function clickWishlist(e) {
+    e.preventDefault();
+    navigate("/MyWishlist");
+  }
 
   return (
     <div className="bg-[#f4f7ff] py-[50px]">
@@ -75,7 +79,7 @@ function ContentMyBooking() {
             </div>
             <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
               <FaHeart />
-              <div>My Wishlist</div>
+              <div onClick={clickWishlist}>My Wishlist</div>
             </div>
             <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
               <FaGear />

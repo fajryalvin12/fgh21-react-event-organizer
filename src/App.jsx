@@ -7,6 +7,7 @@ import PaymentPage from "./pages/PaymentPage";
 import ProfilePage from "./pages/ProfilePage";
 import ChangePassword from "./pages/ChangePassword";
 import MyBooking from "./pages/MyBooking";
+import MyWishlist from "./pages/MyWishlist";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const arrayRouter = [
@@ -41,6 +42,10 @@ const arrayRouter = [
   {
     path: "/MyBooking",
     element: <MyBooking />,
+  },
+  {
+    path: "/MyWishlist",
+    element: <MyWishlist />,
   },
 ];
 
