@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function ContentEvent() {
   return (
     <div className="bg-[#f4f7ff] py-[50px]">
-      <div className="p-[100px]  mx-[120px] bg-[#ffff] flex rounded-[30px]">
+      <div className="p-[100px]  mx-[120px] bg-[#ffff] flex rounded-[30px] gap-[50px]">
         <div className="flex-1 flex flex-col items-center gap-[50px]">
           <img
             className="w-[375px] h-[486px] object-cover	rounded-[40px] brightness-50"
