@@ -25,14 +25,6 @@ function ContentPass() {
     e.preventDefault();
     navigate("/ProfilePage");
   }
-  function clickMy(e) {
-    e.preventDefault();
-    navigate("/MyBooking");
-  }
-  function clickWishlist(e) {
-    e.preventDefault();
-    navigate("/MyWishlist");
-  }
 
   return (
     <div className="bg-[#f4f7ff] py-[50px]">
@@ -62,7 +54,9 @@ function ContentPass() {
             </div>
             <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#3366FF]">
               <FaUserPen />
-              <div onClick={clickEdit}>Edit Profile</div>
+              <div>
+                <Link to={"/ProfilePage"}>Edit Profile</Link>
+              </div>
             </div>
             <div className="pl-[50px] flex gap-[25px] text-[#3366FF] items-center hover:text-[#3366FF]">
               <FaLock />
@@ -70,11 +64,15 @@ function ContentPass() {
             </div>
             <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
               <FaRectangleList />
-              <div onClick={clickMy}>My Booking</div>
+              <div>
+                <Link to={"/MyBooking"}>My Booking</Link>
+              </div>
             </div>
             <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
               <FaHeart />
-              <div onClick={clickWishlist}>My Wishlist</div>
+              <div>
+                <Link to={"/MyWishlist"}>My Wishlist</Link>
+              </div>
             </div>
             <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
               <FaGear />

@@ -18,6 +18,7 @@ function Login() {
       formEmail === "admin@gmail.com" &&
       formPass === "1234"
     ) {
+      window.alert("Login Success!");
       window.alert("Welcome back, " + formName + "!");
       navigate("/");
     } else {

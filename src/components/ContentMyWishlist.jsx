@@ -95,10 +95,10 @@ function ContentMyWishlist() {
         <div className="w-2/3 p-[100px]  mr-[120px] bg-[#ffff] flex rounded-[30px] flex flex-col gap-[50px]">
           <div className="flex items-center justify-between">
             <div className="text-[20px] font-bold">My Booking</div>
-            <div className="flex gap-[10px] items-center p-[20px] bg-[#D6E0FF] text-[#3366FF] rounded-[15px] font-semibold">
+            <button className="flex gap-[10px] items-center p-[20px] bg-[#D6E0FF] text-[#3366FF] rounded-[15px] font-semibold">
               <FaCalendarDays />
               <div>March</div>
-            </div>
+            </button>
           </div>
           <div className="flex flex-col gap-[20px]">
             <div className="flex justify-between">

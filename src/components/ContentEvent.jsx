@@ -18,7 +18,9 @@ function ContentEvent() {
             <div>
               <FaRegHeart />
             </div>
-            <div className="font-semibold">Add to Wishlist</div>
+            <div className="font-semibold">
+              <Link to={"/MyWishlist"}>Add to Wishlist</Link>
+            </div>
           </div>
         </div>
         <div className="flex-1 flex flex-col gap-[30px]">

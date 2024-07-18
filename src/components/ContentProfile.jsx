@@ -66,11 +66,15 @@ function ContentProfile() {
             </div>
             <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
               <FaRectangleList />
-              <div onClick={clickMy}>My Booking</div>
+              <div>
+                <Link to={"/MyBooking"}>My Booking</Link>
+              </div>
             </div>
             <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
               <FaHeart />
-              <div onClick={clickWishlist}>My Wishlist</div>
+              <div>
+                <Link to={"/MyWishlist"}>My Wishlist</Link>
+              </div>
             </div>
             <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
               <FaGear />
@@ -170,7 +174,6 @@ function ContentProfile() {
           <div className="flex-1">
             <div className="flex items-center flex-col gap-[20px]">
               <div className="h-[200px] w-[200px] rounded-full bg-black">
-                {/* <img src="" alt="p" /> */}
                 <div></div>
               </div>
               <div>
