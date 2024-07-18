@@ -4,6 +4,7 @@ import Google from "../assets/icons/google.png";
 import Facebook from "../assets/icons/facebook.png";
 import Mascot from "../assets/images/mascot.png";
 import { useNavigate } from "react-router-dom";
+import { FaEye } from "react-icons/fa6";
 
 function Login() {
   const navigate = useNavigate();
@@ -23,6 +24,14 @@ function Login() {
       navigate("/");
     } else {
       window.alert("Please input the appropriate data");
+    }
+  }
+  let [pass, setPass] = React.useState("password");
+  function revealPassword() {
+    if (pass === "password") {
+      setPass("text");
+    } else {
+      setPass("password");
     }
   }
 
@@ -56,12 +65,12 @@ function Login() {
               type="email"
               placeholder="Email"
             />
-            <input
-              className="p-[16px] border rounded-xl"
-              name="password"
-              type="password"
-              placeholder="Password"
-            />
+            <div className="p-[16px] border rounded-xl flex justify-between">
+              <input name="password" type={pass} placeholder="Password" />
+              <button type="button" onClick={revealPassword}>
+                <FaEye />
+              </button>
+            </div>
           </div>
           <div className="text-right text-[#3366ff]">Forgot Password?</div>
           <div>

@@ -17,7 +17,7 @@ import {
 } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 
-function ContentMyWishlist() {
+function ContentCreateEvent() {
   const navigate = useNavigate();
   function clickLogout(e) {
     e.preventDefault();
@@ -75,7 +75,7 @@ function ContentMyWishlist() {
               <FaLock />
               <div onClick={clickChange}>Change Password</div>
             </div>
-            <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
+            <div className="flex gap-[25px] text-[#3366FF] items-center hover:text-[#3366FF]">
               <FaCirclePlus />
               <div>
                 <Link to={"/CreateEvent"}>Create Event</Link>
@@ -85,7 +85,7 @@ function ContentMyWishlist() {
               <FaRectangleList />
               <div onClick={clickMy}>My Booking</div>
             </div>
-            <div className="flex gap-[25px] text-[#3366FF] items-center hover:text-[#3366FF]">
+            <div className="flex gap-[25px]  items-center hover:text-[#3366FF]">
               <FaHeart />
               <div>My Wishlist</div>
             </div>
@@ -103,8 +103,7 @@ function ContentMyWishlist() {
           <div className="flex items-center justify-between">
             <div className="text-[20px] font-bold">My Booking</div>
             <button className="flex gap-[10px] items-center p-[20px] bg-[#D6E0FF] text-[#3366FF] rounded-[15px] font-semibold">
-              <FaCalendarDays />
-              <div>March</div>
+              <div>Create</div>
             </button>
           </div>
           <div className="flex flex-col gap-[20px]">
@@ -208,4 +207,4 @@ function ContentMyWishlist() {
   );
 }
 
-export default ContentMyWishlist;
+export default ContentCreateEvent;

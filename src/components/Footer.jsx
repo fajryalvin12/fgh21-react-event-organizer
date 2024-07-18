@@ -21,7 +21,7 @@ function Footer() {
           </div>
         </div>
         <div className="flex flex-col gap-[20px]">
-          <div>Wetick</div>
+          <div className="font-semibold">Wetick</div>
           <ul className="p-none m-none flex flex-col gap-[15px] text-[#c1c5d0]">
             <li>About Us</li>
             <li>Features</li>
@@ -31,7 +31,7 @@ function Footer() {
           </ul>
         </div>
         <div className="flex flex-col gap-[20px]">
-          <div>Features</div>
+          <div className="font-semibold">Features</div>
           <ul className="p-none m-none flex flex-col gap-[15px] text-[#c1c5d0]">
             <li>
               <Link to={"/BookingPage"}>Booking</Link>
@@ -42,7 +42,7 @@ function Footer() {
           </ul>
         </div>
         <div className="flex flex-col gap-[20px]">
-          <div>Company</div>
+          <div className="font-semibold">Company</div>
           <ul className="p-none m-none flex flex-col gap-[15px] text-[#c1c5d0]">
             <li>Partnership</li>
             <li>Help</li>

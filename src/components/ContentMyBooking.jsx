@@ -12,6 +12,7 @@ import {
   FaGear,
   FaArrowRightFromBracket,
   FaCalendarDays,
+  FaCirclePlus,
 } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 
@@ -72,6 +73,12 @@ function ContentMyBooking() {
             <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#3366FF]">
               <FaLock />
               <div onClick={clickChange}>Change Password</div>
+            </div>
+            <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
+              <FaCirclePlus />
+              <div>
+                <Link to={"/CreateEvent"}>Create Event</Link>
+              </div>
             </div>
             <div className="flex gap-[25px] items-center text-[#3366FF] hover:text-[#3366FF]">
               <FaRectangleList />

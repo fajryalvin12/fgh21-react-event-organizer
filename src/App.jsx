@@ -8,6 +8,7 @@ import ProfilePage from "./pages/ProfilePage";
 import ChangePassword from "./pages/ChangePassword";
 import MyBooking from "./pages/MyBooking";
 import MyWishlist from "./pages/MyWishlist";
+import CreateEvent from "./pages/CreateEvent";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const arrayRouter = [
@@ -46,6 +47,10 @@ const arrayRouter = [
   {
     path: "/MyWishlist",
     element: <MyWishlist />,
+  },
+  {
+    path: "/CreateEvent",
+    element: <CreateEvent />,
   },
 ];
 
