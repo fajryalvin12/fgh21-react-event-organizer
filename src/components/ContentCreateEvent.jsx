@@ -40,7 +40,16 @@ function ContentCreateEvent() {
     e.preventDefault();
     navigate("/MyBooking");
   }
-
+  function setPopUp() {
+    const PopUp = document.getElementById("popup");
+    PopUp.classList.toggle("hidden");
+  }
+  function standBy(e) {
+    e.stopPropagation();
+  }
+  function setPopUp2() {
+    PopUp.classList.toggle("hidden");
+  }
   return (
     <div className="bg-[#f4f7ff] py-[50px]">
       <div className="flex gap-[20px]">
@@ -102,8 +111,11 @@ function ContentCreateEvent() {
         <div className="w-2/3 p-[100px]  mr-[120px] bg-[#ffff] flex rounded-[30px] flex flex-col gap-[50px]">
           <div className="flex items-center justify-between">
             <div className="text-[20px] font-bold">My Booking</div>
-            <button className="flex gap-[10px] items-center p-[20px] bg-[#D6E0FF] text-[#3366FF] rounded-[15px] font-semibold">
-              <div>Create</div>
+            <button
+              onClick={setPopUp}
+              className="flex gap-[10px] items-center p-[20px] bg-[#D6E0FF] text-[#3366FF] rounded-[15px] font-semibold"
+            >
+              Create
             </button>
           </div>
           <div className="flex flex-col gap-[20px]">
@@ -121,8 +133,12 @@ function ContentCreateEvent() {
                     <div className="text-gray-500">Jakarta, Indonesia</div>
                     <div className="text-gray-500">Wed, 15 Nov, 4:00 PM</div>
                   </div>
-                  <div onClick={clickEvent} className="text-[#3366FF]">
-                    Details
+                  <div className="flex gap-5 font-semibold">
+                    <div onClick={clickEvent} className="text-[#3366FF]">
+                      Details
+                    </div>
+                    <div className="text-[#3366FF]">Update</div>
+                    <div className="text-[#3366FF]">Delete</div>
                   </div>
                 </div>
               </div>
@@ -144,8 +160,12 @@ function ContentCreateEvent() {
                     <div className="text-gray-500">Jakarta, Indonesia</div>
                     <div className="text-gray-500">Wed, 15 Nov, 4:00 PM</div>
                   </div>
-                  <div onClick={clickEvent} className="text-[#3366FF]">
-                    Details
+                  <div className="flex gap-5 font-semibold">
+                    <div onClick={clickEvent} className="text-[#3366FF]">
+                      Details
+                    </div>
+                    <div className="text-[#3366FF]">Update</div>
+                    <div className="text-[#3366FF]">Delete</div>
                   </div>
                 </div>
               </div>
@@ -167,8 +187,12 @@ function ContentCreateEvent() {
                     <div className="text-gray-500">Jakarta, Indonesia</div>
                     <div className="text-gray-500">Wed, 15 Nov, 4:00 PM</div>
                   </div>
-                  <div onClick={clickEvent} className="text-[#3366FF]">
-                    Details
+                  <div className="flex gap-5 font-semibold">
+                    <div onClick={clickEvent} className="text-[#3366FF]">
+                      Details
+                    </div>
+                    <div className="text-[#3366FF]">Update</div>
+                    <div className="text-[#3366FF]">Delete</div>
                   </div>
                 </div>
               </div>
@@ -190,8 +214,12 @@ function ContentCreateEvent() {
                     <div className="text-gray-500">Jakarta, Indonesia</div>
                     <div className="text-gray-500">Wed, 15 Nov, 4:00 PM</div>
                   </div>
-                  <div onClick={clickEvent} className="text-[#3366FF]">
-                    Details
+                  <div className="flex gap-5 font-semibold">
+                    <div onClick={clickEvent} className="text-[#3366FF]">
+                      Details
+                    </div>
+                    <div className="text-[#3366FF]">Update</div>
+                    <div className="text-[#3366FF]">Delete</div>
                   </div>
                 </div>
               </div>
@@ -203,6 +231,89 @@ function ContentCreateEvent() {
         </div>
       </div>
       <Footer />
+      <div
+        onClick={setPopUp2}
+        className="bg-[#0000007e] absolute top-0 hidden w-full"
+        id="popup"
+      >
+        <div onClick={standBy} className="bg-[#ffff]  rounded-3xl p-20 m-20">
+          <div className="font-bold text-2xl mb-10">Update Event</div>
+          <form className="flex flex-col gap-10">
+            <div className="flex items-center gap-12">
+              <div className="flex-1 flex flex-col gap-4">
+                <label htmlFor="">Name</label>
+                <input
+                  className="border p-5 w-full mr-10 rounded-xl"
+                  type="text"
+                  placeholder="Input name event..."
+                />
+              </div>
+              <div className="flex-1 flex flex-col gap-4">
+                <label htmlFor="">Category</label>
+                <input
+                  className="border p-5 w-full mr-10 rounded-xl"
+                  type="text"
+                  placeholder="Select Category"
+                />
+              </div>
+            </div>
+            <div className="flex items-center gap-12">
+              <div className="flex-1 flex flex-col gap-4">
+                <label htmlFor="">Location</label>
+                <input
+                  className="border p-5 w-full mr-10 rounded-xl"
+                  type="text"
+                  placeholder="Select Location"
+                />
+              </div>
+              <div className="flex-1 flex flex-col gap-4">
+                <label htmlFor="">Date/Time Show</label>
+                <input
+                  className="border p-5 w-full mr-10 rounded-xl"
+                  type="text"
+                  placeholder="01/01/2022"
+                />
+              </div>
+            </div>
+            <div className="flex items-center gap-12">
+              <div className="flex-1 flex flex-col gap-4">
+                <label htmlFor="">Price</label>
+                <input
+                  className="border p-5 w-full mr-10 rounded-xl"
+                  type="text"
+                  placeholder="Input Price ..."
+                />
+              </div>
+              <div className="flex-1 flex flex-col gap-4">
+                <label htmlFor="">Image</label>
+                <input
+                  className="border p-5 w-full mr-10 rounded-xl"
+                  type="text"
+                  placeholder="Choose File ..."
+                />
+              </div>
+            </div>
+            <div className="flex items-center gap-12">
+              <div className="flex-1 flex flex-col gap-4">
+                <label htmlFor="">Detail</label>
+                <input
+                  className="border p-5 w-full mr-10 rounded-xl"
+                  type="text"
+                  placeholder="Input Details"
+                />
+              </div>
+            </div>
+            <div>
+              <button
+                className="w-full py-[16px] px-110px] text-[#ffff] font-semibold text-[16px] rounded-[15px] bg-[#3366ff]"
+                type="submit"
+              >
+                Save
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }

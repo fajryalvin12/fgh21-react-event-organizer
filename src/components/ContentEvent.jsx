@@ -5,12 +5,6 @@ import { Link } from "react-router-dom";
 import { FaRegHeart, FaLocationDot, FaClock } from "react-icons/fa6";
 
 function ContentEvent() {
-  function wishlistMode(e) {
-    e.preventDefault();
-    window.alert("Successfully moved to the wishlist!");
-    navigate("/MyWishlist");
-  }
-
   return (
     <div className="bg-[#f4f7ff] py-[50px]">
       <div className="p-[100px]  mx-[120px] bg-[#ffff] flex rounded-[30px] gap-[50px]">
@@ -24,8 +18,8 @@ function ContentEvent() {
             <div>
               <FaRegHeart />
             </div>
-            <div onClick={wishlistMode} className="font-semibold">
-              Add to Wishlist
+            <div className="font-semibold">
+              <Link to={"/MyWishlist"}> Add to Wishlist</Link>
             </div>
           </div>
         </div>
