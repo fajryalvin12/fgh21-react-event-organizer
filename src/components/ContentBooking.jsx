@@ -10,6 +10,54 @@ import {
 } from "react-icons/fa6";
 
 function ContentEvent() {
+  let [purple, setPurple] = React.useState(0);
+  function purpleMinus() {
+    if (purple <= 0) {
+      window.alert("Please input valid amount!");
+    } else {
+      setPurple(purple - 1);
+    }
+  }
+  function purplePlus() {
+    if (purple >= 10) {
+      window.alert("Please input valid amount!");
+    } else {
+      setPurple(purple + 1);
+    }
+    setPurple === "";
+  }
+
+  let [red, setRed] = React.useState(0);
+  function redMinus() {
+    if (red <= 0) {
+      window.alert("Please input valid amount!");
+    } else {
+      setRed(red - 1);
+    }
+  }
+  function redPlus() {
+    if (red >= 10) {
+      window.alert("Please input valid amount!");
+    } else {
+      setRed(red + 1);
+    }
+  }
+  let [orange, setOrange] = React.useState(0);
+  function orangeMinus() {
+    if (orange <= 0) {
+      window.alert("Please input valid amount!");
+    } else {
+      setOrange(orange - 1);
+    }
+  }
+  function orangePlus() {
+    if (orange >= 10) {
+      window.alert("Please input valid amount!");
+    } else {
+      setOrange(orange + 1);
+    }
+  }
+
   return (
     <div className="bg-[#f4f7ff] py-[50px]">
       <div className="p-[100px]  mx-[120px] bg-[#ffff] flex rounded-[30px]">
@@ -56,11 +104,17 @@ function ContentEvent() {
                   Quantity
                 </div>
                 <div className="flex gap-[20px] w-full items-center">
-                  <button className="p-[5px] border border-[#c1c5d0] bg-[#ffff] rounded-[7px]">
+                  <button
+                    onClick={purpleMinus}
+                    className="p-[5px] border border-[#c1c5d0] bg-[#ffff] rounded-[7px]"
+                  >
                     <FaMinus />
                   </button>
-                  <p>0</p>
-                  <button className="p-[5px] border border-[#c1c5d0] bg-[#ffff] rounded-[7px]">
+                  <p>{purple}</p>
+                  <button
+                    onClick={purplePlus}
+                    className="p-[5px] border border-[#c1c5d0] bg-[#ffff] rounded-[7px]"
+                  >
                     <FaPlus />
                   </button>
                 </div>
@@ -93,11 +147,17 @@ function ContentEvent() {
                   Quantity
                 </div>
                 <div className="flex gap-[20px] w-full items-center">
-                  <button className="p-[5px] border border-[#c1c5d0] bg-[#ffff] rounded-[7px]">
+                  <button
+                    onClick={redMinus}
+                    className="p-[5px] border border-[#c1c5d0] bg-[#ffff] rounded-[7px]"
+                  >
                     <FaMinus />
                   </button>
-                  <p>0</p>
-                  <button className="p-[5px] border border-[#c1c5d0] bg-[#ffff] rounded-[7px]">
+                  <p>{red}</p>
+                  <button
+                    onClick={redPlus}
+                    className="p-[5px] border border-[#c1c5d0] bg-[#ffff] rounded-[7px]"
+                  >
                     <FaPlus />
                   </button>
                 </div>
@@ -130,11 +190,17 @@ function ContentEvent() {
                   Quantity
                 </div>
                 <div className="flex gap-[20px] w-full items-center">
-                  <button className="p-[5px] border border-[#c1c5d0] bg-[#ffff] rounded-[7px]">
+                  <button
+                    onClick={orangeMinus}
+                    className="p-[5px] border border-[#c1c5d0] bg-[#ffff] rounded-[7px]"
+                  >
                     <FaMinus />
                   </button>
-                  <p>0</p>
-                  <button className="p-[5px] border border-[#c1c5d0] bg-[#ffff] rounded-[7px]">
+                  <p>{orange}</p>
+                  <button
+                    onClick={orangePlus}
+                    className="p-[5px] border border-[#c1c5d0] bg-[#ffff] rounded-[7px]"
+                  >
                     <FaPlus />
                   </button>
                 </div>
@@ -143,17 +209,27 @@ function ContentEvent() {
           </div>
           <hr />
           <div className="flex flex-col gap-[15px] font-semibold mb-[50px]">
-            <div className="flex justify-between w-full">
+            <div className="flex justify-between w-full items-center">
               <div>Ticket Section</div>
-              <div className="text-[#3366ff]">VIP</div>
+              <div className="text-[#3366ff] flex items-center">
+                {purple === 0 && red === 0 && orange === 0
+                  ? "-"
+                  : `REG${" " + purple}, ` +
+                    `VIP${" " + red}, ` +
+                    `VVIP${" " + orange}`}
+              </div>
             </div>
-            <div className="flex justify-between w-full">
+            <div className="flex justify-between w-full items-center">
               <div>Quantity</div>
-              <div className="text-[#3366ff]">2</div>
+              <div className="text-[#3366ff] flex items-center">
+                {purple + red + orange}
+              </div>
             </div>
-            <div className="flex justify-between w-full">
+            <div className="flex justify-between w-full items-center">
               <div>Total Payment</div>
-              <div className="text-[#3366ff]">$70</div>
+              <div className="text-[#3366ff] flex items-center">
+                ${purple * 15 + red * 35 + orange * 50}
+              </div>
             </div>
           </div>
           <div>
