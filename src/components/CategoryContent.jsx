@@ -3,7 +3,7 @@ import EventOne from "../assets/images/event-1.png";
 
 function CategoryContent() {
   return (
-    <div className="flex justify-center gap-[72px] items-center mb-[175px]">
+    <div className="flex justify-center gap-[72px] items-center mb-[175px] overflow-x-scroll md:overflow-x-visible shrink-0">
       <div className="flex gap-[30px]">
         <div className="flex flex-col w-[300px] h-[350px] bg-[#3366ff] rounded-[30px] overflow-hidden ">
           <img className="relative h-[175px]" src={EventOne} alt="One" />

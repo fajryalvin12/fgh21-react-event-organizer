@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <div className="flex flex-col gap-[75px] py-[160px] px-[220px]">
-      <div className="flex gap-[30px] justify-between">
+    <div className="flex flex-col gap-[75px] py-8 px-8 md:py-[160px] md:px-[220px]">
+      <div className="flex gap-[30px] justify-between flex-col md:flex-row">
         <div className="flex flex-col gap-[30px]">
           <div className="flex items-center text-2xl font-bold">
             <img src={Logo} alt="logo" />

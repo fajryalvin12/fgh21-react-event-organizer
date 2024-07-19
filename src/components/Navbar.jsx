@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <div className="flex justify-between items-center p-[10px]">
+    <div className="flex flex-col md:flex-row gap-8 md:gap-0 justify-between items-center p-[10px]">
       <div>
         <div className="flex items-center text-2xl font-bold">
           <img src={Logo} alt="logo" />
@@ -12,14 +12,14 @@ function Navbar() {
           <span className="text-[#ff3d71]">tick</span>
         </div>
       </div>
-      <div className="flex list-none gap-[50px] font-semibold">
+      <div className="flex list-none gap-[50px] font-semibold flex-col md:flex-row items-center">
         <li className="hover:text-[#3366FF]">Home</li>
         <li className="hover:text-[#3366FF]">
           <Link to={"/CreateEvent"}>Create Event</Link>
         </li>
         <li className="hover:text-[#3366FF]">Location</li>
       </div>
-      <div className="px-[10px] flex gap-[10px]">
+      <div className="px-[10px] flex gap-[10px] flex-col md:flex-row">
         <button className="px-[50px] py-[10px] rounded-xl border font-semibold">
           <Link to={"/Login"}>Login</Link>
         </button>

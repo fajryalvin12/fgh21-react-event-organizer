@@ -2,7 +2,7 @@ import React from "react";
 
 function DateGrid() {
   return (
-    <div className="flex font-semibold gap-[75px] justify-center mb-[50px]">
+    <div className="flex font-semibold gap-[75px] justify-center mb-[50px] overflow-x-scroll md:overflow-x-auto">
       <div className="p-[10px] align-center rounded-[20px] border text-gray-500">
         <div className="text-center">13</div>
         <div>Mon</div>

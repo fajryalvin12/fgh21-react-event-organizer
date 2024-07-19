@@ -37,7 +37,7 @@ function Login() {
 
   return (
     <div className="flex h-[100vh] ">
-      <div className="bg-[#3366ff] flex-[60%] flex justify-center items-center">
+      <div className="bg-[#3366ff] flex-[60%] hidden md:flex justify-center items-center">
         <img src={Mascot} alt="" />
       </div>
       <div className="flex-[40%]">

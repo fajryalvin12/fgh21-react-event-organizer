@@ -7,7 +7,7 @@ function Category() {
         <div>Category</div>
       </div>
       <div className="text-[36px] font-semibold">Browse Events By Category</div>
-      <div className="flex justify-center gap-[100px] mb-[50px] overflow-scroll">
+      <div className="flex justify-center gap-[100px] mb-[50px] flex-col md:flex-row flex-wrap md:flex-nowrap">
         <div>Music</div>
         <div>Arts</div>
         <div>Outdoors</div>
