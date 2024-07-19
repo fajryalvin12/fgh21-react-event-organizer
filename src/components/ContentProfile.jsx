@@ -21,14 +21,6 @@ function ContentProfile() {
     window.alert("Your account has been logged out!");
     navigate("/Login");
   }
-  function clickMy(e) {
-    e.preventDefault();
-    navigate("/MyBooking");
-  }
-  function clickWishlist(e) {
-    e.preventDefault();
-    navigate("/MyWishlist");
-  }
 
   return (
     <div className="bg-[#f4f7ff] py-[50px]">

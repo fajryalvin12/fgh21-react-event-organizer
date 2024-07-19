@@ -14,7 +14,9 @@ function Navbar() {
       </div>
       <div className="flex list-none gap-[50px] font-semibold">
         <li className="hover:text-[#3366FF]">Home</li>
-        <li className="hover:text-[#3366FF]">Create Event</li>
+        <li className="hover:text-[#3366FF]">
+          <Link to={"/CreateEvent"}>Create Event</Link>
+        </li>
         <li className="hover:text-[#3366FF]">Location</li>
       </div>
       <div className="px-[10px] flex gap-[10px]">

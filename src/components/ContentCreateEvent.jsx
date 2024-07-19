@@ -28,17 +28,9 @@ function ContentCreateEvent() {
     e.preventDefault();
     navigate("/ProfilePage");
   }
-  function clickChange(e) {
-    e.preventDefault();
-    navigate("/ChangePassword");
-  }
   function clickEvent(e) {
     e.preventDefault();
     navigate("/EventPage");
-  }
-  function clickMy(e) {
-    e.preventDefault();
-    navigate("/MyBooking");
   }
   function setPopUp() {
     const PopUp = document.getElementById("popup");
@@ -50,6 +42,7 @@ function ContentCreateEvent() {
   function setPopUp2() {
     PopUp.classList.toggle("hidden");
   }
+
   return (
     <div className="bg-[#f4f7ff] py-[50px]">
       <div className="flex gap-[20px]">
@@ -78,11 +71,15 @@ function ContentCreateEvent() {
             </div>
             <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#3366FF]">
               <FaUserPen />
-              <div onClick={clickEdit}>Edit Profile</div>
+              <div>
+                <Link to={"/ProfilePage"}>Edit Profile</Link>
+              </div>
             </div>
             <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#3366FF]">
               <FaLock />
-              <div onClick={clickChange}>Change Password</div>
+              <div>
+                <Link to={"/ChangePassword"}>Change Password</Link>
+              </div>
             </div>
             <div className="flex gap-[25px] text-[#3366FF] items-center hover:text-[#3366FF]">
               <FaCirclePlus />
@@ -92,11 +89,15 @@ function ContentCreateEvent() {
             </div>
             <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
               <FaRectangleList />
-              <div onClick={clickMy}>My Booking</div>
+              <div>
+                <Link to={"/MyBooking"}>My Booking</Link>
+              </div>
             </div>
             <div className="flex gap-[25px]  items-center hover:text-[#3366FF]">
               <FaHeart />
-              <div>My Wishlist</div>
+              <div>
+                <Link to={"/MyWishlist"}>My Wishlist</Link>
+              </div>
             </div>
             <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
               <FaGear />
@@ -110,7 +111,7 @@ function ContentCreateEvent() {
         </div>
         <div className="w-2/3 p-[100px]  mr-[120px] bg-[#ffff] flex rounded-[30px] flex flex-col gap-[50px]">
           <div className="flex items-center justify-between">
-            <div className="text-[20px] font-bold">My Booking</div>
+            <div className="text-[20px] font-bold">Manage Event</div>
             <button
               onClick={setPopUp}
               className="flex gap-[10px] items-center p-[20px] bg-[#D6E0FF] text-[#3366FF] rounded-[15px] font-semibold"
@@ -127,7 +128,7 @@ function ContentCreateEvent() {
                 </div>
                 <div className="flex flex-col gap-[15px]">
                   <div className="text-[24px] font-bold">
-                    Sights & Sounds Exhibition
+                    Cek Khodam Kak Mudryk
                   </div>
                   <div>
                     <div className="text-gray-500">Jakarta, Indonesia</div>

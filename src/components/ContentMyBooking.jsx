@@ -27,17 +27,9 @@ function ContentMyBooking() {
     e.preventDefault();
     navigate("/ProfilePage");
   }
-  function clickChange(e) {
-    e.preventDefault();
-    navigate("/ChangePassword");
-  }
   function clickEvent(e) {
     e.preventDefault();
     navigate("/EventPage");
-  }
-  function clickWishlist(e) {
-    e.preventDefault();
-    navigate("/MyWishlist");
   }
 
   return (
@@ -68,11 +60,15 @@ function ContentMyBooking() {
             </div>
             <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#3366FF]">
               <FaUserPen />
-              <div onClick={clickEdit}>Edit Profile</div>
+              <div>
+                <Link to={"/ProfilePage"}>Edit Profile</Link>
+              </div>
             </div>
             <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#3366FF]">
               <FaLock />
-              <div onClick={clickChange}>Change Password</div>
+              <div>
+                <Link to={"/ChangePassword"}>Change Password</Link>
+              </div>
             </div>
             <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
               <FaCirclePlus />
@@ -86,7 +82,9 @@ function ContentMyBooking() {
             </div>
             <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
               <FaHeart />
-              <div onClick={clickWishlist}>My Wishlist</div>
+              <div>
+                <Link to={"/MyWishlist"}>My Wishlist</Link>
+              </div>
             </div>
             <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
               <FaGear />
