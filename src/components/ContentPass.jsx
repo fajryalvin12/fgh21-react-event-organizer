@@ -27,9 +27,9 @@ function ContentPass() {
   }
 
   return (
-    <div className="bg-[#f4f7ff] py-[50px]">
+    <div className="bg-[#f4f7ff] p-0 md:py-[50px]">
       <div className="flex gap-[20px]">
-        <div className="w-1/3 px-[100px] flex flex-col gap-[30px]">
+        <div className="w-1/3 px-[100px] flex-col gap-[30px] hidden md:flex">
           <div className="flex gap-[20px]">
             <img
               src={AvatarProfile}
@@ -84,8 +84,9 @@ function ContentPass() {
             </div>
           </div>
         </div>
-        <div className="w-2/3 p-[100px]  mr-[120px] bg-[#ffff] flex rounded-[30px] flex gap-[50px]">
-          <form className="flex flex-col gap-[30px] w-full">
+        <div className="w-full md:w-2/3 p-0 md:p-[100px] m-0 md:mr-[120px] bg-[#ffff] flex rounded-[30px] flex flex-col gap-[50px]">
+          <div className="font-bold text-2xl">Change Password</div>
+          <form className="flex flex-col md:flex-row gap-[30px] w-fit md:w-full">
             <div className="flex justify-between font-semibold items-center">
               <label for="name">Old Password</label>
               <input

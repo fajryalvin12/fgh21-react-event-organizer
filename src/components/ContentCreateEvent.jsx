@@ -44,9 +44,9 @@ function ContentCreateEvent() {
   }
 
   return (
-    <div className="bg-[#f4f7ff] py-[50px]">
+    <div className="bg-[#f4f7ff] p-0 md:py-[50px]">
       <div className="flex gap-[20px]">
-        <div className="w-1/3 px-[100px] flex flex-col gap-[30px]">
+        <div className="w-1/3 px-[100px] flex-col gap-[30px] hidden md:flex">
           <div className="flex gap-[20px]">
             <img
               src={AvatarProfile}
@@ -109,8 +109,8 @@ function ContentCreateEvent() {
             </div>
           </div>
         </div>
-        <div className="w-2/3 p-[100px]  mr-[120px] bg-[#ffff] flex rounded-[30px] flex flex-col gap-[50px]">
-          <div className="flex items-center justify-between">
+        <div className="md:w-2/3 p-0 m-0 md:p-[100px] md:mr-[120px] bg-[#ffff] flex rounded-none md:rounded-[30px] flex gap-[50px] flex-col md:flex-row">
+          <div className="flex md:items-center items-start gap-8 p-4 md:p-0 justify-between flex-col md:flex-row">
             <div className="text-[20px] font-bold">Manage Event</div>
             <button
               onClick={setPopUp}
@@ -237,10 +237,13 @@ function ContentCreateEvent() {
         className="bg-[#0000007e] absolute top-0 hidden w-full"
         id="popup"
       >
-        <div onClick={standBy} className="bg-[#ffff]  rounded-3xl p-20 m-20">
+        <div
+          onClick={standBy}
+          className="bg-[#ffff] rounded-3xl p-4 m-8 md:p-20 md:m-20"
+        >
           <div className="font-bold text-2xl mb-10">Update Event</div>
-          <form className="flex flex-col gap-10">
-            <div className="flex items-center gap-12">
+          <form className="flex flex-col gap-2 md:gap-10">
+            <div className="flex flex-col md:flex-row items-center gap-12">
               <div className="flex-1 flex flex-col gap-4">
                 <label htmlFor="">Name</label>
                 <input
@@ -258,7 +261,7 @@ function ContentCreateEvent() {
                 />
               </div>
             </div>
-            <div className="flex items-center gap-12">
+            <div className="flex flex-col md:flex-row items-center gap-12">
               <div className="flex-1 flex flex-col gap-4">
                 <label htmlFor="">Location</label>
                 <input
@@ -276,7 +279,7 @@ function ContentCreateEvent() {
                 />
               </div>
             </div>
-            <div className="flex items-center gap-12">
+            <div className="flex flex-col md:flex-row items-center gap-12">
               <div className="flex-1 flex flex-col gap-4">
                 <label htmlFor="">Price</label>
                 <input

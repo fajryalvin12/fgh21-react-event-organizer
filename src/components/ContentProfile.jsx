@@ -23,9 +23,9 @@ function ContentProfile() {
   }
 
   return (
-    <div className="bg-[#f4f7ff] py-[50px]">
-      <div className="flex gap-[20px]">
-        <div className="w-1/3 px-[100px] flex flex-col gap-[30px]">
+    <div className="bg-[#f4f7ff] p-0 md:py-[50px]">
+      <div className="flex justify-center ">
+        <div className="w-1/3 px-[100px] flex-col gap-[30px] hidden md:flex">
           <div className="flex gap-[20px]">
             <img
               src={AvatarProfile}
@@ -78,7 +78,7 @@ function ContentProfile() {
             </div>
           </div>
         </div>
-        <div className="w-2/3 p-[100px]  mr-[120px] bg-[#ffff] flex rounded-[30px] flex gap-[50px]">
+        <div className="md:w-2/3 p-0 m-0 md:p-[100px] md:mr-[120px] bg-[#ffff] flex rounded-none md:rounded-[30px] flex gap-[50px] flex-col-reverse md:flex-row">
           <div className="flex-1">
             <form className="flex flex-col gap-[30px]">
               <div className="flex justify-between text-[20px] font-bold">
@@ -170,13 +170,13 @@ function ContentProfile() {
               </div>
               <div>
                 <button
-                  className="py-[15px] px-[82px] font-semibold text-[#3366ff] bg-[#ffff] rounded-[15px] text-[16px] border border-[#3366ff]"
+                  className="py-[15px] px-[82px] font-semibold text-[#3366ff] bg-[#ffff] rounded-[15px] text-[16px] border border-[#3366ff] hidden md:flex"
                   type="submit"
                 >
                   Choose Photo
                 </button>
               </div>
-              <div>
+              <div className="hidden md:flex md:flex-col">
                 <div>Image size: max, 2 MB</div>
                 <div>Image formats: .JPG, .JPEG, .PNG</div>
               </div>
