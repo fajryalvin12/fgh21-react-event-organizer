@@ -43,7 +43,7 @@ function Login() {
       <div className="flex-[40%]">
         <form
           onSubmit={processLogin}
-          className="flex flex-col justify-center gap-[20px] m-[175px]"
+          className="flex flex-col justify-center gap-[20px] p-8 md:p-0 mt-28 md:m-[175px]"
         >
           <div className="flex items-center text-2xl font-bold">
             <img src={Logo} alt="logo" />

@@ -11,11 +11,11 @@ function Location() {
   return (
     <div className="p-[50px] bg-[#3366ff] rounded-[50px] font-semibold text-[#ffff] mb-[50px] mx-[40px]">
       <div>
-        <div className="bg-[#f5f5f5] h-[30px] w-[150px] py-[5px] px-[30px] items-center flex text-[#d1d5db] rounded-[30px] flex justify-center mb-[25px] ml-[68px]">
+        <div className="bg-[#f5f5f5] h-[30px] w-[150px] py-[5px] px-[30px] items-center flex text-[#d1d5db] rounded-[30px] flex justify-center mb-[25px] ml-0 md:ml-[68px]">
           <div>Location</div>
         </div>
       </div>
-      <div className="flex flex-wrap gap-[86px] ml-[68px] mb-[50px]">
+      <div className="flex flex-wrap gap-[86px] ml-0 md:ml-[68px] mb-[50px]">
         <div className="w-[230px] text-[36px] ">Discover Events Near You</div>
         <div>
           <img src={Jakarta} alt="jkt" />
