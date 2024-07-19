@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 function NavbarProfile() {
   return (
-    <div className="flex justify-between items-center p-[10px]">
+    <div className="flex flex-col md:flex-row gap-8 md:gap-0 justify-between items-center p-[10px]">
       <div>
         <div className="flex items-center text-2xl font-bold">
           <img src={Logo} alt="logo" />
@@ -13,7 +13,7 @@ function NavbarProfile() {
           <span className="text-[#ff3d71]">tick</span>
         </div>
       </div>
-      <div className="flex list-none gap-[50px] font-semibold">
+      <div className="flex list-none gap-[50px] font-semibold flex-col md:flex-row items-center">
         <li className="hover:text-[#3366FF]">
           <Link to={"/"}>Home</Link>
         </li>
@@ -22,15 +22,15 @@ function NavbarProfile() {
       </div>
       <div className="px-[10px] flex gap-[10px] items-center font-semibold">
         <div>
-          <img
-            className="border border-[#3366ff] rounded-full border-[3px]"
-            src={AvatarProfile}
-            alt="ap"
-          />
+          <Link to={"/ProfilePage"}>
+            <img
+              className="border border-[#3366ff] rounded-full border-[3px]"
+              src={AvatarProfile}
+              alt="ap"
+            />
+          </Link>
         </div>
-        <div>
-          <Link to={"/ProfilePage"}>Jhon Thomson</Link>
-        </div>
+        <div className="hidden md:block">Jhon Thomson</div>
       </div>
     </div>
   );

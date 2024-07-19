@@ -59,12 +59,12 @@ function ContentEvent() {
   }
 
   return (
-    <div className="bg-[#f4f7ff] py-[50px]">
-      <div className="p-[100px]  mx-[120px] bg-[#ffff] flex rounded-[30px]">
+    <div className="bg-[#f4f7ff] p-0 md:py-[50px]">
+      <div className="flex-col md:flex-row p-0 md:p-[100px] m-0 md:mx-[120px] bg-[#ffff] flex rounded-[30px]">
         <div className="flex-1">
           <img src={Stadium} alt="stadium" />
         </div>
-        <div className="flex flex-col gap-[25px] w-full flex-1">
+        <div className="flex flex-col gap-[25px] w-full flex-1 p-8 md:p-0">
           <div className="flex justify-between items-center ">
             <div className="font-semibold text-[20px]">Tickets</div>
             <div className="flex gap-[15px] items-center text-[12px] font-semibold text-[#ff3d71]">

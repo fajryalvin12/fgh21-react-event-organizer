@@ -6,11 +6,11 @@ import { FaRegHeart, FaLocationDot, FaClock } from "react-icons/fa6";
 
 function ContentEvent() {
   return (
-    <div className="bg-[#f4f7ff] py-[50px]">
-      <div className="p-[100px]  mx-[120px] bg-[#ffff] flex rounded-[30px] gap-[50px]">
+    <div className="bg-[#f4f7ff] md:py-[50px] py-0">
+      <div className="p-0 md:p-[100px] mx-0 md:mx-[120px] bg-[#ffff] flex flex-col md:flex-row rounded-none md:rounded-[30px] gap-[50px]">
         <div className="flex-1 flex flex-col items-center gap-[50px]">
           <img
-            className="w-[375px] h-[486px] object-cover	rounded-[40px] brightness-50"
+            className="w-full h-full md:w-[375px] md:h-[486px] object-cover	rounded-none md:rounded-[40px] brightness-50"
             src={EventFour}
             alt=""
           />
@@ -23,12 +23,12 @@ function ContentEvent() {
             </div>
           </div>
         </div>
-        <div className="flex-1 flex flex-col gap-[30px]">
+        <div className="flex-1 flex flex-col gap-[30px] py-8 px-8">
           <div className="flex flex-col gap-[30px]">
             <div className="font-bold text-[24px] max-w-[233px]">
               Cek Khodam Kak Mudrik
             </div>
-            <div className="flex justify-between font-semibold">
+            <div className="flex justify-between font-semibold flex-col md:flex-row gap-6">
               <div className="flex gap-[5px]">
                 <div className="text-red-500 items-center flex">
                   <FaLocationDot />
@@ -57,7 +57,7 @@ function ContentEvent() {
               </div>
               <div className="text-[#3366ff]">Read More</div>
             </div>
-            <div className="flex flex-col gap-[50px]">
+            <div className="flex flex-col gap-[50px] items-center md:items-start">
               <div className="flex flex-col gap-[15px] max-w-[315px]">
                 <div className="font-semibold text-[20px]">Location</div>
                 <iframe
@@ -68,7 +68,7 @@ function ContentEvent() {
                 ></iframe>
               </div>
               <div>
-                <button className="py-[15px] px-[82px] font-semibold text-[#ffff] bg-[#3366ff] rounded-[15px] text-[16px]">
+                <button className="py-[15px] px-[82px] font-semibold text-[#ffff] bg-[#3366ff] rounded-[15px] text-[16px] w-full">
                   <Link to={"/BookingPage"}>Buy Tickets</Link>
                 </button>
               </div>
