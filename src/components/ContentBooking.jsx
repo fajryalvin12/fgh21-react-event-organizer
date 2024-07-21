@@ -228,7 +228,10 @@ function ContentEvent() {
             <div className="flex justify-between w-full items-center">
               <div>Total Payment</div>
               <div className="text-[#3366ff] flex items-center">
-                ${purple * 15 + red * 35 + orange * 50}
+                $
+                {purple === 0 && red === 0 && orange === 0
+                  ? "0"
+                  : purple * 15 + red * 35 + orange * 50}
               </div>
             </div>
           </div>

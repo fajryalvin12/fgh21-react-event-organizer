@@ -21,6 +21,9 @@ function ContentProfile() {
     window.alert("Your account has been logged out!");
     navigate("/Login");
   }
+  function processProfile() {
+    window.alert("Profile Saved!");
+  }
 
   return (
     <div className="bg-[#f4f7ff] p-0 md:py-[50px]">
@@ -80,7 +83,10 @@ function ContentProfile() {
         </div>
         <div className="md:w-2/3 p-0 m-0 md:p-[100px] md:mr-[120px] bg-[#ffff] flex rounded-none md:rounded-[30px] flex gap-[50px] flex-col-reverse md:flex-row">
           <div className="flex-1">
-            <form className="flex flex-col gap-[30px]">
+            <form
+              onSubmit={processProfile}
+              className="flex flex-col gap-[30px]"
+            >
               <div className="flex justify-between text-[20px] font-bold">
                 Profile
               </div>
@@ -97,7 +103,7 @@ function ContentProfile() {
                 <label for="username">Username</label>
                 <input
                   className="p-[10px] border rounded-xl"
-                  type="password"
+                  type="text"
                   placeholder="@jhont0"
                   id="username"
                 />
@@ -142,7 +148,7 @@ function ContentProfile() {
                 <label for="nationality">Nationality</label>
                 <input
                   className="p-[10px] border rounded-xl"
-                  type="password"
+                  type="text"
                   placeholder="Indonesia"
                   id="nationality"
                 />

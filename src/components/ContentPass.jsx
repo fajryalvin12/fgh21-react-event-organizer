@@ -11,6 +11,7 @@ import {
   FaHeart,
   FaGear,
   FaArrowRightFromBracket,
+  FaEye,
 } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 
@@ -24,6 +25,14 @@ function ContentPass() {
   function clickEdit(e) {
     e.preventDefault();
     navigate("/ProfilePage");
+  }
+  let [revPass, setRevPass] = React.useState("password");
+  function setPassword() {
+    if (revPass === "password") {
+      setRevPass("text");
+    } else {
+      setRevPass("password");
+    }
   }
 
   return (
@@ -84,35 +93,53 @@ function ContentPass() {
             </div>
           </div>
         </div>
-        <div className="w-full md:w-2/3 p-0 md:p-[100px] m-0 md:mr-[120px] bg-[#ffff] flex rounded-[30px] flex flex-col gap-[50px]">
+        <div className="w-full md:w-2/3 p-0 md:p-[80px] m-0 md:mr-[120px] bg-[#ffff] flex rounded-[30px] flex flex-col gap-[50px]">
           <div className="font-bold text-2xl">Change Password</div>
-          <form className="flex flex-col md:flex-row gap-[30px] w-fit md:w-full">
-            <div className="flex justify-between font-semibold items-center">
-              <label for="name">Old Password</label>
-              <input
-                type="text"
-                placeholder="Input Old Password..."
-                id="name"
-                className="p-[10px] border rounded-xl w-full max-w-[800px]"
-              />
+          <form className="flex flex-col gap-[30px] w-fit md:w-full">
+            <div className="flex justify-between font-semibold items-center gap-12">
+              <label className="max-w-[120px]" for="name">
+                Old Password
+              </label>
+              <div className="p-[10px] border rounded-xl w-full flex justify-between">
+                <input
+                  type={revPass}
+                  placeholder="Input Old Password..."
+                  id="name"
+                />
+                <button type="button" onClick={setPassword}>
+                  <FaEye />
+                </button>
+              </div>
             </div>
-            <div className="flex justify-between font-semibold items-center">
-              <label for="name">New Password</label>
-              <input
-                type="text"
-                placeholder="Input New Password ..."
-                id="name"
-                className="p-[10px] border rounded-xl w-full max-w-[800px]"
-              />
+            <div className="flex justify-between font-semibold items-center gap-12">
+              <label className="max-w-[120px]" for="name">
+                New Password
+              </label>
+              <div className="p-[10px] border rounded-xl w-full flex justify-between">
+                <input
+                  type={revPass}
+                  placeholder="Input Old Password..."
+                  id="name"
+                />
+                <button type="button" onClick={setPassword}>
+                  <FaEye />
+                </button>
+              </div>
             </div>
-            <div className="flex justify-between font-semibold items-center">
-              <label for="name">Confirm Password</label>
-              <input
-                type="text"
-                placeholder="Input Confirm Password ..."
-                id="name"
-                className="p-[10px] border rounded-xl w-full max-w-[800px]"
-              />
+            <div className="flex justify-between font-semibold items-center gap-12">
+              <label className="max-w-[100px]" for="name">
+                Confirm Password
+              </label>
+              <div className="p-[10px] border rounded-xl w-full flex justify-between">
+                <input
+                  type={revPass}
+                  placeholder="Input Old Password..."
+                  id="name"
+                />
+                <button type="button" onClick={setPassword}>
+                  <FaEye />
+                </button>
+              </div>
             </div>
             <button
               type="submit"

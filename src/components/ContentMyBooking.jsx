@@ -96,7 +96,7 @@ function ContentMyBooking() {
             </div>
           </div>
         </div>
-        <div className="md:w-2/3 p-0 m-0 md:p-[100px] md:mr-[120px] bg-[#ffff] flex rounded-none md:rounded-[30px] flex gap-[50px] flex-col md:flex-row">
+        <div className="md:w-2/3 p-0 m-0 md:p-[100px] md:mr-[120px] bg-[#ffff] flex rounded-none md:rounded-[30px] flex gap-[50px] flex-col">
           <div className="flex md:items-center items-start gap-8 p-4 md:p-0 justify-between flex-col md:flex-row">
             <div className="text-[20px] font-bold">My Booking</div>
             <div className="flex gap-[10px] items-center p-[20px] bg-[#D6E0FF] text-[#3366FF] rounded-[15px] font-semibold">

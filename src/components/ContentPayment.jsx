@@ -13,6 +13,13 @@ import {
 } from "react-icons/fa6";
 
 function ContentPayment() {
+  function processPayment(e) {
+    e.preventDefault();
+    window.alert("Payment Success!");
+    window.alert("Add to the cart!");
+    navigate("/CreateEvent");
+  }
+
   return (
     <div className="bg-[#f4f7ff] p-0 md:py-[50px]">
       <div className="p-6 m-0 md:p-[100px] md:mx-[120px] bg-[#ffff] flex flex-col md:flex-row rounded-[30px] flex gap-[50px]">
@@ -110,8 +117,9 @@ function ContentPayment() {
             </div>
             <div>
               <button
+                onClick={processPayment}
                 className="w-full py-[16px] px-110px] text-[#ffff] font-semibold text-[16px] rounded-[15px] bg-[#3366ff]"
-                type="submit"
+                type="button"
               >
                 Payment
               </button>

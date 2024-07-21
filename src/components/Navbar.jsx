@@ -1,16 +1,22 @@
 import React from "react";
 import Logo from "../assets/icons/logo.png";
 import { Link } from "react-router-dom";
+import { FaAlignJustify } from "react-icons/fa6";
 
 function Navbar() {
+  function toggleBar() {}
+
   return (
     <div className="flex flex-col md:flex-row gap-8 md:gap-0 justify-between items-center p-[10px]">
-      <div>
+      <div className="flex gap-8">
         <div className="flex items-center text-2xl font-bold">
           <img src={Logo} alt="logo" />
           <span className="text-[#3366ff]">We</span>
           <span className="text-[#ff3d71]">tick</span>
         </div>
+        <button onClick={toggleBar} className="md:hidden">
+          <FaAlignJustify />
+        </button>
       </div>
       <div className="flex list-none gap-[50px] font-semibold flex-col md:flex-row items-center">
         <li className="hover:text-[#3366FF]">Home</li>

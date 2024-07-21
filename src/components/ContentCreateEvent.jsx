@@ -109,7 +109,7 @@ function ContentCreateEvent() {
             </div>
           </div>
         </div>
-        <div className="md:w-2/3 p-0 m-0 md:p-[100px] md:mr-[120px] bg-[#ffff] flex rounded-none md:rounded-[30px] flex gap-[50px] flex-col md:flex-row">
+        <div className="md:w-2/3 p-0 m-0 md:p-[100px] md:mr-[120px] bg-[#ffff] flex rounded-none md:rounded-[30px] flex gap-[50px] flex-col">
           <div className="flex md:items-center items-start gap-8 p-4 md:p-0 justify-between flex-col md:flex-row">
             <div className="text-[20px] font-bold">Manage Event</div>
             <button
