@@ -9,12 +9,12 @@ import Partner6 from "../assets/icons/partner-6.png";
 function Partner() {
   return (
     <div className="flex flex-col justify-center items-center mb-[50px] bg-[#373a42] text-[#ffff] gap-[30px]">
-      <div className="bg-[#ff3d7140] h-[30px] py-[5px] px-[30px] items-center flex text-[#ff3d71] rounded-[30px] mt-[39px]">
+      <div className="bg-[#696B71] h-[30px] py-[5px] px-[30px] items-center flex text-[#ffff] rounded-[30px] mt-[39px]">
         <div>Partner</div>
       </div>
       <div className="text-[36px] font-semibold">Our Trusted Partners</div>
       <div className="mb-[50px]">By Companies Like :</div>
-      <div className="flex flex-wrap gap-[62px] mb-[170px]">
+      <div className="grid grid-cols-2 md:grid-cols-6 gap-12 pb-16">
         <img src={Partner1} alt="1" />
         <img src={Partner2} alt="2" />
         <img src={Partner3} alt="3" />
