@@ -41,7 +41,7 @@ function ContentMyWishlist() {
             <img
               src={AvatarProfile}
               alt=""
-              className="border border-[#3366ff] rounded-full border-[3px]"
+              className="border border-[#3366ff] rounded-full border-4"
             />
             <div>
               <div onClick={clickEdit} className="font-semibold">
@@ -97,9 +97,9 @@ function ContentMyWishlist() {
             </div>
           </div>
         </div>
-        <div className="md:w-2/3 p-0 m-0 md:p-[100px] md:mr-[120px] bg-[#ffff] flex rounded-none md:rounded-[30px] flex gap-[50px] flex-col">
+        <div className="w-full md:w-2/3 p-8 m-0 md:p-[100px] md:mr-[120px] bg-[#ffff] rounded-none md:rounded-[30px] flex gap-[50px] flex-col">
           <div className="flex md:items-center items-start gap-8 p-4 md:p-0 justify-between flex-col md:flex-row">
-            <div className="text-[20px] font-bold">My Booking</div>
+            <div className="text-[20px] font-bold">My Wishlist</div>
             <button className="flex gap-[10px] items-center p-[20px] bg-[#D6E0FF] text-[#3366FF] rounded-[15px] font-semibold">
               <FaCalendarDays />
               <div>March</div>
@@ -120,7 +120,10 @@ function ContentMyWishlist() {
                     <div className="text-gray-500">Jakarta, Indonesia</div>
                     <div className="text-gray-500">Wed, 15 Nov, 4:00 PM</div>
                   </div>
-                  <div onClick={clickEvent} className="text-[#3366FF]">
+                  <div
+                    onClick={clickEvent}
+                    className="text-[#3366FF] font-semibold"
+                  >
                     Details
                   </div>
                 </div>
@@ -143,7 +146,10 @@ function ContentMyWishlist() {
                     <div className="text-gray-500">Jakarta, Indonesia</div>
                     <div className="text-gray-500">Wed, 15 Nov, 4:00 PM</div>
                   </div>
-                  <div onClick={clickEvent} className="text-[#3366FF]">
+                  <div
+                    onClick={clickEvent}
+                    className="text-[#3366FF] font-semibold"
+                  >
                     Details
                   </div>
                 </div>
@@ -166,7 +172,10 @@ function ContentMyWishlist() {
                     <div className="text-gray-500">Jakarta, Indonesia</div>
                     <div className="text-gray-500">Wed, 15 Nov, 4:00 PM</div>
                   </div>
-                  <div onClick={clickEvent} className="text-[#3366FF]">
+                  <div
+                    onClick={clickEvent}
+                    className="text-[#3366FF] font-semibold"
+                  >
                     Details
                   </div>
                 </div>
@@ -189,7 +198,10 @@ function ContentMyWishlist() {
                     <div className="text-gray-500">Jakarta, Indonesia</div>
                     <div className="text-gray-500">Wed, 15 Nov, 4:00 PM</div>
                   </div>
-                  <div onClick={clickEvent} className="text-[#3366FF]">
+                  <div
+                    onClick={clickEvent}
+                    className="text-[#3366FF] font-semibold"
+                  >
                     Details
                   </div>
                 </div>

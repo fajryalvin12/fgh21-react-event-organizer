@@ -9,6 +9,7 @@ import ChangePassword from "./pages/ChangePassword";
 import MyBooking from "./pages/MyBooking";
 import MyWishlist from "./pages/MyWishlist";
 import CreateEvent from "./pages/CreateEvent";
+import Attendee from "./components/Attendee";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const arrayRouter = [
@@ -51,6 +52,10 @@ const arrayRouter = [
   {
     path: "/CreateEvent",
     element: <CreateEvent />,
+  },
+  {
+    path: "/Attendee",
+    element: <Attendee />,
   },
 ];
 

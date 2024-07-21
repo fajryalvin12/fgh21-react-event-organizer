@@ -3,6 +3,7 @@ import Footer from "../components/Footer";
 import EventFour from "../assets/images/event-4.jpg";
 import { Link } from "react-router-dom";
 import { FaRegHeart, FaLocationDot, FaClock } from "react-icons/fa6";
+import Attendee from "../components/Attendee";
 
 function ContentEvent() {
   return (
@@ -42,9 +43,11 @@ function ContentEvent() {
                 <div>Wed, 15 Nov, 4:00 PM</div>
               </div>
             </div>
-            <div className="flex flex-col gap-[10px]">
+            <div className="flex flex-col gap-[10px] font-semibold">
               <div>Attendees</div>
-              <div>List of Attendees</div>
+              <div>
+                <Attendee />
+              </div>
             </div>
           </div>
           <hr />
@@ -69,7 +72,7 @@ function ContentEvent() {
               </div>
               <div>
                 <button className="py-[15px] px-[82px] font-semibold text-[#ffff] bg-[#3366ff] rounded-[15px] text-[16px] w-full">
-                  <Link to={"/BookingPage"}>Buy Tickets</Link>
+                  <Link to={"/MyWishlist"}>Buy Tickets</Link>
                 </button>
               </div>
             </div>

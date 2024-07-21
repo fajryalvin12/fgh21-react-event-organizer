@@ -27,7 +27,7 @@ function ContentProfile() {
 
   return (
     <div className="bg-[#f4f7ff] p-0 md:py-[50px]">
-      <div className="flex justify-center ">
+      <div className="flex justify-center">
         <div className="w-1/3 px-[100px] flex-col gap-[30px] hidden md:flex">
           <div className="flex gap-[20px]">
             <img
@@ -81,16 +81,16 @@ function ContentProfile() {
             </div>
           </div>
         </div>
-        <div className="md:w-2/3 p-0 m-0 md:p-[100px] md:mr-[120px] bg-[#ffff] flex rounded-none md:rounded-[30px] flex gap-[50px] flex-col-reverse md:flex-row">
+        <div className="md:w-2/3 md:p-[100px] md:mr-[120px] md:flex-row w-full p-0 m-0 bg-[#ffff] rounded-none flex gap-[50px] flex-col-reverse">
           <div className="flex-1">
             <form
               onSubmit={processProfile}
               className="flex flex-col gap-[30px]"
             >
-              <div className="flex justify-between text-[20px] font-bold">
+              <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between text-[20px] font-bold">
                 Profile
               </div>
-              <div className="flex justify-between font-semibold items-center">
+              <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
                 <label for="name">Name</label>
                 <input
                   type="text"
@@ -99,7 +99,7 @@ function ContentProfile() {
                   className="p-[10px] border rounded-xl"
                 />
               </div>
-              <div className="flex justify-between font-semibold items-center">
+              <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
                 <label for="username">Username</label>
                 <input
                   className="p-[10px] border rounded-xl"
@@ -108,7 +108,7 @@ function ContentProfile() {
                   id="username"
                 />
               </div>
-              <div className="flex justify-between font-semibold items-center">
+              <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
                 <label for="email">Email</label>
                 <input
                   className="p-[10px] border rounded-xl"
@@ -117,7 +117,7 @@ function ContentProfile() {
                   id="email"
                 />
               </div>
-              <div className="flex justify-between font-semibold items-center">
+              <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
                 <label for="phone">Phone Number</label>
                 <input
                   className="p-[10px] border rounded-xl"
@@ -126,7 +126,7 @@ function ContentProfile() {
                   id="phone"
                 />
               </div>
-              <div className="flex justify-between font-semibold items-center">
+              <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
                 <label>Gender</label>
                 <div>
                   <input type="radio" id="male" name="gender" />
@@ -135,7 +135,7 @@ function ContentProfile() {
                   <label for="female">Female</label>
                 </div>
               </div>
-              <div className="flex justify-between font-semibold items-center">
+              <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
                 <label for="profession">Profession</label>
                 <input
                   className="p-[10px] border rounded-xl"
@@ -144,7 +144,7 @@ function ContentProfile() {
                   id="profession"
                 />
               </div>
-              <div className="flex justify-between font-semibold items-center">
+              <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
                 <label for="nationality">Nationality</label>
                 <input
                   className="p-[10px] border rounded-xl"
@@ -153,7 +153,7 @@ function ContentProfile() {
                   id="nationality"
                 />
               </div>
-              <div className="flex justify-between font-semibold items-center">
+              <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
                 <label for="birth">Birthday Date</label>
                 <input
                   type="date"
