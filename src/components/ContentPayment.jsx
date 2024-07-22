@@ -24,7 +24,7 @@ function ContentPayment() {
 
   return (
     <div className="bg-[#f4f7ff] p-0 md:py-[50px]">
-      <div className="p-6 m-0 md:p-[100px] md:mx-[120px] bg-[#ffff] flex flex-col md:flex-row rounded-[30px] flex gap-[50px]">
+      <div className="p-6 m-0 md:p-[100px] md:mx-[120px] bg-[#ffff] flex-col md:flex-row rounded-[30px] flex gap-[50px]">
         <div className="flex-1">
           <div className="flex flex-col gap-[50px]">
             <div className="font-semibold text-[20px] w-full">

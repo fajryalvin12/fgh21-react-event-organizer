@@ -43,7 +43,7 @@ function ContentPass() {
             <img
               src={AvatarProfile}
               alt=""
-              className="border border-[#3366ff] rounded-full border-[3px]"
+              className="border border-[#3366ff] rounded-full"
             />
             <div>
               <div onClick={clickEdit} className="font-semibold">
@@ -93,7 +93,7 @@ function ContentPass() {
             </div>
           </div>
         </div>
-        <div className="w-full md:w-2/3 p-0 md:p-[80px] m-0 md:mr-[120px] bg-[#ffff] flex rounded-[30px] flex flex-col gap-[50px]">
+        <div className="w-full md:w-2/3 p-0 md:p-[80px] m-0 md:mr-[120px] bg-[#ffff] rounded-[30px] flex flex-col gap-[50px]">
           <div className="font-bold text-2xl">Change Password</div>
           <form className="flex flex-col gap-[30px] w-fit md:w-full">
             <div className="flex justify-between font-semibold items-center gap-12">

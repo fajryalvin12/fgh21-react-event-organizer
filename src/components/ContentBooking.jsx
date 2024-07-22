@@ -58,6 +58,20 @@ function ContentEvent() {
     }
   }
 
+  let ticket = [];
+  if (purple > 0) {
+    ticket.push(`REG (${purple})`);
+  }
+  if (red > 0) {
+    ticket.push(`VIP (${red})`);
+  }
+  if (orange > 0) {
+    ticket.push(`VVIP (${orange})`);
+  }
+
+  let dataTicket = "";
+  ticket.length > 0 ? (dataTicket = ticket.join(", ")) : (dataTicket = "-");
+
   return (
     <div className="bg-[#f4f7ff] p-0 md:py-[50px]">
       <div className="flex-col md:flex-row p-0 md:p-[100px] m-0 md:mx-[120px] bg-[#ffff] flex rounded-[30px]">
@@ -224,11 +238,7 @@ function ContentEvent() {
             <div className="flex justify-between w-full items-center">
               <div>Ticket Section</div>
               <div className="text-[#3366ff] flex items-center">
-                {purple === 0 && red === 0 && orange === 0
-                  ? "-"
-                  : `REG${" " + purple}, ` +
-                    `VIP${" " + red}, ` +
-                    `VVIP${" " + orange}`}
+                {dataTicket}
               </div>
             </div>
             <div className="flex justify-between w-full items-center">
@@ -240,10 +250,9 @@ function ContentEvent() {
             <div className="flex justify-between w-full items-center">
               <div>Total Payment</div>
               <div className="text-[#3366ff] flex items-center">
-                $
                 {purple === 0 && red === 0 && orange === 0
-                  ? "0"
-                  : purple * 15 + red * 35 + orange * 50}
+                  ? "-"
+                  : "$" + (purple * 15 + red * 35 + orange * 50)}
               </div>
             </div>
           </div>
