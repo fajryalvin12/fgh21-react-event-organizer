@@ -2,6 +2,7 @@ import React from "react";
 import Footer from "./Footer";
 import CreditCard from "../assets/images/credit-card.png";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   FaCreditCard,
   FaBuildingColumns,
@@ -13,11 +14,12 @@ import {
 } from "react-icons/fa6";
 
 function ContentPayment() {
+  const navigate = useNavigate();
   function processPayment(e) {
     e.preventDefault();
     window.alert("Payment Success!");
     window.alert("Add to the cart!");
-    navigate("/CreateEvent");
+    navigate("/MyBooking");
   }
 
   return (
