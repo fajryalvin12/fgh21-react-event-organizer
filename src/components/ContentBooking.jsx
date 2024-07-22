@@ -79,130 +79,142 @@ function ContentEvent() {
           <div className="flex flex-col gap-[50px]">
             <div className="flex flex-col gap-[15px] w-full">
               <div className="flex items-center gap-[15px]">
-                <div className="p-[10px] bg-[#F1EAFF] text-[#884DFF] rounded-[10px]">
+                <div className="p-[10px] bg-[#F1EAFF] text-[#884DFF] rounded-[10px] justify-start flex">
                   <FaTicket />
                 </div>
                 <div className="flex w-full justify-between">
-                  <div>
-                    <div className="font-bold text-[14px]">
-                      SECTION REG, ROW 1
+                  <div className="flex flex-col gap-2">
+                    <div>
+                      <div className="font-bold text-[14px]">
+                        SECTION REG, ROW 1
+                      </div>
+                      <div className="font-semibold text-[12px] text-[#c1c5d0]">
+                        12 Seats available
+                      </div>
                     </div>
-                    <div className="font-semibold text-[12px] text-[#c1c5d0]">
-                      12 Seats available
+                    <div className="font-semibold text-[16px] text-[#c1c5d0]">
+                      Quantity
                     </div>
                   </div>
-                  <div className="text-center">
-                    <div className="font-bold text-[14px]">$15</div>
-                    <div className="font-semibold text-[12px] text-[#c1c5d0]">
-                      per person
+                  <div className="text-center flex flex-col gap-2">
+                    <div>
+                      <div className="font-bold text-[14px]">$15</div>
+                      <div className="font-semibold text-[12px] text-[#c1c5d0]">
+                        per person
+                      </div>
+                    </div>
+                    <div className="flex gap-[20px] w-full items-center">
+                      <div className="flex gap-[20px] w-full items-center flex-end">
+                        <button
+                          onClick={purpleMinus}
+                          className="p-[5px] border border-[#c1c5d0] bg-[#ffff] rounded-[7px]"
+                        >
+                          <FaMinus />
+                        </button>
+                        <p>{purple}</p>
+                        <button
+                          onClick={purplePlus}
+                          className="p-[5px] border border-[#c1c5d0] bg-[#ffff] rounded-[7px]"
+                        >
+                          <FaPlus />
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div className="flex gap-[20px] w-full items-center">
-                <div className="font-semibold text-[16px] text-[#c1c5d0]">
-                  Quantity
-                </div>
-                <div className="flex gap-[20px] w-full items-center flex-end">
-                  <button
-                    onClick={purpleMinus}
-                    className="p-[5px] border border-[#c1c5d0] bg-[#ffff] rounded-[7px]"
-                  >
-                    <FaMinus />
-                  </button>
-                  <p>{purple}</p>
-                  <button
-                    onClick={purplePlus}
-                    className="p-[5px] border border-[#c1c5d0] bg-[#ffff] rounded-[7px]"
-                  >
-                    <FaPlus />
-                  </button>
                 </div>
               </div>
             </div>
             <div className="flex flex-col gap-[15px] w-full">
               <div className="flex items-center gap-[15px]">
-                <div className="p-[10px] bg-[#FFEAEF] text-[#FF3D71] rounded-[10px]">
+                <div className="p-[10px] bg-[#FFEAEF] text-[#FF3D71] rounded-[10px] justify-start flex">
                   <FaTicket />
                 </div>
                 <div className="flex w-full justify-between">
-                  <div>
-                    <div className="font-bold text-[14px]">
-                      SECTION VIP, ROW 2
+                  <div className="flex flex-col gap-2">
+                    <div>
+                      <div className="font-bold text-[14px]">
+                        SECTION VIP, ROW 2
+                      </div>
+                      <div className="font-semibold text-[12px] text-[#c1c5d0]">
+                        9 Seats available
+                      </div>
                     </div>
-                    <div className="font-semibold text-[12px] text-[#c1c5d0]">
-                      9 Seats available
+                    <div className="font-semibold text-[16px] text-[#c1c5d0]">
+                      Quantity
                     </div>
                   </div>
-                  <div className="text-center">
-                    <div className="font-bold text-[14px]">$35</div>
-                    <div className="font-semibold text-[12px] text-[#c1c5d0]">
-                      per person
+                  <div className="text-center flex flex-col gap-2">
+                    <div>
+                      <div className="font-bold text-[14px]">$35</div>
+                      <div className="font-semibold text-[12px] text-[#c1c5d0]">
+                        per person
+                      </div>
+                    </div>
+                    <div className="flex gap-[20px] w-full items-center">
+                      <div className="flex gap-[20px] w-full items-center flex-end">
+                        <button
+                          onClick={redMinus}
+                          className="p-[5px] border border-[#c1c5d0] bg-[#ffff] rounded-[7px]"
+                        >
+                          <FaMinus />
+                        </button>
+                        <p>{red}</p>
+                        <button
+                          onClick={redPlus}
+                          className="p-[5px] border border-[#c1c5d0] bg-[#ffff] rounded-[7px]"
+                        >
+                          <FaPlus />
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div className="flex gap-[20px] w-full items-center">
-                <div className="font-semibold text-[16px] text-[#c1c5d0]">
-                  Quantity
-                </div>
-                <div className="flex gap-[20px] w-full items-center">
-                  <button
-                    onClick={redMinus}
-                    className="p-[5px] border border-[#c1c5d0] bg-[#ffff] rounded-[7px]"
-                  >
-                    <FaMinus />
-                  </button>
-                  <p>{red}</p>
-                  <button
-                    onClick={redPlus}
-                    className="p-[5px] border border-[#c1c5d0] bg-[#ffff] rounded-[7px]"
-                  >
-                    <FaPlus />
-                  </button>
                 </div>
               </div>
             </div>
             <div className="flex flex-col gap-[15px] w-full">
               <div className="flex items-center gap-[15px]">
-                <div className="p-[10px] bg-[#FFF4E7] text-[#FF8900] rounded-[10px]">
+                <div className="p-[10px] bg-[#FFF4E7] text-[#FF8900] rounded-[10px] justify-start flex">
                   <FaTicket />
                 </div>
                 <div className="flex w-full justify-between">
-                  <div>
-                    <div className="font-bold text-[14px]">
-                      SECTION VVIP, ROW 3
+                  <div className="flex flex-col gap-2">
+                    <div>
+                      <div className="font-bold text-[14px]">
+                        SECTION VVIP, ROW 3
+                      </div>
+                      <div className="font-semibold text-[12px] text-[#c1c5d0]">
+                        6 Seats available
+                      </div>
                     </div>
-                    <div className="font-semibold text-[12px] text-[#c1c5d0]">
-                      6 Seats available
+                    <div className="font-semibold text-[16px] text-[#c1c5d0]">
+                      Quantity
                     </div>
                   </div>
-                  <div className="text-center">
-                    <div className="font-bold text-[14px]">$50</div>
-                    <div className="font-semibold text-[12px] text-[#c1c5d0]">
-                      per person
+                  <div className="text-center flex flex-col gap-2">
+                    <div>
+                      <div className="font-bold text-[14px]">$50</div>
+                      <div className="font-semibold text-[12px] text-[#c1c5d0]">
+                        per person
+                      </div>
+                    </div>
+                    <div className="flex gap-[20px] w-full items-center">
+                      <div className="flex gap-[20px] w-full items-center flex-end">
+                        <button
+                          onClick={orangeMinus}
+                          className="p-[5px] border border-[#c1c5d0] bg-[#ffff] rounded-[7px]"
+                        >
+                          <FaMinus />
+                        </button>
+                        <p>{orange}</p>
+                        <button
+                          onClick={orangePlus}
+                          className="p-[5px] border border-[#c1c5d0] bg-[#ffff] rounded-[7px]"
+                        >
+                          <FaPlus />
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div className="flex gap-[20px] w-full items-center">
-                <div className="font-semibold text-[16px] text-[#c1c5d0]">
-                  Quantity
-                </div>
-                <div className="flex gap-[20px] w-full items-center">
-                  <button
-                    onClick={orangeMinus}
-                    className="p-[5px] border border-[#c1c5d0] bg-[#ffff] rounded-[7px]"
-                  >
-                    <FaMinus />
-                  </button>
-                  <p>{orange}</p>
-                  <button
-                    onClick={orangePlus}
-                    className="p-[5px] border border-[#c1c5d0] bg-[#ffff] rounded-[7px]"
-                  >
-                    <FaPlus />
-                  </button>
                 </div>
               </div>
             </div>
