@@ -31,7 +31,9 @@ function NavbarProfile() {
         <li className="hover:text-[#3366FF]">
           <Link to={"/"}>Home</Link>
         </li>
-        <li className="hover:text-[#3366FF]">Create Event</li>
+        <li className="hover:text-[#3366FF]">
+          <Link to={"/CreateEvent"}>Create Event</Link>
+        </li>
         <li className="hover:text-[#3366FF]">Location</li>
       </div>
       <div
@@ -41,7 +43,7 @@ function NavbarProfile() {
         <div>
           <Link to={"/ProfilePage"}>
             <img
-              className="border border-[#3366ff] rounded-full border-[3px]"
+              className="border border-[#3366ff] rounded-full"
               src={AvatarProfile}
               alt="ap"
             />

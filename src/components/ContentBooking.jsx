@@ -244,7 +244,9 @@ function ContentEvent() {
             <div className="flex justify-between w-full items-center">
               <div>Quantity</div>
               <div className="text-[#3366ff] flex items-center">
-                {purple + red + orange}
+                {purple === 0 && red === 0 && orange === 0
+                  ? "-"
+                  : purple + red + orange}
               </div>
             </div>
             <div className="flex justify-between w-full items-center">

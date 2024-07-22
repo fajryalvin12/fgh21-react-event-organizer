@@ -1,5 +1,6 @@
 import React from "react";
 import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import Home from "./pages/Home";
 import EventPage from "./pages/EventPage";
 import BookingPage from "./pages/BookingPage";
@@ -16,6 +17,10 @@ const arrayRouter = [
   {
     path: "/Login",
     element: <Login />,
+  },
+  {
+    path: "/Signup",
+    element: <Signup />,
   },
   {
     path: "/",

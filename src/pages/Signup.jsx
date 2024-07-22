@@ -5,23 +5,37 @@ import Facebook from "../assets/icons/facebook.png";
 import Mascot from "../assets/images/mascot.png";
 import { useNavigate } from "react-router-dom";
 import { FaEye } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
-function Login() {
+function Signup() {
   const navigate = useNavigate();
-  function processLogin(e) {
+  function processSignup(e) {
     e.preventDefault();
     const formName = e.target.name.value;
     const formEmail = e.target.email.value;
     const formPass = e.target.password.value;
+    const formConfirm = e.target.confirm.value;
 
-    if (formEmail === "admin@gmail.com" && formPass === "1234") {
-      window.alert("Login Success!");
-      window.alert("Welcome back, " + "!");
-      navigate("/");
+    if (formName !== "") {
+      if (formEmail !== "") {
+        if (formPass !== "") {
+          if (formConfirm === formPass) {
+            alert("Registration success!");
+            navigate("/Login");
+          } else {
+            alert("Password and Confirm Password must be same!");
+          }
+        } else {
+          alert("Please insert Password first!");
+        }
+      } else {
+        alert("Please input email first!");
+      }
     } else {
-      window.alert("Please input the appropriate data");
+      alert("Please input name!");
     }
   }
+
   let [pass, setPass] = React.useState("password");
   function revealPassword() {
     if (pass === "password") {
@@ -30,15 +44,23 @@ function Login() {
       setPass("password");
     }
   }
+  let [confirmPass, setConfirmPass] = React.useState("password");
+  function revealConfirmPassword() {
+    if (confirmPass === "password") {
+      setConfirmPass("text");
+    } else {
+      setConfirmPass("password");
+    }
+  }
 
   return (
-    <div className="flex h-[100vh] ">
+    <div className="flex h-screen">
       <div className="bg-[#3366ff] flex-[60%] hidden md:flex justify-center items-center">
         <img src={Mascot} alt="" />
       </div>
       <div className="flex-[40%]">
         <form
-          onSubmit={processLogin}
+          onSubmit={processSignup}
           className="flex flex-col justify-center gap-[20px] p-8 md:p-0 mt-28 md:m-[100px]"
         >
           <div className="flex items-center text-2xl font-bold">
@@ -46,9 +68,20 @@ function Login() {
             <span className="text-[#3366ff]">We</span>
             <span className="text-[#ff3d71]">tick</span>
           </div>
-          <div className="text-2xl font-bold">Sign In</div>
-          <div>Hi, Welcome back to Urticket!</div>
+          <div className="text-2xl font-bold">Sign Up</div>
+          <div className="flex">
+            <div>Already have an account?</div>
+            <div className="text-[#3366ff] font-semibold">
+              <Link to={"/Login"}>Login</Link>
+            </div>
+          </div>
           <div className="flex flex-col gap-[10px]">
+            <input
+              className="border rounded-xl h-16 pl-4 outline-none"
+              name="name"
+              type="text"
+              placeholder="Full Name"
+            />
             <input
               className="border rounded-xl h-16 pl-4 outline-none"
               name="email"
@@ -70,26 +103,33 @@ function Login() {
                 <FaEye />
               </button>
             </div>
+            <div className="flex border rounded-xl h-16 pl-4 items-center justify-center overflow-hidden">
+              <input
+                className="flex-1 h-16 outline-none"
+                name="confirm"
+                type={confirmPass}
+                placeholder="Confirm Password"
+              />
+              <button
+                className="flex w-16 h-16 justify-center items-center overflow-hidden"
+                type="button"
+                onClick={revealConfirmPassword}
+              >
+                <FaEye />
+              </button>
+            </div>
           </div>
-          <div className="text-right text-[#3366ff]">Forgot Password?</div>
+          <div className="text-left flex gap-2">
+            <input type="checkbox" id="terms" />
+            <label htmlFor="terms">Accept Terms and Conditions</label>
+          </div>
           <div>
             <button
               className="p-[10px] w-full text-[16px] bg-[#3366ff] text-white rounded-xl font-semibold"
               type="submit"
             >
-              Sign Up
+              Sign In
             </button>
-          </div>
-          <div className="flex flex-col gap-[10px] justify-center items-center">
-            <div>or sign in with</div>
-            <div className="flex gap-8">
-              <button className="bg-[#ffff] px-[36px] py-[12px] border border-[#3366ff] rounded-xl">
-                <img src={Google} alt="" />
-              </button>
-              <button className="bg-[#ffff] px-[36px] py-[12px] border border-[#3366ff] rounded-xl">
-                <img src={Facebook} alt="" />
-              </button>
-            </div>
           </div>
         </form>
       </div>
@@ -97,4 +137,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Signup;

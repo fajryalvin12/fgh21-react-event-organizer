@@ -41,7 +41,7 @@ function Navbar() {
           <Link to={"/Login"}>Login</Link>
         </button>
         <button className="px-[50px] py-[10px] rounded-xl border font-semibold bg-[#3366ff] text-white">
-          Sign Up
+          <Link to={"/Signup"}>Sign Up</Link>
         </button>
       </div>
     </div>
