@@ -5,18 +5,18 @@ import Facebook from "../assets/icons/facebook.png";
 import Mascot from "../assets/images/mascot.png";
 import { useNavigate } from "react-router-dom";
 import { FaEye } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 function Login() {
   const navigate = useNavigate();
   function processLogin(e) {
     e.preventDefault();
-    const formName = e.target.name.value;
     const formEmail = e.target.email.value;
     const formPass = e.target.password.value;
 
     if (formEmail === "admin@gmail.com" && formPass === "1234") {
       window.alert("Login Success!");
-      window.alert("Welcome back, " + "!");
+      window.alert("Welcome back");
       navigate("/");
     } else {
       window.alert("Please input the appropriate data");
@@ -71,13 +71,15 @@ function Login() {
               </button>
             </div>
           </div>
-          <div className="text-right text-[#3366ff]">Forgot Password?</div>
+          <div className="text-right text-[#3366ff]">
+            <Link to={"/Forgot"}>Forgot Password?</Link>
+          </div>
           <div>
             <button
               className="p-[10px] w-full text-[16px] bg-[#3366ff] text-white rounded-xl font-semibold"
               type="submit"
             >
-              Sign Up
+              Sign In
             </button>
           </div>
           <div className="flex flex-col gap-[10px] justify-center items-center">

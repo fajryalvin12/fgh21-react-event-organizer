@@ -128,7 +128,7 @@ function Signup() {
               className="p-[10px] w-full text-[16px] bg-[#3366ff] text-white rounded-xl font-semibold"
               type="submit"
             >
-              Sign In
+              Sign Up
             </button>
           </div>
         </form>
