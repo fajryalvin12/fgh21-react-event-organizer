@@ -41,7 +41,7 @@ function ContentMyWishlist() {
             <img
               src={AvatarProfile}
               alt=""
-              className="border border-[#3366ff] rounded-full border-4"
+              className="border border-[#3366ff] rounded-full"
             />
             <div>
               <div onClick={clickEdit} className="font-semibold">

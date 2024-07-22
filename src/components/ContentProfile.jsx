@@ -33,7 +33,7 @@ function ContentProfile() {
             <img
               src={AvatarProfile}
               alt=""
-              className="border border-[#3366ff] rounded-full border-[3px]"
+              className="border border-[#3366ff] rounded-full"
             />
             <div>
               <div className="font-semibold">Jhon Thomson</div>

@@ -14,11 +14,7 @@ function Login() {
     const formEmail = e.target.email.value;
     const formPass = e.target.password.value;
 
-    if (
-      formName === "Admin" &&
-      formEmail === "admin@gmail.com" &&
-      formPass === "1234"
-    ) {
+    if (formEmail === "admin@gmail.com" && formPass === "1234") {
       window.alert("Login Success!");
       window.alert("Welcome back, " + formName + "!");
       navigate("/");
@@ -54,20 +50,23 @@ function Login() {
           <div>Hi, Welcome back to Urticket!</div>
           <div className="flex flex-col gap-[10px]">
             <input
-              className="p-[16px] border rounded-xl"
-              name="name"
-              type="text"
-              placeholder="Username"
-            />
-            <input
-              className="p-[16px] border rounded-xl"
+              className="border rounded-xl h-16 pl-4 outline-none"
               name="email"
               type="email"
               placeholder="Email"
             />
-            <div className="p-[16px] border rounded-xl flex justify-between">
-              <input name="password" type={pass} placeholder="Password" />
-              <button type="button" onClick={revealPassword}>
+            <div className="flex border rounded-xl h-16 pl-4 items-center justify-center overflow-hidden">
+              <input
+                className="flex-1 h-16 outline-none"
+                name="password"
+                type={pass}
+                placeholder="Password"
+              />
+              <button
+                className="flex w-16 h-16 justify-center items-center overflow-hidden"
+                type="button"
+                onClick={revealPassword}
+              >
                 <FaEye />
               </button>
             </div>

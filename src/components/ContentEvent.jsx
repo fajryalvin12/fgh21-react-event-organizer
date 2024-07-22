@@ -72,7 +72,7 @@ function ContentEvent() {
               </div>
               <div>
                 <button className="py-[15px] px-[82px] font-semibold text-[#ffff] bg-[#3366ff] rounded-[15px] text-[16px] w-full">
-                  <Link to={"/MyWishlist"}>Buy Tickets</Link>
+                  <Link to={"/BookingPage"}>Buy Tickets</Link>
                 </button>
               </div>
             </div>

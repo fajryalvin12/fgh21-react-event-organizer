@@ -103,7 +103,7 @@ function ContentEvent() {
                 <div className="font-semibold text-[16px] text-[#c1c5d0]">
                   Quantity
                 </div>
-                <div className="flex gap-[20px] w-full items-center">
+                <div className="flex gap-[20px] w-full items-center flex-end">
                   <button
                     onClick={purpleMinus}
                     className="p-[5px] border border-[#c1c5d0] bg-[#ffff] rounded-[7px]"
