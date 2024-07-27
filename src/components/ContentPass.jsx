@@ -36,14 +36,14 @@ function ContentPass() {
   }
 
   return (
-    <div className="bg-[#f4f7ff] p-0 md:py-[50px]">
+    <div className="bg-[#EEEEEE] p-0 md:py-[50px]">
       <div className="flex gap-[20px]">
         <div className="w-1/3 px-[100px] flex-col gap-[30px] hidden md:flex">
           <div className="flex gap-[20px]">
             <img
               src={AvatarProfile}
               alt=""
-              className="border border-[#3366ff] rounded-full"
+              className="border border-[#134B70] rounded-full"
             />
             <div>
               <div onClick={clickEdit} className="font-semibold">
@@ -53,37 +53,37 @@ function ContentPass() {
             </div>
           </div>
           <div className="flex flex-col gap-[30px] text-[#373a42bf] font-semibold">
-            <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
+            <div className="flex gap-[25px] items-center hover:text-[#508C9B]">
               <FaCircleUser />
               <div>Profile</div>
             </div>
-            <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#3366FF]">
+            <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#508C9B]">
               <FaCreditCard />
               <div>Card</div>
             </div>
-            <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#3366FF]">
+            <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#508C9B]">
               <FaUserPen />
               <div>
                 <Link to={"/ProfilePage"}>Edit Profile</Link>
               </div>
             </div>
-            <div className="pl-[50px] flex gap-[25px] text-[#3366FF] items-center hover:text-[#3366FF]">
+            <div className="pl-[50px] flex gap-[25px] text-[#508C9B] items-center hover:text-[#508C9B]">
               <FaLock />
               <div>Change Password</div>
             </div>
-            <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
+            <div className="flex gap-[25px] items-center hover:text-[#508C9B]">
               <FaRectangleList />
               <div>
                 <Link to={"/MyBooking"}>My Booking</Link>
               </div>
             </div>
-            <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
+            <div className="flex gap-[25px] items-center hover:text-[#508C9B]">
               <FaHeart />
               <div>
                 <Link to={"/MyWishlist"}>My Wishlist</Link>
               </div>
             </div>
-            <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
+            <div className="flex gap-[25px] items-center hover:text-[#508C9B]">
               <FaGear />
               <div>Settings</div>
             </div>

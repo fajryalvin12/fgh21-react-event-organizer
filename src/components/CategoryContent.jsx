@@ -5,52 +5,40 @@ import { addEvent } from "../redux/reducers/event.js";
 import axios from "axios";
 
 function CategoryContent() {
-  // const endpoint = "https://wsw6zh-8888.csb.app/events";
-  // const category = useSelector((state) => state.event.eventBox);
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   (async () => {
-  //     const catData = await axios.get(endpoint);
-  //     const catDataGlobal = catData.data.result;
-  //     dispatch(addEvent(catDataGlobal));
-  //   })();
-  // }, []);
-
   return (
     <div className="flex gap-12 items-center mb-[175px] overflow-x-scroll md:justify-center">
-      <div className="flex flex-col w-[300px] h-[350px] bg-[#3366ff] rounded-[30px] overflow-hidden shrink-0">
+      <div className="flex flex-col w-[300px] h-[350px] bg-[#134B70] rounded-[30px] overflow-hidden shrink-0">
         <img
           className="relative h-[175px] object-cover"
           src={EventOne}
           alt="One"
         />
         <div></div>
-        <div className="flex flex-col text-[#ffff] p-[20px] font-semibold gap-[5px]">
+        <div className="flex flex-col text-[#EEEEEE] p-[20px] font-semibold gap-[5px]">
           <div className="text-[14px]">Wed, 15 Nov, 4:00 PM</div>
           <div className="text-[22px]">Sights & Sounds Exhibition</div>
         </div>
       </div>
-      <div className="flex flex-col w-[300px] h-[350px] bg-[#3366ff] rounded-[30px] overflow-hidden shrink-0">
+      <div className="flex flex-col w-[300px] h-[350px] bg-[#134B70] rounded-[30px] overflow-hidden shrink-0">
         <img
           className="relative h-[175px] object-cover"
           src={EventOne}
           alt="One"
         />
         <div></div>
-        <div className="flex flex-col text-[#ffff] p-[20px] font-semibold gap-[5px]">
+        <div className="flex flex-col text-[#EEEEEE] p-[20px] font-semibold gap-[5px]">
           <div className="text-[14px]">Wed, 15 Nov, 4:00 PM</div>
           <div className="text-[22px]">Sights & Sounds Exhibition</div>
         </div>
       </div>
-      <div className="flex flex-col w-[300px] h-[350px] bg-[#3366ff] rounded-[30px] overflow-hidden shrink-0">
+      <div className="flex flex-col w-[300px] h-[350px] bg-[#134B70] rounded-[30px] overflow-hidden shrink-0">
         <img
           className="relative h-[175px] object-cover"
           src={EventOne}
           alt="One"
         />
         <div></div>
-        <div className="flex flex-col text-[#ffff] p-[20px] font-semibold gap-[5px]">
+        <div className="flex flex-col text-[#EEEEEE] p-[20px] font-semibold gap-[5px]">
           <div className="text-[14px]">Wed, 15 Nov, 4:00 PM</div>
           <div className="text-[22px]">Sights & Sounds Exhibition</div>
         </div>

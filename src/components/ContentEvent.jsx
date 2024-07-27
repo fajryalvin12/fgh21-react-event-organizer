@@ -7,7 +7,7 @@ import Attendee from "../components/Attendee";
 
 function ContentEvent() {
   return (
-    <div className="bg-[#f4f7ff] md:py-[50px] py-0">
+    <div className="bg-[#EEEEEE] md:py-[50px] py-0">
       <div className="p-0 md:p-[100px] mx-0 md:mx-[120px] bg-[#ffff] flex flex-col md:flex-row rounded-none md:rounded-[30px] gap-[50px]">
         <div className="flex-1 flex flex-col items-center gap-[50px]">
           <img
@@ -27,14 +27,14 @@ function ContentEvent() {
         <div className="flex-1 flex flex-col gap-[30px] py-8 px-8">
           <div className="flex flex-col gap-[30px]">
             <div className="font-bold text-[24px] max-w-[233px]">
-              Cek Khodam Kak Mudrik
+              Meet and Greet with Bro Mudryk
             </div>
             <div className="flex justify-between font-semibold flex-col md:flex-row gap-6">
               <div className="flex gap-[5px]">
                 <div className="text-red-500 items-center flex">
                   <FaLocationDot />
                 </div>
-                <div>Jakarta, Indonesia</div>
+                <div>London, England</div>
               </div>
               <div className="flex gap-[5px]">
                 <div className="text-red-500 items-center flex">
@@ -55,8 +55,9 @@ function ContentEvent() {
             <div className="flex flex-col gap-[10px]">
               <div className="font-semibold text-[20px]">Event Detail</div>
               <div className="text-[#373a42bf]">
-                After his controversial art exhibition "Tear and Consume" back
-                in November 2018, in which guests were invited to tear up…
+                Since his joining in Chelsea at 2022, he already shocked the
+                entire world with the skill and his charisma. How come he amazed
+                the world?
               </div>
               <div className="text-[#3366ff]">Read More</div>
             </div>
@@ -71,7 +72,7 @@ function ContentEvent() {
                 ></iframe>
               </div>
               <div>
-                <button className="py-[15px] px-[82px] font-semibold text-[#ffff] bg-[#3366ff] rounded-[15px] text-[16px] w-full">
+                <button className="py-[15px] px-[82px] font-semibold text-[#ffff] bg-[#201E43] rounded-[15px] text-[16px] w-full">
                   <Link to={"/BookingPage"}>Buy Tickets</Link>
                 </button>
               </div>

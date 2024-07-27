@@ -64,7 +64,7 @@ function ContentProfile() {
 
   console.log(nationalities);
   return (
-    <div className="bg-[#f4f7ff] p-0 md:py-[50px]">
+    <div className="bg-[#EEEEEE] p-0 md:py-[50px]">
       <div className="flex justify-center">
         <div className="w-1/3 px-[100px] flex-col gap-[30px] hidden md:flex">
           <div className="flex gap-[20px]">
@@ -79,37 +79,37 @@ function ContentProfile() {
             </div>
           </div>
           <div className="flex flex-col gap-[30px] text-[#373a42bf] font-semibold">
-            <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
+            <div className="flex gap-[25px] items-center hover:text-[#508C9B]">
               <FaCircleUser />
               <div>Profile</div>
             </div>
-            <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#3366FF]">
+            <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#508C9B]">
               <FaCreditCard />
               <div>Card</div>
             </div>
-            <div className="pl-[50px] flex gap-[25px] text-[#3366FF] items-center hover:text-[#3366FF]">
+            <div className="pl-[50px] flex gap-[25px] text-[#508C9B] items-center hover:text-[#508C9B]">
               <FaUserPen />
               <div>Edit Profile</div>
             </div>
-            <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#3366FF]">
+            <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#508C9B]">
               <FaLock />
               <div>
                 <Link to={"/ChangePassword"}>Change Password</Link>
               </div>
             </div>
-            <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
+            <div className="flex gap-[25px] items-center hover:text-[#508C9B]">
               <FaRectangleList />
               <div>
                 <Link to={"/MyBooking"}>My Booking</Link>
               </div>
             </div>
-            <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
+            <div className="flex gap-[25px] items-center hover:text-[#508C9B]">
               <FaHeart />
               <div>
                 <Link to={"/MyWishlist"}>My Wishlist</Link>
               </div>
             </div>
-            <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
+            <div className="flex gap-[25px] items-center hover:text-[#508C9B]">
               <FaGear />
               <div>Settings</div>
             </div>
@@ -190,23 +190,23 @@ function ContentProfile() {
               <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
                 <label for="profession">Profession</label>
                 <select className="p-[10px] border rounded-xl">
-                  {profession.map((data) => {
+                  {/* {profession.map((data) => {
                     return (
                       <option selected={profile.profession}>{data.name}</option>
                     );
-                  })}
+                  })} */}
                 </select>
               </div>
               <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
                 <label for="nationality">Nationality</label>
                 <select id="nationality" className="p-[10px] border rounded-xl">
-                  {nationalities.map((flag) => {
+                  {/* {nationalities.map((flag) => {
                     return (
                       <option selected={flag === profile.nationality}>
                         {flag.name}
                       </option>
                     );
-                  })}
+                  })} */}
                 </select>
               </div>
               <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
@@ -222,7 +222,7 @@ function ContentProfile() {
               </div>
               <button
                 type="submit"
-                className="py-[15px] px-[82px] font-semibold text-[#ffff] bg-[#3366ff] rounded-[15px] text-[16px]"
+                className="py-[15px] px-[82px] font-semibold text-[#ffff] bg-[#134B70] rounded-[15px] text-[16px]"
               >
                 Save
               </button>
@@ -236,7 +236,7 @@ function ContentProfile() {
               />
               <div>
                 <button
-                  className="py-[15px] px-[82px] font-semibold text-[#3366ff] bg-[#ffff] rounded-[15px] text-[16px] border border-[#3366ff] hidden md:flex"
+                  className="py-[15px] px-[82px] font-semibold text-[#508C9B] bg-[#ffff] rounded-[15px] text-[16px] border border-[#508C9B] hidden md:flex"
                   type="submit"
                 >
                   Choose Photo

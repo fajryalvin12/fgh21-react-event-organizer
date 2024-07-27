@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { FaAlignJustify } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import AvatarProfile from "../assets/icons/avatar-profile.png";
+import Brand from "../components/Brand";
 
 function Navbar() {
   const menuBar = useRef();
@@ -18,12 +19,10 @@ function Navbar() {
   console.log(data);
 
   return (
-    <div className="flex flex-col md:flex-row gap-8 md:gap-0 justify-between items-center p-[10px]">
+    <div className="flex flex-col md:flex-row gap-8 md:gap-0 justify-between items-center p-4">
       <div className="flex gap-8">
         <div className="flex items-center text-2xl font-bold">
-          <img src={Logo} alt="logo" />
-          <span className="text-[#3366ff]">We</span>
-          <span className="text-[#ff3d71]">tick</span>
+          <Brand />
         </div>
         <button onClick={toggleBar} className="md:hidden">
           <FaAlignJustify />
@@ -33,11 +32,11 @@ function Navbar() {
         ref={menuBar}
         className="flex list-none gap-[50px] font-semibold flex-col md:flex-row items-center"
       >
-        <li className="hover:text-[#3366FF]">Home</li>
-        <li className="hover:text-[#3366FF]">
+        <li className="hover:text-[#508C9B]">Home</li>
+        <li className="hover:text-[#508C9B]">
           <Link to={"/CreateEvent"}>Create Event</Link>
         </li>
-        <li className="hover:text-[#3366FF]">Location</li>
+        <li className="hover:text-[#508C9B]">Location</li>
       </div>
       {data === null ? (
         <div
@@ -47,7 +46,7 @@ function Navbar() {
           <button className="px-[50px] py-[10px] rounded-xl border font-semibold">
             <Link to={"/Login"}>Login</Link>
           </button>
-          <button className="px-[50px] py-[10px] rounded-xl border font-semibold bg-[#3366ff] text-white">
+          <button className="px-[50px] py-[10px] rounded-xl border font-semibold bg-[#134B70] text-white">
             <Link to={"/Signup"}>Sign Up</Link>
           </button>
         </div>
@@ -56,7 +55,7 @@ function Navbar() {
           <div>
             <Link to={"/ProfilePage"}>
               <img
-                className="border border-[#3366ff] rounded-full h-12 w-12"
+                className="border border-[#134B70] rounded-full h-12 w-12"
                 src={profile.picture}
                 alt="ap"
               />

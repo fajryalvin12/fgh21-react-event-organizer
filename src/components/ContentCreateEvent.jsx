@@ -50,7 +50,7 @@ function ContentCreateEvent() {
   }
 
   return (
-    <div className="bg-[#f4f7ff] p-0 md:py-[50px]">
+    <div className="bg-[#EEEEEE] p-0 md:py-[50px]">
       <div className="flex gap-[20px]">
         <div className="w-1/3 px-[100px] flex-col gap-[30px] hidden md:flex">
           <div className="flex gap-[20px]">
@@ -67,45 +67,45 @@ function ContentCreateEvent() {
             </div>
           </div>
           <div className="flex flex-col gap-[30px] text-[#373a42bf] font-semibold">
-            <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
+            <div className="flex gap-[25px] items-center hover:text-[#508C9B]">
               <FaCircleUser />
               <div>Profile</div>
             </div>
-            <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#3366FF]">
+            <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#508C9B]">
               <FaCreditCard />
               <div>Card</div>
             </div>
-            <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#3366FF]">
+            <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#508C9B]">
               <FaUserPen />
               <div>
                 <Link to={"/ProfilePage"}>Edit Profile</Link>
               </div>
             </div>
-            <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#3366FF]">
+            <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#508C9B]">
               <FaLock />
               <div>
                 <Link to={"/ChangePassword"}>Change Password</Link>
               </div>
             </div>
-            <div className="flex gap-[25px] text-[#3366FF] items-center hover:text-[#3366FF]">
+            <div className="flex gap-[25px] text-[#508C9B] items-center hover:text-[#508C9B]">
               <FaCirclePlus />
               <div>
                 <Link to={"/CreateEvent"}>Create Event</Link>
               </div>
             </div>
-            <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
+            <div className="flex gap-[25px] items-center hover:text-[#508C9B]">
               <FaRectangleList />
               <div>
                 <Link to={"/MyBooking"}>My Booking</Link>
               </div>
             </div>
-            <div className="flex gap-[25px]  items-center hover:text-[#3366FF]">
+            <div className="flex gap-[25px]  items-center hover:text-[#508C9B]">
               <FaHeart />
               <div>
                 <Link to={"/MyWishlist"}>My Wishlist</Link>
               </div>
             </div>
-            <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
+            <div className="flex gap-[25px] items-center hover:text-[#508C9B]">
               <FaGear />
               <div>Settings</div>
             </div>
@@ -120,7 +120,7 @@ function ContentCreateEvent() {
             <div className="text-[20px] font-bold">Manage Event</div>
             <button
               onClick={setPopUp}
-              className="flex gap-[10px] items-center p-[20px] bg-[#D6E0FF] text-[#3366FF] rounded-[15px] font-semibold"
+              className="flex gap-[10px] items-center p-[20px] bg-[#D6E0FF] text-[#508C9B] rounded-[15px] font-semibold"
             >
               Create
             </button>
@@ -141,11 +141,11 @@ function ContentCreateEvent() {
                     <div className="text-gray-500">Wed, 15 Nov, 4:00 PM</div>
                   </div>
                   <div className="flex gap-5 font-semibold">
-                    <div onClick={clickEvent} className="text-[#3366FF]">
+                    <div onClick={clickEvent} className="text-[#508C9B]">
                       Details
                     </div>
-                    <div className="text-[#3366FF]">Update</div>
-                    <div className="text-[#3366FF]">Delete</div>
+                    <div className="text-[#508C9B]">Update</div>
+                    <div className="text-[#508C9B]">Delete</div>
                   </div>
                 </div>
               </div>
@@ -168,11 +168,11 @@ function ContentCreateEvent() {
                     <div className="text-gray-500">Wed, 15 Nov, 4:00 PM</div>
                   </div>
                   <div className="flex gap-5 font-semibold">
-                    <div onClick={clickEvent} className="text-[#3366FF]">
+                    <div onClick={clickEvent} className="text-[#508C9B]">
                       Details
                     </div>
-                    <div className="text-[#3366FF]">Update</div>
-                    <div className="text-[#3366FF]">Delete</div>
+                    <div className="text-[#508C9B]">Update</div>
+                    <div className="text-[#508C9B]">Delete</div>
                   </div>
                 </div>
               </div>
@@ -195,11 +195,11 @@ function ContentCreateEvent() {
                     <div className="text-gray-500">Wed, 15 Nov, 4:00 PM</div>
                   </div>
                   <div className="flex gap-5 font-semibold">
-                    <div onClick={clickEvent} className="text-[#3366FF]">
+                    <div onClick={clickEvent} className="text-[#508C9B]">
                       Details
                     </div>
-                    <div className="text-[#3366FF]">Update</div>
-                    <div className="text-[#3366FF]">Delete</div>
+                    <div className="text-[#508C9B]">Update</div>
+                    <div className="text-[#508C9B]">Delete</div>
                   </div>
                 </div>
               </div>
@@ -222,11 +222,11 @@ function ContentCreateEvent() {
                     <div className="text-gray-500">Wed, 15 Nov, 4:00 PM</div>
                   </div>
                   <div className="flex gap-5 font-semibold">
-                    <div onClick={clickEvent} className="text-[#3366FF]">
+                    <div onClick={clickEvent} className="text-[#508C9B]">
                       Details
                     </div>
-                    <div className="text-[#3366FF]">Update</div>
-                    <div className="text-[#3366FF]">Delete</div>
+                    <div className="text-[#508C9B]">Update</div>
+                    <div className="text-[#508C9B]">Delete</div>
                   </div>
                 </div>
               </div>

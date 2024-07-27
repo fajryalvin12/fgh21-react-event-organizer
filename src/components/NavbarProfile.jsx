@@ -4,6 +4,7 @@ import AvatarProfile from "../assets/icons/avatar-profile.png";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { FaAlignJustify } from "react-icons/fa6";
+import Brand from "../components/Brand";
 
 function NavbarProfile() {
   const menuBar = useRef();
@@ -20,9 +21,7 @@ function NavbarProfile() {
     <div className="flex flex-col md:flex-row gap-8 md:gap-0 justify-between items-center p-[10px]">
       <div className="flex gap-8">
         <div className="flex items-center text-2xl font-bold">
-          <img src={Logo} alt="logo" />
-          <span className="text-[#3366ff]">We</span>
-          <span className="text-[#ff3d71]">tick</span>
+          <Brand />
         </div>
         <button onClick={hideBar} className="md:hidden">
           <FaAlignJustify />

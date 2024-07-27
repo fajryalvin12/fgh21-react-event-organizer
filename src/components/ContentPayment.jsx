@@ -23,7 +23,7 @@ function ContentPayment() {
   }
 
   return (
-    <div className="bg-[#f4f7ff] p-0 md:py-[50px]">
+    <div className="bg-[#EEEEEE] p-0 md:py-[50px]">
       <div className="p-6 m-0 md:p-[100px] md:mx-[120px] bg-[#ffff] flex-col md:flex-row rounded-[30px] flex gap-[50px]">
         <div className="flex-1">
           <div className="flex flex-col gap-[50px]">
@@ -46,7 +46,7 @@ function ContentPayment() {
             </div>
             <div className="flex gap-[10px] items-center pl-[50px]">
               <img src={CreditCard} alt="" />
-              <div className="border border-dotted border-[#3366FF] p-[10px] rounded-[10px] text-[#3366FF]">
+              <div className="border border-dotted border-[#508C9B] p-[10px] rounded-[10px] text-[#508C9B]">
                 <FaPlus />
               </div>
             </div>
@@ -102,25 +102,27 @@ function ContentPayment() {
             <div className="flex flex-col gap-[15px] font-semibold mb-[50px]">
               <div className="flex justify-between w-full">
                 <div>Event</div>
-                <div className="text-[#3366ff]">Cek Khodam Kak Mudrik</div>
+                <div className="text-[#508C9B]">
+                  Meet and Greet with Bro Mudryk
+                </div>
               </div>
               <div className="flex justify-between w-full">
                 <div>Ticket Section</div>
-                <div className="text-[#3366ff]">VIP</div>
+                <div className="text-[#508C9B]">VIP</div>
               </div>
               <div className="flex justify-between w-full">
                 <div>Quantity</div>
-                <div className="text-[#3366ff]">2</div>
+                <div className="text-[#508C9B]">2</div>
               </div>
               <div className="flex justify-between w-full">
                 <div>Total Payment</div>
-                <div className="text-[#3366ff]">$70</div>
+                <div className="text-[#508C9B]">$70</div>
               </div>
             </div>
             <div>
               <button
                 onClick={processPayment}
-                className="w-full py-[16px] px-110px] text-[#ffff] font-semibold text-[16px] rounded-[15px] bg-[#3366ff]"
+                className="w-full py-[16px] px-110px] text-[#ffff] font-semibold text-[16px] rounded-[15px] bg-[#134B70]"
                 type="button"
               >
                 Payment

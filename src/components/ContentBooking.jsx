@@ -73,7 +73,7 @@ function ContentEvent() {
   ticket.length > 0 ? (dataTicket = ticket.join(", ")) : (dataTicket = "-");
 
   return (
-    <div className="bg-[#f4f7ff] p-0 md:py-[50px]">
+    <div className="bg-[#EEEEEE] p-0 md:py-[50px]">
       <div className="flex-col md:flex-row p-0 md:p-[100px] m-0 md:mx-[120px] bg-[#ffff] flex rounded-[30px]">
         <div className="flex-1">
           <img src={Stadium} alt="stadium" />
@@ -237,13 +237,13 @@ function ContentEvent() {
           <div className="flex flex-col gap-[15px] font-semibold mb-[50px]">
             <div className="flex justify-between w-full items-center">
               <div>Ticket Section</div>
-              <div className="text-[#3366ff] flex items-center">
+              <div className="text-[#508C9B] flex items-center">
                 {dataTicket}
               </div>
             </div>
             <div className="flex justify-between w-full items-center">
               <div>Quantity</div>
-              <div className="text-[#3366ff] flex items-center">
+              <div className="text-[#508C9B] flex items-center">
                 {purple === 0 && red === 0 && orange === 0
                   ? "-"
                   : purple + red + orange}
@@ -251,7 +251,7 @@ function ContentEvent() {
             </div>
             <div className="flex justify-between w-full items-center">
               <div>Total Payment</div>
-              <div className="text-[#3366ff] flex items-center">
+              <div className="text-[#508C9B] flex items-center">
                 {purple === 0 && red === 0 && orange === 0
                   ? "-"
                   : "$" + (purple * 15 + red * 35 + orange * 50)}
@@ -259,7 +259,7 @@ function ContentEvent() {
             </div>
           </div>
           <div>
-            <button className="w-full py-[16px] px-110px] text-[#ffff] font-semibold text-[16px] rounded-[15px] bg-[#3366ff]">
+            <button className="w-full py-[16px] px-110px] text-[#ffff] font-semibold text-[16px] rounded-[15px] bg-[#201E43]">
               <Link to={"/PaymentPage"}>Checkout</Link>
             </button>
           </div>

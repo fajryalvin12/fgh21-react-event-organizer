@@ -20,7 +20,7 @@ function Location() {
   }
 
   return (
-    <div className="p-[50px] bg-[#3366ff] rounded-[50px] font-semibold text-[#ffff] mb-[50px] mx-[40px]">
+    <div className="p-[50px] bg-[#201E43] rounded-[50px] font-semibold text-[#EEEEEE] mb-[50px] mx-[40px]">
       <div>
         <div className="bg-[rgba(255,255,255,0.25)] h-[30px] w-[150px] py-[5px] px-[30px] items-center text-[#ffff] rounded-[30px] flex justify-center mb-[25px] ml-0 md:ml-[68px]">
           <div>Location</div>
@@ -28,39 +28,39 @@ function Location() {
       </div>
       <div className="grid md:grid-cols-4 grid-cols-2 gap-12">
         <div className="flex flex-col items-center gap-1 mb-4 text-3xl max-w-[246px] pl-14">
-          Discover Events Near You
+          Explore the Place Abroad
         </div>
         <div className="flex flex-col items-center gap-1 mb-4">
           <img src={Jakarta} alt="jkt" />
-          <div className="text-center mt-[15px]">Jakarta</div>
+          <div className="text-center text-[#508C9B] mt-[15px]">Jakarta</div>
         </div>
         <div className="flex flex-col items-center gap-1 mb-4">
           <img src={Bandung} alt="jkt" />
-          <div className="text-center mt-[15px]">Bandung</div>
+          <div className="text-center mt-[15px] text-[#508C9B]">Bandung</div>
         </div>
         <div ref={bali} className="flex flex-col items-center gap-1 mb-4">
           <img src={Bali} alt="jkt" />
-          <div className="text-center mt-[15px]">Bali</div>
+          <div className="text-center mt-[15px] text-[#508C9B]">Bali</div>
         </div>
         <div ref={aceh} className="flex flex-col items-center gap-1 mb-4">
           <img src={Aceh} alt="jkt" />
-          <div className="text-center mt-[15px]">Aceh</div>
+          <div className="text-center mt-[15px] text-[#508C9B]">Aceh</div>
         </div>
         <div className="flex flex-col items-center gap-1 mb-4">
           <img src={Solo} alt="jkt" />
-          <div className="text-center mt-[15px]">Solo</div>
+          <div className="text-center mt-[15px] text-[#508C9B]">Solo</div>
         </div>
         <div ref={jogja} className="flex flex-col items-center gap-1 mb-4">
           <img src={Yogyakarta} alt="jkt" />
-          <div className="text-center mt-[15px]">Yogyakarta</div>
+          <div className="text-center mt-[15px] text-[#508C9B]">Yogyakarta</div>
         </div>
         <div ref={semarang} className="flex flex-col items-center gap-1 mb-4">
           <img src={Semarang} alt="jkt" />
-          <div className="text-center mt-[15px]">Semarang</div>
+          <div className="text-center mt-[15px] text-[#508C9B]">Semarang</div>
         </div>
       </div>
       <div onClick={swipeLocation} className="flex justify-center">
-        <button className="pt-[10px] pr-[99px] pb-[9px] pl-[97px] rounded-[10px] text-[#3366ff] bg-[#ffff]">
+        <button className="pt-[10px] pr-[99px] pb-[9px] pl-[97px] rounded-[10px] text-[#508C9B] bg-[#ffff]">
           See All
         </button>
       </div>

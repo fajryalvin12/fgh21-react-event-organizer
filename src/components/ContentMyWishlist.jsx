@@ -34,14 +34,14 @@ function ContentMyWishlist() {
   }
 
   return (
-    <div className="bg-[#f4f7ff] p-0 md:py-[50px]">
+    <div className="bg-[#EEEEEE] p-0 md:py-[50px]">
       <div className="flex gap-[20px]">
         <div className="w-1/3 px-[100px] flex-col gap-[30px] hidden md:flex">
           <div className="flex gap-[20px]">
             <img
               src={AvatarProfile}
               alt=""
-              className="border border-[#3366ff] rounded-full"
+              className="border border-[#134B70] rounded-full"
             />
             <div>
               <div onClick={clickEdit} className="font-semibold">
@@ -51,43 +51,43 @@ function ContentMyWishlist() {
             </div>
           </div>
           <div className="flex flex-col gap-[30px] text-[#373a42bf] font-semibold">
-            <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
+            <div className="flex gap-[25px] items-center hover:text-[#508C9B]">
               <FaCircleUser />
               <div>Profile</div>
             </div>
-            <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#3366FF]">
+            <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#508C9B]">
               <FaCreditCard />
               <div>Card</div>
             </div>
-            <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#3366FF]">
+            <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#508C9B]">
               <FaUserPen />
               <div>
                 <Link to={"/ProfilePage"}>Edit Profile</Link>
               </div>
             </div>
-            <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#3366FF]">
+            <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#508C9B]">
               <FaLock />
               <div>
                 <Link to={"/ChangePassword"}>Change Password</Link>
               </div>
             </div>
-            <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
+            <div className="flex gap-[25px] items-center hover:text-[#508C9B]">
               <FaCirclePlus />
               <div>
                 <Link to={"/CreateEvent"}>Create Event</Link>
               </div>
             </div>
-            <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
+            <div className="flex gap-[25px] items-center hover:text-[#508C9B]">
               <FaRectangleList />
               <div>
                 <Link to={"/MyBooking"}>My Booking</Link>
               </div>
             </div>
-            <div className="flex gap-[25px] text-[#3366FF] items-center hover:text-[#3366FF]">
+            <div className="flex gap-[25px] text-[#508C9B] items-center hover:text-[#508C9B]">
               <FaHeart />
               <div>My Wishlist</div>
             </div>
-            <div className="flex gap-[25px] items-center hover:text-[#3366FF]">
+            <div className="flex gap-[25px] items-center hover:text-[#508C9B]">
               <FaGear />
               <div>Settings</div>
             </div>
@@ -100,7 +100,7 @@ function ContentMyWishlist() {
         <div className="w-full md:w-2/3 p-8 m-0 md:p-[100px] md:mr-[120px] bg-[#ffff] rounded-none md:rounded-[30px] flex gap-[50px] flex-col">
           <div className="flex md:items-center items-start gap-8 p-4 md:p-0 justify-between flex-col md:flex-row">
             <div className="text-[20px] font-bold">My Wishlist</div>
-            <button className="flex gap-[10px] items-center p-[20px] bg-[#D6E0FF] text-[#3366FF] rounded-[15px] font-semibold">
+            <button className="flex gap-[10px] items-center p-[20px] bg-[#D6E0FF] text-[#508C9B] rounded-[15px] font-semibold">
               <FaCalendarDays />
               <div>March</div>
             </button>

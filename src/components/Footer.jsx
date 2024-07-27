@@ -2,17 +2,14 @@ import React from "react";
 import Logo from "../assets/icons/logo.png";
 import FooterLogo from "../assets/icons/footer-socmed.png";
 import { Link } from "react-router-dom";
+import Brand from "../components/Brand";
 
 function Footer() {
   return (
     <div className="flex flex-col gap-[75px] py-8 px-8 md:py-[160px] md:px-[220px]">
       <div className="flex gap-[30px] justify-between flex-col md:flex-row">
         <div className="flex flex-col gap-[30px]">
-          <div className="flex items-center text-2xl font-bold">
-            <img src={Logo} alt="logo" />
-            <span className="text-[#3366ff]">We</span>
-            <span className="text-[#ff3d71]">tick</span>
-          </div>
+          <Brand />
           <div className="flex flex-col gap-[15px]">
             <div>Find events you love with our</div>
             <div>
@@ -21,7 +18,7 @@ function Footer() {
           </div>
         </div>
         <div className="flex flex-col gap-[20px]">
-          <div className="font-semibold">Wetick</div>
+          <div className="font-semibold">Tickhub</div>
           <ul className="p-none m-none flex flex-col gap-[15px] text-[#c1c5d0]">
             <li>About Us</li>
             <li>Features</li>
@@ -52,7 +49,7 @@ function Footer() {
           </ul>
         </div>
       </div>
-      <div>&copy; 2020 Wetick All Rights Reserved</div>
+      <div>&copy; 2020 Tickhub All Rights Reserved</div>
     </div>
   );
 }
