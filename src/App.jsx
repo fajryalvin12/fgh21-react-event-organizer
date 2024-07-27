@@ -13,6 +13,8 @@ import MyWishlist from "./pages/MyWishlist";
 import CreateEvent from "./pages/CreateEvent";
 import Attendee from "./components/Attendee";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 const arrayRouter = [
   {
@@ -72,7 +74,11 @@ const arrayRouter = [
 const router = createBrowserRouter(arrayRouter);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <Provider store={store}>
+      <RouterProvider router={router} />;
+    </Provider>
+  );
 }
 
 export default App;

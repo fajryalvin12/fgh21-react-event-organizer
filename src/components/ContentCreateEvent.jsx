@@ -16,12 +16,18 @@ import {
   FaCirclePlus,
 } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout } from "../redux/reducers/auth";
+import { removeProfile } from "../redux/reducers/profile";
 
 function ContentCreateEvent() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   function clickLogout(e) {
     e.preventDefault();
     window.alert("Your account has been logged out!");
+    dispatch(logout(null));
+    dispatch(removeProfile(null));
     navigate("/Login");
   }
   function clickEdit(e) {
@@ -51,7 +57,7 @@ function ContentCreateEvent() {
             <img
               src={AvatarProfile}
               alt=""
-              className="border border-[#3366ff] rounded-full border-[3px]"
+              className=" border-[#3366ff] rounded-full border-[3px]"
             />
             <div>
               <div onClick={clickEdit} className="font-semibold">
@@ -105,7 +111,7 @@ function ContentCreateEvent() {
             </div>
             <div className="flex gap-[25px] items-center hover:text-red-500">
               <FaArrowRightFromBracket />
-              <div onClick={clickLogout}>Logout</div>
+              <button onClick={clickLogout}>Logout</button>
             </div>
           </div>
         </div>

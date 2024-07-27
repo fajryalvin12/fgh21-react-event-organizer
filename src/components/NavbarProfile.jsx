@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import Logo from "../assets/icons/logo.png";
 import AvatarProfile from "../assets/icons/avatar-profile.png";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { FaAlignJustify } from "react-icons/fa6";
 
@@ -11,6 +12,9 @@ function NavbarProfile() {
     menuBar.current.classList.toggle("hidden");
     profileButton.current.classList.toggle("hidden");
   }
+
+  const data = useSelector((state) => state.auth.token);
+  const profile = useSelector((state) => state.profile.data);
 
   return (
     <div className="flex flex-col md:flex-row gap-8 md:gap-0 justify-between items-center p-[10px]">
@@ -43,13 +47,13 @@ function NavbarProfile() {
         <div>
           <Link to={"/ProfilePage"}>
             <img
-              className="border border-[#3366ff] rounded-full"
-              src={AvatarProfile}
+              className="border border-[#3366ff] rounded-full w-12 h-12"
+              src={profile.picture}
               alt="ap"
             />
           </Link>
         </div>
-        <div className="hidden md:block">Jhon Thomson</div>
+        <div className="hidden md:block">{profile.name}</div>
       </div>
     </div>
   );

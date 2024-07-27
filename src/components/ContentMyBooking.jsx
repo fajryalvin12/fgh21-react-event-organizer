@@ -112,7 +112,7 @@ function ContentMyBooking() {
               </div>
               <div className="flex flex-col gap-[15px]">
                 <div className="text-[24px] font-bold">
-                  Sights & Sounds Exhibition
+                  Cek Khodam Kak Mudryk
                 </div>
                 <div>
                   <div className="text-gray-500">Jakarta, Indonesia</div>

@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import EventOne from "../assets/images/event-1.png";
+import { useSelector, useDispatch } from "react-redux";
+import { addEvent } from "../redux/reducers/event.js";
+import axios from "axios";
 
 function CategoryContent() {
+  // const endpoint = "https://wsw6zh-8888.csb.app/events";
+  // const category = useSelector((state) => state.event.eventBox);
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   (async () => {
+  //     const catData = await axios.get(endpoint);
+  //     const catDataGlobal = catData.data.result;
+  //     dispatch(addEvent(catDataGlobal));
+  //   })();
+  // }, []);
+
   return (
     <div className="flex gap-12 items-center mb-[175px] overflow-x-scroll md:justify-center">
       <div className="flex flex-col w-[300px] h-[350px] bg-[#3366ff] rounded-[30px] overflow-hidden shrink-0">

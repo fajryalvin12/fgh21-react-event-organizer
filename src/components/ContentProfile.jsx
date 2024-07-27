@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "../components/Footer";
 import AvatarProfile from "../assets/icons/avatar-profile.png";
 import { Link } from "react-router-dom";
@@ -13,8 +13,11 @@ import {
   FaArrowRightFromBracket,
 } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function ContentProfile() {
+  const [profession, setProfession] = React.useState([]);
+  const [nationalities, setNationalities] = React.useState([]);
   const navigate = useNavigate();
   function clickLogout(e) {
     e.preventDefault();
@@ -25,19 +28,54 @@ function ContentProfile() {
     window.alert("Profile Saved!");
   }
 
+  const data = useSelector((state) => state.auth.token);
+  const profile = useSelector((state) => state.profile.data);
+
+  useEffect(() => {
+    (async () => {
+      const getData = await fetch(
+        "https://wsw6zh-8888.csb.app/profile/professions",
+        {
+          headers: {
+            Authorization: "Bearer " + data,
+          },
+        }
+      );
+      const convertData = await getData.json();
+      const job = convertData.results;
+      setProfession(job);
+    })();
+  }, []); // Profession
+  useEffect(() => {
+    (async () => {
+      const getNation = await fetch(
+        "https://wsw6zh-8888.csb.app/profile/nationalities",
+        {
+          headers: {
+            Authorization: "Bearer " + data,
+          },
+        }
+      );
+      const convertNation = await getNation.json();
+      const nations = convertNation.results;
+      setNationalities(nations);
+    })();
+  }, []); // Nationalities
+
+  console.log(nationalities);
   return (
     <div className="bg-[#f4f7ff] p-0 md:py-[50px]">
       <div className="flex justify-center">
         <div className="w-1/3 px-[100px] flex-col gap-[30px] hidden md:flex">
           <div className="flex gap-[20px]">
             <img
-              src={AvatarProfile}
+              src={profile.picture}
               alt=""
-              className="border border-[#3366ff] rounded-full"
+              className="border border-[#3366ff] rounded-full w-12 h-12"
             />
             <div>
-              <div className="font-semibold">Jhon Thomson</div>
-              <div>Entrepreneur, ID</div>
+              <div className="font-semibold">{profile.name}</div>
+              <div>{profile.profession}</div>
             </div>
           </div>
           <div className="flex flex-col gap-[30px] text-[#373a42bf] font-semibold">
@@ -97,6 +135,7 @@ function ContentProfile() {
                   placeholder="Jhon Thomson"
                   id="name"
                   className="p-[10px] border rounded-xl"
+                  value={profile.name}
                 />
               </div>
               <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
@@ -106,6 +145,7 @@ function ContentProfile() {
                   type="text"
                   placeholder="@jhont0"
                   id="username"
+                  value={profile.username}
                 />
               </div>
               <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
@@ -115,6 +155,7 @@ function ContentProfile() {
                   type="email"
                   placeholder="admin@gmail.com"
                   id="email"
+                  value={profile.email}
                 />
               </div>
               <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
@@ -124,34 +165,49 @@ function ContentProfile() {
                   type="text"
                   placeholder="081234567890"
                   id="phone"
+                  value={profile.phoneNumber}
                 />
               </div>
               <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
                 <label>Gender</label>
                 <div>
-                  <input type="radio" id="male" name="gender" />
+                  <input
+                    type="radio"
+                    id="male"
+                    name="gender"
+                    defaultChecked={profile.gender === "Male" ? true : false}
+                  />
                   <label for="male">Male</label>
-                  <input type="radio" id="female" name="gender" />
+                  <input
+                    type="radio"
+                    id="female"
+                    name="gender"
+                    defaultChecked={profile.gender === "Female" ? true : false}
+                  />
                   <label for="female">Female</label>
                 </div>
               </div>
               <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
                 <label for="profession">Profession</label>
-                <input
-                  className="p-[10px] border rounded-xl"
-                  type="text"
-                  placeholder="Entrepreneur"
-                  id="profession"
-                />
+                <select className="p-[10px] border rounded-xl">
+                  {profession.map((data) => {
+                    return (
+                      <option selected={profile.profession}>{data.name}</option>
+                    );
+                  })}
+                </select>
               </div>
               <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
                 <label for="nationality">Nationality</label>
-                <input
-                  className="p-[10px] border rounded-xl"
-                  type="text"
-                  placeholder="Indonesia"
-                  id="nationality"
-                />
+                <select id="nationality" className="p-[10px] border rounded-xl">
+                  {nationalities.map((flag) => {
+                    return (
+                      <option selected={flag === profile.nationality}>
+                        {flag.name}
+                      </option>
+                    );
+                  })}
+                </select>
               </div>
               <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
                 <label for="birth">Birthday Date</label>
@@ -159,6 +215,9 @@ function ContentProfile() {
                   type="date"
                   id="birth"
                   className="p-[10px] border rounded-xl"
+                  placeholder=""
+                  selected={profile.birthdayDate}
+                  // defaultValue={defaultValue}
                 />
               </div>
               <button
@@ -171,9 +230,10 @@ function ContentProfile() {
           </div>
           <div className="flex-1">
             <div className="flex items-center flex-col gap-[20px]">
-              <div className="h-[200px] w-[200px] rounded-full bg-black">
-                <div></div>
-              </div>
+              <img
+                className="h-[200px] w-[200px] rounded-full bg-black"
+                src={profile.picture}
+              />
               <div>
                 <button
                   className="py-[15px] px-[82px] font-semibold text-[#3366ff] bg-[#ffff] rounded-[15px] text-[16px] border border-[#3366ff] hidden md:flex"
