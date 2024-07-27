@@ -9,6 +9,7 @@ import Category from "../components/Category";
 import CategoryContent from "../components/CategoryContent";
 import Partner from "../components/Partner";
 import Footer from "../components/Footer";
+import Loading from "../components/Loading";
 
 function Home() {
   return (

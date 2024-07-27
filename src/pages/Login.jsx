@@ -9,11 +9,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { login } from "../redux/reducers/auth";
 import { addProfile, removeProfile } from "../redux/reducers/profile";
 import Brand from "../components/Brand";
+import Loading from "../components/Loading";
 
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [alert, setAlert] = React.useState(false);
+  let [alert, setAlert] = React.useState(0);
+  let [loading, setLoading] = React.useState(0);
   async function processLogin(e) {
     e.preventDefault();
     const formEmail = e.target.email.value;
@@ -29,7 +31,8 @@ function Login() {
     });
     const data = await response.json();
     const token = data.results.token;
-    if (data.success) {
+    if (data.success && token) {
+      setLoading(1);
       dispatch(login(token));
       const user = "https://wsw6zh-8888.csb.app/profile";
       const getData = await fetch(user, {
@@ -41,7 +44,7 @@ function Login() {
       dispatch(addProfile(realData));
       navigate("/");
     } else {
-      setAlert(true);
+      setAlert(1);
     }
   }
   let [pass, setPass] = React.useState("password");
@@ -55,6 +58,7 @@ function Login() {
 
   return (
     <div className="flex h-screen">
+      {loading ? <Loading /> : ""}
       <div className="bg-[#201E43] flex-[60%] hidden md:flex justify-center items-center"></div>
       <div className="flex-[40%]">
         <form
@@ -65,13 +69,17 @@ function Login() {
           <div className="text-2xl font-bold">Sign In</div>
           <div>Hi, Welcome back to Urticket!</div>
           {alert ? (
-            <div className="h-12 bg-red-400 flex justify-start items-center pl-4">
-              Under Maintenance
+            <div className="h-12 flex-1 bg-red-400 flex items-center pl-4 justify-between">
+              <div>Please input the match data</div>
+              <button
+                onClick={() => setAlert(0)}
+                className="h-12 w-12 font-bold"
+              >
+                X
+              </button>
             </div>
           ) : (
-            <div className="h-12 bg-green-400 flex justify-start items-center pl-4">
-              Under Maintenance
-            </div>
+            ""
           )}
           <div className="flex flex-col gap-[10px]">
             <input

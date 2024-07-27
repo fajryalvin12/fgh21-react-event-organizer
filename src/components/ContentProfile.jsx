@@ -190,23 +190,23 @@ function ContentProfile() {
               <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
                 <label for="profession">Profession</label>
                 <select className="p-[10px] border rounded-xl">
-                  {/* {profession.map((data) => {
+                  {profession.map((data) => {
                     return (
                       <option selected={profile.profession}>{data.name}</option>
                     );
-                  })} */}
+                  })}
                 </select>
               </div>
               <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
                 <label for="nationality">Nationality</label>
                 <select id="nationality" className="p-[10px] border rounded-xl">
-                  {/* {nationalities.map((flag) => {
+                  {nationalities.map((flag) => {
                     return (
                       <option selected={flag === profile.nationality}>
                         {flag.name}
                       </option>
                     );
-                  })} */}
+                  })}
                 </select>
               </div>
               <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">

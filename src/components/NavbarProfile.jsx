@@ -18,7 +18,7 @@ function NavbarProfile() {
   const profile = useSelector((state) => state.profile.data);
 
   return (
-    <div className="flex flex-col md:flex-row gap-8 md:gap-0 justify-between items-center p-[10px]">
+    <div className="fixed flex flex-col md:flex-row gap-8 md:gap-0 justify-between items-center p-[10px] bg-white w-full z-10">
       <div className="flex gap-8">
         <div className="flex items-center text-2xl font-bold">
           <Brand />

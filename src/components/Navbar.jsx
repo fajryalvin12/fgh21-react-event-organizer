@@ -19,7 +19,7 @@ function Navbar() {
   console.log(data);
 
   return (
-    <div className="flex flex-col md:flex-row gap-8 md:gap-0 justify-between items-center p-4">
+    <div className=" fixed flex flex-col md:flex-row gap-8 md:gap-0 justify-between items-center p-4 bg-white w-full z-10">
       <div className="flex gap-8">
         <div className="flex items-center text-2xl font-bold">
           <Brand />

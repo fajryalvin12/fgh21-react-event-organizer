@@ -122,7 +122,7 @@ function ContentMyWishlist() {
                   </div>
                   <div
                     onClick={clickEvent}
-                    className="text-[#3366FF] font-semibold"
+                    className="text-[#508C9B] font-semibold"
                   >
                     Details
                   </div>
@@ -148,7 +148,7 @@ function ContentMyWishlist() {
                   </div>
                   <div
                     onClick={clickEvent}
-                    className="text-[#3366FF] font-semibold"
+                    className="text-[#508C9B] font-semibold"
                   >
                     Details
                   </div>
@@ -174,7 +174,7 @@ function ContentMyWishlist() {
                   </div>
                   <div
                     onClick={clickEvent}
-                    className="text-[#3366FF] font-semibold"
+                    className="text-[#508C9B] font-semibold"
                   >
                     Details
                   </div>
@@ -200,7 +200,7 @@ function ContentMyWishlist() {
                   </div>
                   <div
                     onClick={clickEvent}
-                    className="text-[#3366FF] font-semibold"
+                    className="text-[#508C9B] font-semibold"
                   >
                     Details
                   </div>
