@@ -70,7 +70,7 @@ function BoxWrapper() {
               alt="event"
             />
             <div className="absolute bottom-0 p-[20px] text-white flex flex-col justify-end font-bold bg-gradient-to-b from-transparent via-[rgba(0,0,0,0.5)] to-[rgba(16,20,38,1)] w-full">
-              <div className="text-[14px]">{item.time}</div>
+              <div className="text-[14px]">{item.time.split("T")[0]}</div>
               <div className="text-[22px]">
                 <Link to={"/EventPage"}>{item.title}</Link>
               </div>

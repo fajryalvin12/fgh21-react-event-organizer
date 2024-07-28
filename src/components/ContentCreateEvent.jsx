@@ -51,7 +51,7 @@ function ContentCreateEvent() {
 
   return (
     <div className="bg-[#EEEEEE] p-0 md:py-[50px]">
-      <div className="flex gap-[20px]">
+      <div className="flex gap-[20px] mt-12">
         <div className="w-1/3 px-[100px] flex-col gap-[30px] hidden md:flex">
           <div className="flex gap-[20px]">
             <img

@@ -37,7 +37,7 @@ function ContentPass() {
 
   return (
     <div className="bg-[#EEEEEE] p-0 md:py-[50px]">
-      <div className="flex gap-[20px]">
+      <div className="flex gap-[20px] mt-12">
         <div className="w-1/3 px-[100px] flex-col gap-[30px] hidden md:flex">
           <div className="flex gap-[20px]">
             <img
@@ -143,7 +143,7 @@ function ContentPass() {
             </div>
             <button
               type="submit"
-              className="py-[15px] px-[82px] font-semibold text-[#ffff] bg-[#3366ff] rounded-[15px] text-[16px]"
+              className="py-[15px] px-[82px] font-semibold text-[#ffff] bg-[#134B70] rounded-[15px] text-[16px]"
             >
               Update
             </button>
