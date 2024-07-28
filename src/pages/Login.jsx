@@ -16,6 +16,7 @@ function Login() {
   const dispatch = useDispatch();
   let [alert, setAlert] = React.useState(0);
   let [loading, setLoading] = React.useState(0);
+  const [message, setMessage] = React.useState("");
   async function processLogin(e) {
     e.preventDefault();
     const formEmail = e.target.email.value;
@@ -30,8 +31,8 @@ function Login() {
       body: inputData,
     });
     const data = await response.json();
-    const token = data.results.token;
-    if (data.success && token) {
+    if (data.success) {
+      const token = data.results.token;
       setLoading(1);
       dispatch(login(token));
       const user = "https://wsw6zh-8888.csb.app/profile";
@@ -44,6 +45,7 @@ function Login() {
       dispatch(addProfile(realData));
       navigate("/");
     } else {
+      setMessage(data.message);
       setAlert(1);
     }
   }
@@ -70,7 +72,7 @@ function Login() {
           <div>Hi, Welcome back to Urticket!</div>
           {alert ? (
             <div className="h-12 flex-1 bg-red-400 flex items-center pl-4 justify-between">
-              <div>Please input the match data</div>
+              {message ? <div>{message}</div> : ""}
               <button
                 onClick={() => setAlert(0)}
                 className="h-12 w-12 font-bold"

@@ -14,14 +14,21 @@ import {
 } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { logout } from "../redux/reducers/auth";
+import { removeProfile } from "../redux/reducers/profile";
+import Loading from "../components/Loading";
 
 function ContentProfile() {
   const [profession, setProfession] = React.useState([]);
   const [nationalities, setNationalities] = React.useState([]);
+  let [loading, setLoading] = React.useState(0);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   function clickLogout(e) {
     e.preventDefault();
-    window.alert("Your account has been logged out!");
+    dispatch(logout(null));
+    dispatch(removeProfile(null));
     navigate("/Login");
   }
   function processProfile() {
@@ -33,6 +40,7 @@ function ContentProfile() {
 
   useEffect(() => {
     (async () => {
+      setLoading(1);
       const getData = await fetch(
         "https://wsw6zh-8888.csb.app/profile/professions",
         {
@@ -44,10 +52,12 @@ function ContentProfile() {
       const convertData = await getData.json();
       const job = convertData.results;
       setProfession(job);
+      setLoading(0);
     })();
   }, []); // Profession
   useEffect(() => {
     (async () => {
+      setLoading(1);
       const getNation = await fetch(
         "https://wsw6zh-8888.csb.app/profile/nationalities",
         {
@@ -59,12 +69,16 @@ function ContentProfile() {
       const convertNation = await getNation.json();
       const nations = convertNation.results;
       setNationalities(nations);
+      setLoading(0);
     })();
   }, []); // Nationalities
+
+  const birthday = new Date(profile.birthdayDate);
 
   console.log(nationalities);
   return (
     <div className="bg-[#EEEEEE] p-0 md:py-[50px]">
+      {loading ? <Loading /> : ""}
       <div className="flex justify-center mt-12">
         <div className="w-1/3 px-[100px] flex-col gap-[30px] hidden md:flex">
           <div className="flex gap-[20px]">
@@ -192,7 +206,13 @@ function ContentProfile() {
                 <select className="p-[10px] border rounded-xl">
                   {profession.map((data) => {
                     return (
-                      <option selected={profile.profession}>{data.name}</option>
+                      <option
+                        key={data.id}
+                        selected={data.name === profile.profession}
+                        value={data.name}
+                      >
+                        {data.name}
+                      </option>
                     );
                   })}
                 </select>
@@ -202,7 +222,11 @@ function ContentProfile() {
                 <select id="nationality" className="p-[10px] border rounded-xl">
                   {nationalities.map((flag) => {
                     return (
-                      <option selected={flag === profile.nationality}>
+                      <option
+                        key={flag.id}
+                        selected={flag.name === profile.nationality}
+                        value={flag.name}
+                      >
                         {flag.name}
                       </option>
                     );
@@ -213,10 +237,11 @@ function ContentProfile() {
                 <label for="birth">Birthday Date</label>
                 <input
                   type="date"
-                  id="birth"
+                  id="birthday"
+                  name="birthday"
                   className="p-[10px] border rounded-xl"
                   placeholder=""
-                  selected={profile.birthdayDate}
+                  defaultValue={birthday.toISOString().split("T")[0]}
                   // defaultValue={defaultValue}
                 />
               </div>

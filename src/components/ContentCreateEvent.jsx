@@ -25,7 +25,6 @@ function ContentCreateEvent() {
   const dispatch = useDispatch();
   function clickLogout(e) {
     e.preventDefault();
-    window.alert("Your account has been logged out!");
     dispatch(logout(null));
     dispatch(removeProfile(null));
     navigate("/Login");
