@@ -26,7 +26,7 @@ function Login() {
     inputData.append("email", formEmail);
     inputData.append("password", formPass);
 
-    const response = await fetch("https://wsw6zh-8888.csb.app/auth/login", {
+    const response = await fetch("http://localhost:8888/auth/login", {
       method: "POST",
       body: inputData,
     });
@@ -35,18 +35,21 @@ function Login() {
       const token = data.results.token;
       setLoading(1);
       dispatch(login(token));
-      const user = "https://wsw6zh-8888.csb.app/profile";
+      const user = "http://localhost:8888/profile";
       const getData = await fetch(user, {
         headers: {
           Authorization: "Bearer " + token,
         },
       });
+      console.log(getData);
       const realData = await getData.json();
       dispatch(addProfile(realData));
       navigate("/");
     } else {
+      setLoading(1);
       setMessage(data.message);
       setAlert(1);
+      setLoading(0);
     }
   }
   let [pass, setPass] = React.useState("password");

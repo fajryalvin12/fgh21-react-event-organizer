@@ -1,18 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import EventFour from "../assets/images/event-4.jpg";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { FaRegHeart, FaLocationDot, FaClock } from "react-icons/fa6";
 import Attendee from "../components/Attendee";
+import { addEvent } from "../redux/reducers/event.js";
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 
 function ContentEvent() {
+  const id = useParams().id;
+  const newEvent = useSelector((state) => state.event.boxEvent);
+  const endpoint = "http://localhost:8888/events/" + id;
+  // const dispatch = useDispatch();
+
+  const [event, setEvent] = useState({});
+  console.log(event);
+  useEffect(() => {
+    (async () => {
+      const getData = await axios.get(endpoint);
+
+      // dispatch(addEvent(selected));
+      setEvent(getData.data.results);
+    })();
+  }, []);
+  console.log(newEvent);
   return (
     <div className="bg-[#EEEEEE] md:py-[50px] py-0">
       <div className="p-0 md:p-[100px] mx-0 md:mx-[120px] bg-[#ffff] flex flex-col md:flex-row rounded-none md:rounded-[30px] gap-[50px]">
         <div className="flex-1 flex flex-col items-center gap-[50px]">
           <img
             className="w-full h-full md:w-[375px] md:h-[486px] object-cover	rounded-none md:rounded-[40px] brightness-50"
-            src={EventFour}
+            src={event.image}
             alt=""
           />
           <div className="flex items-center gap-[10px]">
@@ -27,7 +46,7 @@ function ContentEvent() {
         <div className="flex-1 flex flex-col gap-[30px] py-8 px-8">
           <div className="flex flex-col gap-[30px]">
             <div className="font-bold text-[24px] max-w-[233px]">
-              Meet and Greet with Bro Mudryk
+              {event.title}
             </div>
             <div className="flex justify-between font-semibold flex-col md:flex-row gap-6">
               <div className="flex gap-[5px]">
@@ -40,7 +59,7 @@ function ContentEvent() {
                 <div className="text-red-500 items-center flex">
                   <FaClock />
                 </div>
-                <div>Wed, 15 Nov, 4:00 PM</div>
+                <div>{event.date}</div>
               </div>
             </div>
             <div className="flex flex-col gap-[10px] font-semibold">
@@ -54,11 +73,7 @@ function ContentEvent() {
           <div className="flex flex-col gap-[30px]">
             <div className="flex flex-col gap-[10px]">
               <div className="font-semibold text-[20px]">Event Detail</div>
-              <div className="text-[#373a42bf]">
-                Since his joining in Chelsea at 2022, he already shocked the
-                entire world with the skill and his charisma. How come he amazed
-                the world?
-              </div>
+              <div className="text-[#373a42bf]">{event.description}</div>
               <div className="text-[#3366ff]">Read More</div>
             </div>
             <div className="flex flex-col gap-[50px] items-center md:items-start">

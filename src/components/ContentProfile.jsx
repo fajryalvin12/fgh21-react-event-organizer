@@ -38,48 +38,45 @@ function ContentProfile() {
   const data = useSelector((state) => state.auth.token);
   const profile = useSelector((state) => state.profile.data);
 
-  useEffect(() => {
-    (async () => {
-      setLoading(1);
-      const getData = await fetch(
-        "https://wsw6zh-8888.csb.app/profile/professions",
-        {
-          headers: {
-            Authorization: "Bearer " + data,
-          },
-        }
-      );
-      const convertData = await getData.json();
-      const job = convertData.results;
-      setProfession(job);
-      setLoading(0);
-    })();
-  }, []); // Profession
-  useEffect(() => {
-    (async () => {
-      setLoading(1);
-      const getNation = await fetch(
-        "https://wsw6zh-8888.csb.app/profile/nationalities",
-        {
-          headers: {
-            Authorization: "Bearer " + data,
-          },
-        }
-      );
-      const convertNation = await getNation.json();
-      const nations = convertNation.results;
-      setNationalities(nations);
-      setLoading(0);
-    })();
-  }, []); // Nationalities
+  // useEffect(() => {
+  //   (async () => {
+  //     setLoading(1);
+  //     const getData = await fetch(
+  //       "https://wsw6zh-8888.csb.app/profile/professions",
+  //       {
+  //         headers: {
+  //           Authorization: "Bearer " + data,
+  //         },
+  //       }
+  //     );
+  //     const convertData = await getData.json();
+  //     const job = convertData.results;
+  //     setProfession(job);
+  //     setLoading(0);
+  //   })();
+  // }, []); // Profession
+  // useEffect(() => {
+  //   (async () => {
+  //     setLoading(1);
+  //     const getNation = await fetch(
+  //       "https://wsw6zh-8888.csb.app/profile/nationalities",
+  //       {
+  //         headers: {
+  //           Authorization: "Bearer " + data,
+  //         },
+  //       }
+  //     );
+  //     const convertNation = await getNation.json();
+  //     const nations = convertNation.results;
+  //     setNationalities(nations);
+  //     setLoading(0);
+  //   })();
+  // }, []); // Nationalities
 
-  const birthday = new Date(profile.birthdayDate);
-
-  console.log(nationalities);
   return (
-    <div className="bg-[#EEEEEE] p-0 md:py-[50px]">
+    <div className="bg-[#EEEEEE] p-0 md:py-[50px] ">
       {loading ? <Loading /> : ""}
-      <div className="flex justify-center mt-12">
+      <div className="flex justify-center mt-12 ">
         <div className="w-1/3 px-[100px] flex-col gap-[30px] hidden md:flex">
           <div className="flex gap-[20px]">
             <img
@@ -88,7 +85,7 @@ function ContentProfile() {
               className="border border-[#3366ff] rounded-full w-12 h-12"
             />
             <div>
-              <div className="font-semibold">{profile.name}</div>
+              <div className="font-semibold">{profile.fullName}</div>
               <div>{profile.profession}</div>
             </div>
           </div>
@@ -133,7 +130,7 @@ function ContentProfile() {
             </div>
           </div>
         </div>
-        <div className="md:w-2/3 md:p-[100px] md:mr-[120px] md:flex-row w-full p-0 m-0 bg-[#ffff] rounded-none flex gap-[50px] flex-col-reverse">
+        <div className="md:w-2/3 md:p-[100px] md:mr-[120px] md:flex-row w-full p-0 m-0 bg-[#ffff] rounded-none flex gap-[50px] flex-col-reverse md:rounded-3xl">
           <div className="flex-1">
             <form
               onSubmit={processProfile}
@@ -143,19 +140,23 @@ function ContentProfile() {
                 Profile
               </div>
               <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
-                <label for="name">Name</label>
+                <label for="name" className="w-1/5">
+                  Name
+                </label>
                 <input
                   type="text"
                   placeholder="Jhon Thomson"
                   id="name"
-                  className="p-[10px] border rounded-xl"
-                  value={profile.name}
+                  className="p-[10px] border rounded-xl w-4/5"
+                  value={profile.fullName}
                 />
               </div>
               <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
-                <label for="username">Username</label>
+                <label for="username" className="w-1/5">
+                  Username
+                </label>
                 <input
-                  className="p-[10px] border rounded-xl"
+                  className="p-[10px] border rounded-xl w-4/5"
                   type="text"
                   placeholder="@jhont0"
                   id="username"
@@ -163,9 +164,11 @@ function ContentProfile() {
                 />
               </div>
               <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
-                <label for="email">Email</label>
+                <label for="email" className="w-1/5">
+                  Email
+                </label>
                 <input
-                  className="p-[10px] border rounded-xl"
+                  className="p-[10px] border rounded-xl w-4/5"
                   type="email"
                   placeholder="admin@gmail.com"
                   id="email"
@@ -173,9 +176,11 @@ function ContentProfile() {
                 />
               </div>
               <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
-                <label for="phone">Phone Number</label>
+                <label for="phone" className="w-1/5">
+                  Phone Number
+                </label>
                 <input
-                  className="p-[10px] border rounded-xl"
+                  className="p-[10px] border rounded-xl w-4/5"
                   type="text"
                   placeholder="081234567890"
                   id="phone"
@@ -183,66 +188,64 @@ function ContentProfile() {
                 />
               </div>
               <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
-                <label>Gender</label>
-                <div>
-                  <input
-                    type="radio"
-                    id="male"
-                    name="gender"
-                    defaultChecked={profile.gender === "Male" ? true : false}
-                  />
-                  <label for="male">Male</label>
-                  <input
-                    type="radio"
-                    id="female"
-                    name="gender"
-                    defaultChecked={profile.gender === "Female" ? true : false}
-                  />
-                  <label for="female">Female</label>
+                <label className="w-1/5">Gender</label>
+                <div className="w-4/5 flex gap-24">
+                  <div className="flex gap-4">
+                    <input
+                      type="radio"
+                      id="male"
+                      name="gender"
+                      defaultChecked={profile.gender === "Male" ? true : false}
+                    />
+                    <label for="male">Male</label>
+                  </div>
+                  <div className="flex gap-4">
+                    <input
+                      type="radio"
+                      id="female"
+                      name="gender"
+                      defaultChecked={
+                        profile.gender === "Female" ? true : false
+                      }
+                    />
+                    <label for="female">Female</label>
+                  </div>
                 </div>
               </div>
               <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
-                <label for="profession">Profession</label>
-                <select className="p-[10px] border rounded-xl">
-                  {profession.map((data) => {
-                    return (
-                      <option
-                        key={data.id}
-                        selected={data.name === profile.profession}
-                        value={data.name}
-                      >
-                        {data.name}
-                      </option>
-                    );
-                  })}
-                </select>
+                <label for="profession" className="w-1/5">
+                  Profession
+                </label>
+                <input
+                  className="p-[10px] border rounded-xl w-4/5"
+                  type="email"
+                  placeholder="admin@gmail.com"
+                  id="email"
+                  value={profile.email}
+                />
               </div>
               <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
-                <label for="nationality">Nationality</label>
-                <select id="nationality" className="p-[10px] border rounded-xl">
-                  {nationalities.map((flag) => {
-                    return (
-                      <option
-                        key={flag.id}
-                        selected={flag.name === profile.nationality}
-                        value={flag.name}
-                      >
-                        {flag.name}
-                      </option>
-                    );
-                  })}
-                </select>
+                <label for="nationality" className="w-1/5">
+                  Nationality
+                </label>
+                <input
+                  className="p-[10px] border rounded-xl w-4/5"
+                  type="email"
+                  placeholder="admin@gmail.com"
+                  id="email"
+                  value={profile.fullName}
+                />
               </div>
               <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
-                <label for="birth">Birthday Date</label>
+                <label for="birth" className="w-1/5">
+                  Birthday Date
+                </label>
                 <input
                   type="date"
                   id="birthday"
                   name="birthday"
-                  className="p-[10px] border rounded-xl"
+                  className="p-[10px] border rounded-xl w-4/5"
                   placeholder=""
-                  defaultValue={birthday.toISOString().split("T")[0]}
-                  // defaultValue={defaultValue}
                 />
               </div>
               <button
