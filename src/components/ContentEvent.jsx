@@ -12,15 +12,12 @@ function ContentEvent() {
   const id = useParams().id;
   const newEvent = useSelector((state) => state.event.boxEvent);
   const endpoint = "http://localhost:8888/events/" + id;
-  // const dispatch = useDispatch();
 
   const [event, setEvent] = useState({});
   console.log(event);
   useEffect(() => {
     (async () => {
       const getData = await axios.get(endpoint);
-
-      // dispatch(addEvent(selected));
       setEvent(getData.data.results);
     })();
   }, []);

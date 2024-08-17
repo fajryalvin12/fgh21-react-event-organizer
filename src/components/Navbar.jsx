@@ -61,7 +61,7 @@ function Navbar() {
               />
             </Link>
           </div>
-          <div className="hidden md:block">{profile.name}</div>
+          <div className="hidden md:block">{profile.fullName}</div>
         </div>
       )}
     </div>

@@ -41,7 +41,6 @@ function Login() {
           Authorization: "Bearer " + token,
         },
       });
-      console.log(getData);
       const realData = await getData.json();
       dispatch(addProfile(realData));
       navigate("/");

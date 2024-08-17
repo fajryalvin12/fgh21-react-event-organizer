@@ -1,37 +1,64 @@
 import React from "react";
-import Mascot from "../assets/images/mascot.png";
 import { useNavigate } from "react-router-dom";
 import { FaEye } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import Brand from "../components/Brand";
+import Loading from "../components/Loading";
 
 function Signup() {
   const navigate = useNavigate();
-  function processSignup(e) {
+  let [alert, setAlert] = React.useState(0);
+  let [loading, setLoading] = React.useState(0);
+  const [message, setMessage] = React.useState("");
+  async function processSignup(e) {
     e.preventDefault();
     const formName = e.target.name.value;
     const formEmail = e.target.email.value;
     const formPass = e.target.password.value;
     const formConfirm = e.target.confirm.value;
 
-    if (formName !== "") {
-      if (formEmail !== "") {
-        if (formPass !== "") {
-          if (formConfirm === formPass) {
-            alert("Registration success!");
-            navigate("/Login");
-          } else {
-            alert("Password and Confirm Password must be same!");
-          }
-        } else {
-          alert("Please insert Password first!");
-        }
-      } else {
-        alert("Please input email first!");
-      }
+    const signupData = new URLSearchParams();
+    signupData.append("fullName", formName);
+    signupData.append("email", formEmail);
+    signupData.append("password", formPass);
+    signupData.append("confirmPassword", formConfirm);
+
+    const endpoint = "http://localhost:8888/auth/register";
+
+    const response = await fetch(endpoint, {
+      method: "POST",
+      body: signupData,
+    });
+    const data = await response.json();
+    if (data.success) {
+      setLoading(1);
+      setMessage(data.message);
+      navigate("/Login");
     } else {
-      alert("Please input name!");
+      setLoading(1);
+      setMessage(data.message);
+      setAlert(1);
+      setLoading(0);
     }
+
+    // if (formName !== "") {
+    //   if (formEmail !== "") {
+    //     if (formPass !== "") {
+    //       if (formConfirm === formPass) {
+    //         alert("Registration success!");
+    //         navigate("/Login");
+    //       } else {
+    //         alert("Password and Confirm Password must be same!");
+    //       }
+    //     } else {
+    //       alert("Please insert Password first!");
+    //     }
+    //   } else {
+    //     alert("Please input email first!");
+    //   }
+    // } else {
+    //   alert("Please input name!");
+    // }
   }
 
   let [pass, setPass] = React.useState("password");
@@ -53,6 +80,7 @@ function Signup() {
 
   return (
     <div className="flex h-screen">
+      {loading ? <Loading /> : ""}
       <div className="bg-[#201E43] flex-[60%] hidden md:flex justify-center items-center"></div>
       <div className="flex-[40%]">
         <form
@@ -67,6 +95,19 @@ function Signup() {
               <Link to={"/Login"}>Login</Link>
             </div>
           </div>
+          {alert ? (
+            <div className="h-12 flex-1 bg-red-400 flex items-center pl-4 justify-between">
+              {message ? <div>{message}</div> : ""}
+              <button
+                onClick={() => setAlert(0)}
+                className="h-12 w-12 font-bold"
+              >
+                X
+              </button>
+            </div>
+          ) : (
+            ""
+          )}
           <div className="flex flex-col gap-[10px]">
             <input
               className="border rounded-xl h-16 pl-4 outline-none"

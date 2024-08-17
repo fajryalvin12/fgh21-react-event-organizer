@@ -17,7 +17,6 @@ function CategoryContent() {
     })();
   }, []);
 
-  console.log(selectCategory);
   return (
     <div className="flex gap-12 items-center mb-[175px] mx-[100px] overflow-x-scroll md:justify-center">
       {selectCategory.map((item) => {
