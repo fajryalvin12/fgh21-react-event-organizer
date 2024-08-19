@@ -19,6 +19,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../redux/reducers/auth";
 import { removeProfile } from "../redux/reducers/profile";
+import { useSelector } from "react-redux";
 
 function ContentCreateEvent() {
   const navigate = useNavigate();
@@ -47,6 +48,7 @@ function ContentCreateEvent() {
   function setPopUp2() {
     PopUp.classList.toggle("hidden");
   }
+  const profile = useSelector((state) => state.profile.data);
 
   return (
     <div className="bg-[#EEEEEE] p-0 md:py-[50px]">
@@ -60,7 +62,7 @@ function ContentCreateEvent() {
             />
             <div>
               <div onClick={clickEdit} className="font-semibold">
-                Jhon Thomson
+                {profile.fullName}
               </div>
               <div>Entrepreneur, ID</div>
             </div>

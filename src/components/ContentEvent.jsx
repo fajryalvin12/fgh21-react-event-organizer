@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import EventFour from "../assets/images/event-4.jpg";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { FaRegHeart, FaLocationDot, FaClock } from "react-icons/fa6";
 import Attendee from "../components/Attendee";
 import { addEvent } from "../redux/reducers/event.js";
@@ -12,16 +12,20 @@ function ContentEvent() {
   const id = useParams().id;
   const newEvent = useSelector((state) => state.event.boxEvent);
   const endpoint = "http://localhost:8888/events/" + id;
+  const navigate = useNavigate();
 
   const [event, setEvent] = useState({});
-  console.log(event);
+  async function eventDetails() {
+    const getData = await axios.get(endpoint);
+    setEvent(getData.data.results);
+  }
   useEffect(() => {
-    (async () => {
-      const getData = await axios.get(endpoint);
-      setEvent(getData.data.results);
-    })();
+    eventDetails();
   }, []);
-  console.log(newEvent);
+
+  function clickEvent(id) {
+    navigate("/events/section/" + id);
+  }
   return (
     <div className="bg-[#EEEEEE] md:py-[50px] py-0">
       <div className="p-0 md:p-[100px] mx-0 md:mx-[120px] bg-[#ffff] flex flex-col md:flex-row rounded-none md:rounded-[30px] gap-[50px]">
@@ -84,7 +88,10 @@ function ContentEvent() {
                 ></iframe>
               </div>
               <div>
-                <button className="py-[15px] px-[82px] font-semibold text-[#ffff] bg-[#201E43] rounded-[15px] text-[16px] w-full">
+                <button
+                  onClick={() => clickEvent(event.id)}
+                  className="py-[15px] px-[82px] font-semibold text-[#ffff] bg-[#201E43] rounded-[15px] text-[16px] w-full"
+                >
                   <Link to={"/BookingPage"}>Buy Tickets</Link>
                 </button>
               </div>

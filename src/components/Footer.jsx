@@ -33,9 +33,13 @@ function Footer() {
             <li>
               <Link to={"/BookingPage"}>Booking</Link>
             </li>
-            <li>Create Event</li>
+            <li>
+              <Link to={"/CreateEvent"}>Create Event</Link>
+            </li>
             <li>Discover</li>
-            <li>Register</li>
+            <li>
+              <Link to={"/Signup"}>Register</Link>
+            </li>
           </ul>
         </div>
         <div className="flex flex-col gap-[20px]">
@@ -49,7 +53,7 @@ function Footer() {
           </ul>
         </div>
       </div>
-      <div>&copy; 2020 Tickhub All Rights Reserved</div>
+      <div>&copy; 2024 Tickhub All Rights Reserved</div>
     </div>
   );
 }

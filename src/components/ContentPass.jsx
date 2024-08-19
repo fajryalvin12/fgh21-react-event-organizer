@@ -14,6 +14,7 @@ import {
   FaEye,
 } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function ContentPass() {
   const navigate = useNavigate();
@@ -26,14 +27,31 @@ function ContentPass() {
     e.preventDefault();
     navigate("/ProfilePage");
   }
-  let [revPass, setRevPass] = React.useState("password");
-  function setPassword() {
-    if (revPass === "password") {
-      setRevPass("text");
+  let [oldPass, setOldPass] = React.useState("password");
+  function oldPassword() {
+    if (oldPass === "password") {
+      setOldPass("text");
     } else {
-      setRevPass("password");
+      setOldPass("password");
     }
   }
+  let [newPass, setNewPass] = React.useState("password");
+  function newPassword() {
+    if (newPass === "password") {
+      setNewPass("text");
+    } else {
+      setNewPass("password");
+    }
+  }
+  let [confirmPass, setConfirmPass] = React.useState("password");
+  function confirmPassword() {
+    if (confirmPass === "password") {
+      setConfirmPass("text");
+    } else {
+      setConfirmPass("password");
+    }
+  }
+  const profile = useSelector((state) => state.profile.data);
 
   return (
     <div className="bg-[#EEEEEE] p-0 md:py-[50px]">
@@ -47,7 +65,7 @@ function ContentPass() {
             />
             <div>
               <div onClick={clickEdit} className="font-semibold">
-                Jhon Thomson
+                {profile.fullName}
               </div>
               <div>Entrepreneur, ID</div>
             </div>
@@ -95,48 +113,51 @@ function ContentPass() {
         </div>
         <div className="w-full md:w-2/3 p-0 md:p-[80px] m-0 md:mr-[120px] bg-[#ffff] rounded-[30px] flex flex-col gap-[50px]">
           <div className="font-bold text-2xl">Change Password</div>
-          <form className="flex flex-col gap-[30px] w-fit md:w-full">
+          <form className="flex flex-col gap-[10px]">
             <div className="flex justify-between font-semibold items-center gap-12">
-              <label className="max-w-[120px]" for="name">
+              <label className="w-1/3" for="name">
                 Old Password
               </label>
               <div className="p-[10px] border rounded-xl w-full flex justify-between">
                 <input
-                  type={revPass}
+                  type={oldPass}
                   placeholder="Input Old Password..."
                   id="name"
+                  className="flex-1 h-8 outline-none w-2/3"
                 />
-                <button type="button" onClick={setPassword}>
+                <button type="button" onClick={oldPassword}>
                   <FaEye />
                 </button>
               </div>
             </div>
             <div className="flex justify-between font-semibold items-center gap-12">
-              <label className="max-w-[120px]" for="name">
+              <label className="w-1/3" for="name">
                 New Password
               </label>
               <div className="p-[10px] border rounded-xl w-full flex justify-between">
                 <input
-                  type={revPass}
-                  placeholder="Input Old Password..."
+                  type={newPass}
+                  placeholder="Input New Password..."
                   id="name"
+                  className="flex-1 h-8 outline-none w-2/3"
                 />
-                <button type="button" onClick={setPassword}>
+                <button type="button" onClick={newPassword}>
                   <FaEye />
                 </button>
               </div>
             </div>
             <div className="flex justify-between font-semibold items-center gap-12">
-              <label className="max-w-[100px]" for="name">
+              <label className="w-1/3" for="name">
                 Confirm Password
               </label>
               <div className="p-[10px] border rounded-xl w-full flex justify-between">
                 <input
-                  type={revPass}
-                  placeholder="Input Old Password..."
+                  type={confirmPass}
+                  placeholder="Confirm new password..."
                   id="name"
+                  className="flex-1 h-8 outline-none w-2/3"
                 />
-                <button type="button" onClick={setPassword}>
+                <button type="button" onClick={confirmPassword}>
                   <FaEye />
                 </button>
               </div>

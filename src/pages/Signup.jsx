@@ -30,6 +30,7 @@ function Signup() {
       body: signupData,
     });
     const data = await response.json();
+    console.log(data);
     if (data.success) {
       setLoading(1);
       setMessage(data.message);
@@ -40,25 +41,6 @@ function Signup() {
       setAlert(1);
       setLoading(0);
     }
-
-    // if (formName !== "") {
-    //   if (formEmail !== "") {
-    //     if (formPass !== "") {
-    //       if (formConfirm === formPass) {
-    //         alert("Registration success!");
-    //         navigate("/Login");
-    //       } else {
-    //         alert("Password and Confirm Password must be same!");
-    //       }
-    //     } else {
-    //       alert("Please insert Password first!");
-    //     }
-    //   } else {
-    //     alert("Please input email first!");
-    //   }
-    // } else {
-    //   alert("Please input name!");
-    // }
   }
 
   let [pass, setPass] = React.useState("password");

@@ -46,9 +46,9 @@ function NavbarProfile() {
         <div>
           <Link to={"/ProfilePage"}>
             <img
-              className="border border-[#3366ff] rounded-full w-12 h-12"
+              className="border border-[#373a42bf] rounded-full w-12 h-12"
               src={profile.picture}
-              alt="ap"
+              alt=""
             />
           </Link>
         </div>

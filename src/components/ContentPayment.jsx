@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "./Footer";
 import CreditCard from "../assets/images/credit-card.png";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import {
   FaCreditCard,
@@ -12,15 +12,24 @@ import {
   FaAngleUp,
   FaAngleDown,
 } from "react-icons/fa6";
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 
 function ContentPayment() {
+  const id = useParams().id;
   const navigate = useNavigate();
-  function processPayment(e) {
-    e.preventDefault();
-    window.alert("Payment Success!");
-    window.alert("Add to the cart!");
+  const [trx, setTrx] = useState([]);
+  const endpointTrx = "http://localhost:8888/transactions/" + id;
+  function processPayment() {
     navigate("/MyBooking");
   }
+  useEffect(() => {
+    (async () => {
+      const data = await axios.get(endpointTrx);
+      setTrx(data.data.results);
+    })();
+  }, []);
+  console.log(trx);
 
   return (
     <div className="bg-[#EEEEEE] p-0 md:py-[50px]">
@@ -95,28 +104,26 @@ function ContentPayment() {
           </div>
         </div>
         <div className="flex-1">
-          <div className="flex flex-col gap-[50px] max-w-[500px] w-full">
+          <div className="flex flex-col gap-[50px] w-full">
             <div className="font-semibold text-[20px] w-full">
               Ticket Detail
             </div>
             <div className="flex flex-col gap-[15px] font-semibold mb-[50px]">
               <div className="flex justify-between w-full">
                 <div>Event</div>
-                <div className="text-[#508C9B]">
-                  Meet and Greet with Bro Mudryk
-                </div>
+                <div className="text-[#508C9B]">Name Event</div>
               </div>
               <div className="flex justify-between w-full">
                 <div>Ticket Section</div>
-                <div className="text-[#508C9B]">VIP</div>
+                <div className="text-[#508C9B]">Regular</div>
               </div>
               <div className="flex justify-between w-full">
                 <div>Quantity</div>
-                <div className="text-[#508C9B]">2</div>
+                <div className="text-[#508C9B]">10</div>
               </div>
               <div className="flex justify-between w-full">
                 <div>Total Payment</div>
-                <div className="text-[#508C9B]">$70</div>
+                <div className="text-[#508C9B]">Rp1.000.000</div>
               </div>
             </div>
             <div>

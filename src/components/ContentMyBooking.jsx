@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AvatarProfile from "../assets/icons/avatar-profile.png";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
@@ -14,9 +14,20 @@ import {
   FaCalendarDays,
   FaCirclePlus,
 } from "react-icons/fa6";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 function ContentMyBooking() {
+  const [booking, setBooking] = useState({});
+  const id = useParams().id;
+  async function myBooking() {
+    const data = await axios.get("http://localhost:8888/transactions" + id);
+    setBooking(data.data.results);
+  }
+  useEffect(() => {
+    myBooking();
+  }, []);
   const navigate = useNavigate();
   function clickLogout(e) {
     e.preventDefault();
@@ -31,6 +42,8 @@ function ContentMyBooking() {
     e.preventDefault();
     navigate("/EventPage");
   }
+  const profile = useSelector((state) => state.profile.data);
+  const events = useSelector((state) => state.event.boxEvent);
 
   return (
     <div className="bg-[#EEEEEE] p-0 md:py-[50px]">
@@ -44,7 +57,7 @@ function ContentMyBooking() {
             />
             <div>
               <div onClick={clickEdit} className="font-semibold">
-                Jhon Thomson
+                {profile.fullName}
               </div>
               <div>Entrepreneur, ID</div>
             </div>
@@ -105,78 +118,26 @@ function ContentMyBooking() {
             </div>
           </div>
           <div className="flex flex-col gap-[20px]">
-            <div className="flex gap-[25px]">
-              <div className="p-[10px] text-center font-semibold text-[#ff8900]">
-                <div>15</div>
-                <div className="text-gray-500">Wed</div>
-              </div>
-              <div className="flex flex-col gap-[15px]">
-                <div className="text-[24px] font-bold">
-                  Cek Khodam Kak Mudryk
+            {events.map((item) => {
+              return (
+                <div className="flex gap-[25px]">
+                  <div className="p-[10px] text-center font-semibold text-[#ff8900]">
+                    <div>15</div>
+                    <div className="text-gray-500">Wed</div>
+                  </div>
+                  <div className="flex flex-col gap-[15px]">
+                    <div className="text-[24px] font-bold">{item.title}</div>
+                    <div>
+                      <div className="text-gray-500">Jakarta, Indonesia</div>
+                      <div className="text-gray-500">{item.date}</div>
+                    </div>
+                    <div onClick={clickEvent} className="text-[#508C9B]">
+                      Details
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <div className="text-gray-500">Jakarta, Indonesia</div>
-                  <div className="text-gray-500">Wed, 15 Nov, 4:00 PM</div>
-                </div>
-                <div onClick={clickEvent} className="text-[#508C9B]">
-                  Details
-                </div>
-              </div>
-            </div>
-            <div className="flex gap-[25px]">
-              <div className="p-[10px] text-center font-semibold text-[#ff8900]">
-                <div>15</div>
-                <div className="text-gray-500">Wed</div>
-              </div>
-              <div className="flex flex-col gap-[15px]">
-                <div className="text-[24px] font-bold">
-                  Sights & Sounds Exhibition
-                </div>
-                <div>
-                  <div className="text-gray-500">Jakarta, Indonesia</div>
-                  <div className="text-gray-500">Wed, 15 Nov, 4:00 PM</div>
-                </div>
-                <div onClick={clickEvent} className="text-[#508C9B]">
-                  Details
-                </div>
-              </div>
-            </div>
-            <div className="flex gap-[25px]">
-              <div className="p-[10px] text-center font-semibold text-[#ff8900]">
-                <div>15</div>
-                <div className="text-gray-500">Wed</div>
-              </div>
-              <div className="flex flex-col gap-[15px]">
-                <div className="text-[24px] font-bold">
-                  Sights & Sounds Exhibition
-                </div>
-                <div>
-                  <div className="text-gray-500">Jakarta, Indonesia</div>
-                  <div className="text-gray-500">Wed, 15 Nov, 4:00 PM</div>
-                </div>
-                <div onClick={clickEvent} className="text-[#508C9B]">
-                  Details
-                </div>
-              </div>
-            </div>
-            <div className="flex gap-[25px]">
-              <div className="p-[10px] text-center font-semibold text-[#ff8900]">
-                <div>15</div>
-                <div className="text-gray-500">Wed</div>
-              </div>
-              <div className="flex flex-col gap-[15px]">
-                <div className="text-[24px] font-bold">
-                  Sights & Sounds Exhibition
-                </div>
-                <div>
-                  <div className="text-gray-500">Jakarta, Indonesia</div>
-                  <div className="text-gray-500">Wed, 15 Nov, 4:00 PM</div>
-                </div>
-                <div onClick={clickEvent} className="text-[#508C9B]">
-                  Details
-                </div>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
       </div>

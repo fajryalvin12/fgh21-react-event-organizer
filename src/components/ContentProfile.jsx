@@ -31,15 +31,37 @@ function ContentProfile() {
     dispatch(removeProfile(null));
     navigate("/Login");
   }
-  function processProfile() {
-    window.alert("Profile Saved!");
+  async function processProfile(e) {
+    e.preventDefault();
+
+    const formName = e.target.fullname.value;
+    const formPhone = e.target.phone.value;
+    const formProfession = e.target.profession.value;
+
+    const formProfile = new URLSearchParams();
+    formProfile.append("fullName", formName);
+    formProfile.append("phone", formPhone);
+    formProfile.append("profession", formProfession);
+
+    const endpoint = "http://localhost:8888/profile/";
+    const response = await fetch(endpoint, {
+      method: "PATCH",
+      body: formProfile,
+    });
+
+    const data = await response.json();
+    if (data.success) {
+      setMessage(data.message);
+    } else {
+      setMessage(data.message);
+    }
   }
 
   const data = useSelector((state) => state.auth.token);
   const profile = useSelector((state) => state.profile.data);
 
   return (
-    <div className="bg-[#EEEEEE] p-0 md:py-[50px] ">
+    <div className="bg-[#EEEEEE] p-0 md:py-[50px]">
       {loading ? <Loading /> : ""}
       <div className="flex justify-center mt-12 ">
         <div className="w-1/3 px-[100px] flex-col gap-[30px] hidden md:flex">
@@ -47,7 +69,7 @@ function ContentProfile() {
             <img
               src={profile.picture}
               alt=""
-              className="border border-[#3366ff] rounded-full w-12 h-12"
+              className="border border-[#373a42bf] rounded-full w-12 h-12"
             />
             <div>
               <div className="font-semibold">{profile.fullName}</div>
@@ -61,7 +83,7 @@ function ContentProfile() {
             </div>
             <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#508C9B]">
               <FaCreditCard />
-              <div>Card</div>
+              <div className="stroke-zinc-600">Card</div>
             </div>
             <div className="pl-[50px] flex gap-[25px] text-[#508C9B] items-center hover:text-[#508C9B]">
               <FaUserPen />
@@ -112,8 +134,9 @@ function ContentProfile() {
                   type="text"
                   placeholder="Jhon Thomson"
                   id="name"
+                  name="fullname"
                   className="p-[10px] border rounded-xl w-2/3 outline-none text-[12px]"
-                  value={profile.fullName}
+                  defaultValue={profile.fullName}
                 />
               </div>
               <div className="flex gap-10 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
@@ -125,7 +148,8 @@ function ContentProfile() {
                   type="text"
                   placeholder="@jhont0"
                   id="username"
-                  value={profile.username}
+                  name="username"
+                  defaultValue={profile.username}
                 />
               </div>
               <div className="flex gap-10 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
@@ -137,7 +161,8 @@ function ContentProfile() {
                   type="email"
                   placeholder="admin@gmail.com"
                   id="email"
-                  value={profile.email}
+                  name="email"
+                  defaultValue={profile.email}
                 />
               </div>
               <div className="flex gap-10 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
@@ -149,7 +174,8 @@ function ContentProfile() {
                   type="text"
                   placeholder="081234567890"
                   id="phone"
-                  value={profile.phoneNumber}
+                  name="phone"
+                  defaultValue={profile.phoneNumber}
                 />
               </div>
               <div className="flex gap-10 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
@@ -183,35 +209,34 @@ function ContentProfile() {
                 </label>
                 <input
                   className="p-[10px] border rounded-xl w-2/3 outline-none text-[12px]"
-                  type="email"
-                  placeholder="admin@gmail.com"
-                  id="email"
-                  value={profile.profession}
+                  type="text"
+                  placeholder="Profession"
+                  id="profession"
+                  name="profession"
+                  defaultValue={profile.profession}
                 />
               </div>
               <div className="flex gap-10 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
                 <label for="nationality" className="w-1/3">
                   Nationality
                 </label>
-                <input
+                <select
+                  name="nationality"
+                  id="nationality"
                   className="p-[10px] border rounded-xl w-2/3 outline-none text-[12px]"
-                  type="email"
-                  placeholder="admin@gmail.com"
-                  id="email"
-                  value={profile.nationalityId}
-                />
+                ></select>
               </div>
               <div className="flex gap-10 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
                 <label for="birth" className="w-1/3">
                   Birthday Date
                 </label>
                 <input
-                  type="text"
+                  type="date"
                   id="birthday"
                   name="birthday"
                   className="p-[10px] border rounded-xl w-2/3 outline-none text-[12px]"
                   placeholder=""
-                  value={profile.birthDate}
+                  defaultValue={profile.birthDate}
                 />
               </div>
               <button
@@ -225,7 +250,7 @@ function ContentProfile() {
           <div className="flex-1">
             <div className="flex items-center flex-col gap-[20px]">
               <img
-                className="h-[200px] w-[200px] rounded-full"
+                className="h-[200px] w-[200px] rounded-full border-4 border-[#373a42bf]"
                 src={profile.picture}
               />
               <div>

@@ -57,7 +57,7 @@ function Navbar() {
               <img
                 className="border border-[#134B70] rounded-full h-12 w-12"
                 src={profile.picture}
-                alt="ap"
+                alt=""
               />
             </Link>
           </div>

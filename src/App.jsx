@@ -38,7 +38,7 @@ const arrayRouter = [
     element: <EventPage />,
   },
   {
-    path: "/BookingPage",
+    path: "/events/section/:id",
     element: <BookingPage />,
   },
   {

@@ -16,6 +16,7 @@ import {
   FaCirclePlus,
 } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function ContentMyWishlist() {
   const navigate = useNavigate();
@@ -32,6 +33,7 @@ function ContentMyWishlist() {
     e.preventDefault();
     navigate("/EventPage");
   }
+  const profile = useSelector((state) => state.profile.data);
 
   return (
     <div className="bg-[#EEEEEE] p-0 md:py-[50px]">
@@ -45,7 +47,7 @@ function ContentMyWishlist() {
             />
             <div>
               <div onClick={clickEdit} className="font-semibold">
-                Jhon Thomson
+                {profile.fullName}
               </div>
               <div>Entrepreneur, ID</div>
             </div>

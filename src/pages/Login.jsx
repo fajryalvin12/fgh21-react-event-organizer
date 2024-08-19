@@ -120,15 +120,12 @@ function Login() {
             </button>
           </div>
           <div className="flex flex-col gap-[10px] justify-center items-center">
-            <div>or sign in with</div>
-            <div className="flex gap-8">
-              <button className="bg-[#ffff] px-[36px] py-[12px] border border-[#134B70] rounded-xl">
-                <img src={Google} alt="" />
-              </button>
-              <button className="bg-[#ffff] px-[36px] py-[12px] border border-[#134B70] rounded-xl">
-                <img src={Facebook} alt="" />
-              </button>
-            </div>
+            <button
+              className="p-[10px] w-full text-[16px] bg-white border text-[#134B70] rounded-xl font-semibold"
+              type="submit"
+            >
+              <Link to={"/Signup"}> Create New Account</Link>
+            </button>
           </div>
         </form>
       </div>
