@@ -25,11 +25,11 @@ function BoxWrapper() {
     navigate("/events/" + id);
   }
   return (
-    <div className="flex gap-[50px] mb-[50px] ml-[50px] overflow-scroll ">
+    <div className="flex gap-[50px] mb-[50px] ml-[50px] overflow-scroll">
       {eventId.map((item) => {
         return (
           <div
-            className="flex w-[260px] h-[376px] items-center justify-center relative shrink-0"
+            className="flex w-[260px] h-[376px] items-center justify-center relative shrink-0" 
             key={item.id}
           >
             <img

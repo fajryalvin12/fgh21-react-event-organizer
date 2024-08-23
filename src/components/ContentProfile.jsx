@@ -12,53 +12,103 @@ import {
   FaGear,
   FaArrowRightFromBracket,
 } from "react-icons/fa6";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { logout } from "../redux/reducers/auth";
 import { removeProfile } from "../redux/reducers/profile";
 import Loading from "../components/Loading";
+import axios from "axios";
+import {addProfile} from "../redux/reducers/profile"
 
 function ContentProfile() {
+  const profile = useSelector((state) => state.profile.data);
   const [profession, setProfession] = React.useState([]);
   const [nationalities, setNationalities] = React.useState([]);
-  let [loading, setLoading] = React.useState(0);
+  const [national, setNational] = React.useState(profile.nationality)
+  const [loading, setLoading] = React.useState(0);
+  const [message, setMessage] = React.useState("");
+  const token = useSelector((state) => state.auth.token);
+  console.log(profile)
+
+  const linkNat = "http://localhost:8888/nationalities"
+  const linkEdit = "http://localhost:8888/profile"
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    getNation()
+  },[])
+
   function clickLogout(e) {
     e.preventDefault();
     dispatch(logout(null));
     dispatch(removeProfile(null));
-    navigate("/Login");
+    navigate("/login");
   }
+  function changeNations(e) {
+    setNational(e.target.value)
+  }
+  async function getNation () {
+    setLoading(1)
+    const res = await fetch(linkNat, {
+      headers: {
+        Authorization: `Bearer: ${token}`
+      }
+    })
+    const data = await res.json()
+    const nationName = data.results
+    setNationalities(nationName)
+    setLoading(0)
+  }
+  const [notif, setNotif] = React.useState(0)
   async function processProfile(e) {
     e.preventDefault();
+    const fullname = e.target.fullname.value;
+    const username = e.target.username.value;
+    const email = e.target.email.value;
+    const phone = e.target.phone.value;
+    const gender = e.target.gender.value
+    const profession = e.target.profession.value;
+    const birthdate = e.target.birthdate.value;
 
-    const formName = e.target.fullname.value;
-    const formPhone = e.target.phone.value;
-    const formProfession = e.target.profession.value;
+    const inputProfile = new URLSearchParams()
+    inputProfile.append("fullName", fullname)
+    inputProfile.append("username", username)
+    inputProfile.append("email", email)
+    inputProfile.append("gender", gender)
+    inputProfile.append("phoneNumber", phone)
+    inputProfile.append("profession", profession)
+    inputProfile.append("nationality", national)
+    inputProfile.append("birthDate", birthdate)
 
-    const formProfile = new URLSearchParams();
-    formProfile.append("fullName", formName);
-    formProfile.append("phone", formPhone);
-    formProfile.append("profession", formProfession);
+    try {
+      const data = await axios.patch(linkEdit, inputProfile, 
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      // const res = await fetch (linkEdit, {
+      //   method: "PATCH",
+      //   body: inputProfile,
+      //   headers: {
+      //     Authorization: `Bearer ${token}`
+      //   }
+      // })
+      // const data = await res.json()
+    console.log(data.data.results)
+      // dispatch(addProfile(data.data.results))
 
-    const endpoint = "http://localhost:8888/profile/";
-    const response = await fetch(endpoint, {
-      method: "PATCH",
-      body: formProfile,
-    });
-
-    const data = await response.json();
-    if (data.success) {
-      setMessage(data.message);
-    } else {
-      setMessage(data.message);
+    } catch (error) {
+      console.error("Failed to update profile!")
     }
+    
   }
 
-  const data = useSelector((state) => state.auth.token);
-  const profile = useSelector((state) => state.profile.data);
+  if (token === null) {
+    navigate("/Login")
+  }
 
   return (
     <div className="bg-[#EEEEEE] p-0 md:py-[50px]">
@@ -67,7 +117,7 @@ function ContentProfile() {
         <div className="w-1/3 px-[100px] flex-col gap-[30px] hidden md:flex">
           <div className="flex gap-[20px]">
             <img
-              src={profile.picture}
+              // src={profile.picture}
               alt=""
               className="border border-[#373a42bf] rounded-full w-12 h-12"
             />
@@ -186,7 +236,8 @@ function ContentProfile() {
                       type="radio"
                       id="male"
                       name="gender"
-                      defaultChecked={profile.gender === "Male" ? true : false}
+                      value={1}
+                      defaultChecked={profile.gender === 1 ? true : false}
                     />
                     <label for="male">Male</label>
                   </div>
@@ -195,9 +246,8 @@ function ContentProfile() {
                       type="radio"
                       id="female"
                       name="gender"
-                      defaultChecked={
-                        profile.gender === "Female" ? true : false
-                      }
+                      value={0}
+                      defaultChecked={profile.gender === 0 ? true : false}
                     />
                     <label for="female">Female</label>
                   </div>
@@ -223,17 +273,29 @@ function ContentProfile() {
                 <select
                   name="nationality"
                   id="nationality"
+                  onChange={changeNations}
                   className="p-[10px] border rounded-xl w-2/3 outline-none text-[12px]"
-                ></select>
+                >
+                  {nationalities.map((nation) => {
+                    return(
+                      <option
+                      key={nation.id}
+                      value={nation.id}
+                      selected={nation.id === profile.nationality}>
+                        {nation.name}
+                      </option>
+                    )
+                  })}
+                </select>
               </div>
               <div className="flex gap-10 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
-                <label for="birth" className="w-1/3">
+                <label for="birthdate" className="w-1/3">
                   Birthday Date
                 </label>
                 <input
                   type="date"
-                  id="birthday"
-                  name="birthday"
+                  id="birthdate"
+                  name="birthdate"
                   className="p-[10px] border rounded-xl w-2/3 outline-none text-[12px]"
                   placeholder=""
                   defaultValue={profile.birthDate}

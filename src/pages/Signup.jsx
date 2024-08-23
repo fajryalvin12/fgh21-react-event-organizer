@@ -74,7 +74,7 @@ function Signup() {
           <div className="flex">
             <div>Already have an account?</div>
             <div className="text-[#508C9B] font-semibold">
-              <Link to={"/Login"}>Login</Link>
+              <Link to={"/login"}>Login</Link>
             </div>
           </div>
           {alert ? (

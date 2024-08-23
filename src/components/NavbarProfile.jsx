@@ -44,7 +44,7 @@ function NavbarProfile() {
         className="px-[10px] flex gap-[10px] items-center font-semibold"
       >
         <div>
-          <Link to={"/ProfilePage"}>
+          <Link to={"/profile"}>
             <img
               className="border border-[#373a42bf] rounded-full w-12 h-12"
               src={profile.picture}

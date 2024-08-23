@@ -1,7 +1,7 @@
 import React from "react";
 import AvatarProfile from "../assets/icons/avatar-profile.png";
 import Footer from "./Footer";
-import { Link } from "react-router-dom";
+import { Link, ScrollRestoration } from "react-router-dom";
 import {
   FaCircleUser,
   FaCreditCard,
@@ -49,6 +49,11 @@ function ContentCreateEvent() {
     PopUp.classList.toggle("hidden");
   }
   const profile = useSelector((state) => state.profile.data);
+  const token = useSelector((state) => state.auth.token);
+  if (token === null) {
+    navigate("/login")
+  }
+  console.log(token)
 
   return (
     <div className="bg-[#EEEEEE] p-0 md:py-[50px]">
@@ -325,6 +330,7 @@ function ContentCreateEvent() {
           </form>
         </div>
       </div>
+      <ScrollRestoration />
     </div>
   );
 }

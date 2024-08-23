@@ -21,6 +21,7 @@ import { useSelector } from "react-redux";
 function ContentMyBooking() {
   const [booking, setBooking] = useState({});
   const id = useParams().id;
+  console.log(id)
   async function myBooking() {
     const data = await axios.get("http://localhost:8888/transactions" + id);
     setBooking(data.data.results);
@@ -32,15 +33,15 @@ function ContentMyBooking() {
   function clickLogout(e) {
     e.preventDefault();
     window.alert("Your account has been logged out!");
-    navigate("/Login");
+    navigate("/login");
   }
   function clickEdit(e) {
     e.preventDefault();
-    navigate("/ProfilePage");
+    navigate("/profile");
   }
   function clickEvent(e) {
     e.preventDefault();
-    navigate("/EventPage");
+    navigate("/events/" + id);
   }
   const profile = useSelector((state) => state.profile.data);
   const events = useSelector((state) => state.event.boxEvent);
@@ -74,7 +75,7 @@ function ContentMyBooking() {
             <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#508C9B]">
               <FaUserPen />
               <div>
-                <Link to={"/ProfilePage"}>Edit Profile</Link>
+                <Link to={"/profile"}>Edit Profile</Link>
               </div>
             </div>
             <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#508C9B]">
@@ -86,7 +87,7 @@ function ContentMyBooking() {
             <div className="flex gap-[25px] items-center hover:text-[#508C9B]">
               <FaCirclePlus />
               <div>
-                <Link to={"/CreateEvent"}>Create Event</Link>
+                <Link to={"/create-event"}>Create Event</Link>
               </div>
             </div>
             <div className="flex gap-[25px] items-center text-[#508C9B] hover:text-[#508C9B]">
@@ -96,7 +97,7 @@ function ContentMyBooking() {
             <div className="flex gap-[25px] items-center hover:text-[#508C9B]">
               <FaHeart />
               <div>
-                <Link to={"/MyWishlist"}>My Wishlist</Link>
+                <Link to={"/wishlist"}>My Wishlist</Link>
               </div>
             </div>
             <div className="flex gap-[25px] items-center hover:text-[#508C9B]">

@@ -14,9 +14,8 @@ function Navbar() {
     authButton.current.classList.toggle("hidden");
   }
 
-  const data = useSelector((state) => state.auth.token);
+  const token = useSelector((state) => state.auth.token);
   const profile = useSelector((state) => state.profile.data);
-  console.log(data);
 
   return (
     <div className=" fixed flex flex-col md:flex-row gap-8 md:gap-0 justify-between items-center p-4 bg-white w-full z-10">
@@ -34,26 +33,26 @@ function Navbar() {
       >
         <li className="hover:text-[#508C9B]">Home</li>
         <li className="hover:text-[#508C9B]">
-          <Link to={"/CreateEvent"}>Create Event</Link>
+          <Link to={"/create-event"}>Create Event</Link>
         </li>
         <li className="hover:text-[#508C9B]">Location</li>
       </div>
-      {data === null ? (
+      {token === null ? (
         <div
           ref={authButton}
           className="px-[10px] flex gap-[10px] flex-col md:flex-row"
         >
           <button className="px-[50px] py-[10px] rounded-xl border font-semibold">
-            <Link to={"/Login"}>Login</Link>
+            <Link to={"/login"}>Login</Link>
           </button>
           <button className="px-[50px] py-[10px] rounded-xl border font-semibold bg-[#134B70] text-white">
-            <Link to={"/Signup"}>Sign Up</Link>
+            <Link to={"/signup"}>Sign Up</Link>
           </button>
         </div>
       ) : (
         <div className="px-[10px] flex gap-[10px] items-center font-semibold">
           <div>
-            <Link to={"/ProfilePage"}>
+            <Link to={"/profile"}>
               <img
                 className="border border-[#134B70] rounded-full h-12 w-12"
                 src={profile.picture}

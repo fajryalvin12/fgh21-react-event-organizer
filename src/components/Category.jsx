@@ -8,13 +8,13 @@ function Category() {
       </div>
       <div className="text-[36px] font-semibold">Search the Category below</div>
       <div className="grid md:justify-center gap-8 md:gap-16 mb-[50px] grid-cols-3 md:grid-cols-7 ">
-        <div>Music</div>
-        <div>Arts</div>
-        <div>Outdoors</div>
-        <div>Workshop</div>
-        <div>Sport</div>
-        <div>Festival</div>
-        <div>Fashion</div>
+        <button className="hover:text-[#134B70] font-semibold">Music</button>
+        <button className="hover:text-[#134B70] font-semibold">Arts</button>
+        <button className="hover:text-[#134B70] font-semibold">Outdoors</button>
+        <button className="hover:text-[#134B70] font-semibold">Workshop</button>
+        <button className="hover:text-[#134B70] font-semibold">Sport</button>
+        <button className="hover:text-[#134B70] font-semibold">Festival</button>
+        <button className="hover:text-[#134B70] font-semibold">Fashion</button>
       </div>
     </div>
   );

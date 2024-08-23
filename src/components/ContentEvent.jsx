@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import EventFour from "../assets/images/event-4.jpg";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate, ScrollRestoration } from "react-router-dom";
 import { FaRegHeart, FaLocationDot, FaClock } from "react-icons/fa6";
 import Attendee from "../components/Attendee";
 import { addEvent } from "../redux/reducers/event.js";
@@ -100,6 +100,7 @@ function ContentEvent() {
         </div>
       </div>
       <Footer />
+      <ScrollRestoration />
     </div>
   );
 }

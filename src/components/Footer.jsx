@@ -31,14 +31,14 @@ function Footer() {
           <div className="font-semibold">Features</div>
           <ul className="p-none m-none flex flex-col gap-[15px] text-[#c1c5d0]">
             <li>
-              <Link to={"/BookingPage"}>Booking</Link>
+             Booking
             </li>
             <li>
-              <Link to={"/CreateEvent"}>Create Event</Link>
+              <Link to={"/create-event"}>Create Event</Link>
             </li>
             <li>Discover</li>
             <li>
-              <Link to={"/Signup"}>Register</Link>
+              <Link to={"/signup"}>Register</Link>
             </li>
           </ul>
         </div>

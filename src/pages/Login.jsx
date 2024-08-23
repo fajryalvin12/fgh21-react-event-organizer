@@ -17,6 +17,7 @@ function Login() {
   let [alert, setAlert] = React.useState(0);
   let [loading, setLoading] = React.useState(0);
   const [message, setMessage] = React.useState("");
+  const ilyas = useSelector((state)=>state.profile.data)
   async function processLogin(e) {
     e.preventDefault();
     const formEmail = e.target.email.value;
@@ -69,7 +70,9 @@ function Login() {
           onSubmit={processLogin}
           className="flex flex-col justify-center gap-[20px] p-8 md:p-0 mt-28 md:m-[100px]"
         >
+          <Link to={"/"}>
           <Brand />
+          </Link>
           <div className="text-2xl font-bold">Sign In</div>
           <div>Hi, Welcome back to Urticket!</div>
           {alert ? (
@@ -109,7 +112,7 @@ function Login() {
             </div>
           </div>
           <div className="text-right text-[#508C9B]">
-            <Link to={"/Forgot"}>Forgot Password?</Link>
+            <Link to={"/forgot-password"}>Forgot Password?</Link>
           </div>
           <div>
             <button
@@ -124,7 +127,7 @@ function Login() {
               className="p-[10px] w-full text-[16px] bg-white border text-[#134B70] rounded-xl font-semibold"
               type="submit"
             >
-              <Link to={"/Signup"}> Create New Account</Link>
+              <Link to={"/signup"}> Create New Account</Link>
             </button>
           </div>
         </form>

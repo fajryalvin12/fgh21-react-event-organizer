@@ -29,7 +29,11 @@ function ContentPayment() {
       setTrx(data.data.results);
     })();
   }, []);
-  console.log(trx);
+  const token = useSelector((state) => state.auth.token);
+  console.log(token)
+  if (token === null) {
+    navigate("/Login")
+  }
 
   return (
     <div className="bg-[#EEEEEE] p-0 md:py-[50px]">

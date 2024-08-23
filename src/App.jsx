@@ -18,15 +18,15 @@ import { store } from "./redux/store";
 
 const arrayRouter = [
   {
-    path: "/Login",
+    path: "/login",
     element: <Login />,
   },
   {
-    path: "/Signup",
+    path: "/signup",
     element: <Signup />,
   },
   {
-    path: "/Forgot",
+    path: "/forgot-password",
     element: <ForgotPassword />,
   },
   {
@@ -46,7 +46,7 @@ const arrayRouter = [
     element: <PaymentPage />,
   },
   {
-    path: "/ProfilePage",
+    path: "/profile",
     element: <ProfilePage />,
   },
   {
@@ -58,11 +58,11 @@ const arrayRouter = [
     element: <MyBooking />,
   },
   {
-    path: "/MyWishlist",
+    path: "/wishlist",
     element: <MyWishlist />,
   },
   {
-    path: "/CreateEvent",
+    path: "/create-event",
     element: <CreateEvent />,
   },
   {
