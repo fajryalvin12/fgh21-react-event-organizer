@@ -17,6 +17,7 @@ import {
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import Sidebar from "./Sidebar";
 
 function ContentMyBooking() {
   const [booking, setBooking] = useState({});
@@ -50,65 +51,7 @@ function ContentMyBooking() {
     <div className="bg-[#EEEEEE] p-0 md:py-[50px]">
       <div className="flex gap-[20px] mt-12">
         <div className="w-1/3 px-[100px] flex-col gap-[30px] hidden md:flex">
-          <div className="flex gap-[20px]">
-            <img
-              src={AvatarProfile}
-              alt=""
-              className=" border-[#508C9B] rounded-full border-[3px]"
-            />
-            <div>
-              <div onClick={clickEdit} className="font-semibold">
-                {profile.fullName}
-              </div>
-              <div>Entrepreneur, ID</div>
-            </div>
-          </div>
-          <div className="flex flex-col gap-[30px] text-[#373a42bf] font-semibold">
-            <div className="flex gap-[25px] items-center hover:text-[#508C9B]">
-              <FaCircleUser />
-              <div>Profile</div>
-            </div>
-            <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#508C9B]">
-              <FaCreditCard />
-              <div>Card</div>
-            </div>
-            <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#508C9B]">
-              <FaUserPen />
-              <div>
-                <Link to={"/profile"}>Edit Profile</Link>
-              </div>
-            </div>
-            <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#508C9B]">
-              <FaLock />
-              <div>
-                <Link to={"/ChangePassword"}>Change Password</Link>
-              </div>
-            </div>
-            <div className="flex gap-[25px] items-center hover:text-[#508C9B]">
-              <FaCirclePlus />
-              <div>
-                <Link to={"/create-event"}>Create Event</Link>
-              </div>
-            </div>
-            <div className="flex gap-[25px] items-center text-[#508C9B] hover:text-[#508C9B]">
-              <FaRectangleList />
-              <div>My Booking</div>
-            </div>
-            <div className="flex gap-[25px] items-center hover:text-[#508C9B]">
-              <FaHeart />
-              <div>
-                <Link to={"/wishlist"}>My Wishlist</Link>
-              </div>
-            </div>
-            <div className="flex gap-[25px] items-center hover:text-[#508C9B]">
-              <FaGear />
-              <div>Settings</div>
-            </div>
-            <div className="flex gap-[25px] items-center hover:text-red-500">
-              <FaArrowRightFromBracket />
-              <div onClick={clickLogout}>Logout</div>
-            </div>
-          </div>
+        <Sidebar />
         </div>
         <div className="md:w-2/3 p-0 m-0 md:p-[100px] md:mr-[120px] bg-[#ffff] rounded-none md:rounded-[30px] flex gap-[50px] flex-col">
           <div className="flex md:items-center items-start gap-8 p-4 md:p-0 justify-between flex-col md:flex-row">

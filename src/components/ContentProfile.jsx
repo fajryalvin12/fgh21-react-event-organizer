@@ -20,6 +20,7 @@ import { removeProfile } from "../redux/reducers/profile";
 import Loading from "../components/Loading";
 import axios from "axios";
 import {addProfile} from "../redux/reducers/profile"
+import Sidebar from "./Sidebar";
 
 function ContentProfile() {
   const profile = useSelector((state) => state.profile.data);
@@ -71,6 +72,7 @@ function ContentProfile() {
     const gender = e.target.gender.value
     const profession = e.target.profession.value;
     const birthdate = e.target.birthdate.value;
+    console.log(username)
 
     const inputProfile = new URLSearchParams()
     inputProfile.append("fullName", fullname)
@@ -99,11 +101,9 @@ function ContentProfile() {
       // const data = await res.json()
     console.log(data.data.results)
       // dispatch(addProfile(data.data.results))
-
     } catch (error) {
       console.error("Failed to update profile!")
     }
-    
   }
 
   if (token === null) {
@@ -115,57 +115,7 @@ function ContentProfile() {
       {loading ? <Loading /> : ""}
       <div className="flex justify-center mt-12 ">
         <div className="w-1/3 px-[100px] flex-col gap-[30px] hidden md:flex">
-          <div className="flex gap-[20px]">
-            <img
-              // src={profile.picture}
-              alt=""
-              className="border border-[#373a42bf] rounded-full w-12 h-12"
-            />
-            <div>
-              <div className="font-semibold">{profile.fullName}</div>
-              <div>{profile.profession}</div>
-            </div>
-          </div>
-          <div className="flex flex-col gap-[30px] text-[#373a42bf] font-semibold">
-            <div className="flex gap-[25px] items-center hover:text-[#508C9B]">
-              <FaCircleUser />
-              <div>Profile</div>
-            </div>
-            <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#508C9B]">
-              <FaCreditCard />
-              <div className="stroke-zinc-600">Card</div>
-            </div>
-            <div className="pl-[50px] flex gap-[25px] text-[#508C9B] items-center hover:text-[#508C9B]">
-              <FaUserPen />
-              <div>Edit Profile</div>
-            </div>
-            <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#508C9B]">
-              <FaLock />
-              <div>
-                <Link to={"/ChangePassword"}>Change Password</Link>
-              </div>
-            </div>
-            <div className="flex gap-[25px] items-center hover:text-[#508C9B]">
-              <FaRectangleList />
-              <div>
-                <Link to={"/MyBooking"}>My Booking</Link>
-              </div>
-            </div>
-            <div className="flex gap-[25px] items-center hover:text-[#508C9B]">
-              <FaHeart />
-              <div>
-                <Link to={"/MyWishlist"}>My Wishlist</Link>
-              </div>
-            </div>
-            <div className="flex gap-[25px] items-center hover:text-[#508C9B]">
-              <FaGear />
-              <div>Settings</div>
-            </div>
-            <div className="flex gap-[25px] items-center hover:text-red-500">
-              <FaArrowRightFromBracket />
-              <div onClick={clickLogout}>Logout</div>
-            </div>
-          </div>
+          <Sidebar />
         </div>
         <div className="md:w-2/3 md:p-[100px] md:mr-[120px] md:flex-row w-full p-0 m-0 bg-[#ffff] rounded-none flex gap-[50px] flex-col-reverse md:rounded-3xl">
           <div className="flex-1">
