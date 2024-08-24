@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Footer from "./Footer";
-import Stadium from "../assets/images/stadium.png";
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -11,34 +10,68 @@ import {
 } from "react-icons/fa6";
 import axios from "axios";
 import TicketSection from "../components/TicketSection";
+import { 
+  addQty, 
+  addEventId, 
+  addEventTitle, 
+  addTotalPayment, 
+  addTicketSection, 
+  addSectionId, 
+  addQuantity 
+} from "../redux/reducers/section"
 
-function ContentEvent(props) {
+function ContentBooking() {
   const id = useParams().id;
+  const dispatch = useDispatch()
   const endpointSection = "http://localhost:8888/events/section/" + id;
   const endpointEvent = "http://localhost:8888/events/" + id;
-  const [book, setBook] = useState({});
-  const [section, setSection] = useState([]);
-  const [count, setCount] = useState(0);
 
+  const [book, setBook] = useState([]);
+  const [section, setSection] = useState([]);
   useEffect(() => {
     (async () => {
       const data = await axios.get(endpointEvent);
-      const sections = await axios.get(endpointSection);
       setBook(data.data.results);
+      const sections = await axios.get(endpointSection);
       setSection(sections.data.results);
     })();
   }, []);
 
-  const sections = useSelector((state) => state.section.selected);
-  const ticketSection = sections.reduce((prev, curr) => {
+  const [selectedSections, setSelectedSections] = useState([])
+
+  const ticketSection = selectedSections.reduce((prev, curr) => {
     const arr = prev;
-    if (curr.quantity != 0) {
-      arr.push(curr.name + `(${curr.quantity})`);
+    if (curr.quantity !== 0) {
+      arr.push(`${curr.name}(${curr.quantity})`);
     }
     return arr;
   }, []);
-  const quantity = sections.reduce((prev, curr) => prev + curr.quantity, 0);
-  const price = sections.reduce((prev, curr) => prev + curr.price, 0);
+  const quantity = selectedSections.reduce((prev, curr) => prev + curr.quantity, 0);
+  const price = selectedSections.reduce((prev, curr) => prev + curr.price, 0);
+
+  const sectionId = selectedSections.reduce((prev, curr) => {
+    const arr = prev;
+    if (curr.quantity !== 0) {
+      arr.push(curr.id);
+    }
+    return arr;
+  }, []);
+  const quantityArray = selectedSections.reduce((prev, curr) => {
+    const arr = prev;
+    if (curr.quantity !== 0) {
+      arr.push(curr.quantity);
+    }
+    return arr;
+  }, []);
+  console.log(price)
+  
+  dispatch(addQty(quantity))
+  dispatch(addEventId(id))
+  dispatch(addEventTitle(book.title))
+  dispatch(addTotalPayment(price))
+  dispatch(addTicketSection(ticketSection))
+  dispatch(addSectionId(sectionId))
+  dispatch(addQuantity(quantityArray))
 
   return (
     <div className="bg-[#EEEEEE] p-0 md:py-[50px]">
@@ -64,7 +97,13 @@ function ContentEvent(props) {
           </div>
           <div className="flex flex-col gap-[50px]">
             {section.map((item, index) => {
-              return <TicketSection data={item} />;
+              return <TicketSection
+              key={item.id}
+              data={item}
+              index={index}
+              currentData={selectedSections}
+              onChange={setSelectedSections} 
+              />;
             })}
           </div>
           <hr />
@@ -72,7 +111,7 @@ function ContentEvent(props) {
             <div className="flex justify-between w-full items-center">
               <div>Ticket Section</div>
               <div className="text-[#508C9B] flex items-center">
-                {ticketSection.join(`, `)}
+                {ticketSection.length == 0 ? "-" : ticketSection.join(", ")}
               </div>
             </div>
             <div className="flex justify-between w-full items-center">
@@ -84,7 +123,7 @@ function ContentEvent(props) {
             <div className="flex justify-between w-full items-center">
               <div>Total Payment</div>
               <div className="text-[#508C9B] flex items-center">
-                {price === 0 ? "-" : price.toLocaleString("id")}
+                {price === 0 ? "-" : `Rp. ${price.toLocaleString("id")}`}
               </div>
             </div>
           </div>
@@ -100,7 +139,7 @@ function ContentEvent(props) {
   );
 }
 
-export default ContentEvent;
+export default ContentBooking;
 
 {
   /* <div className="flex flex-col gap-[15px] w-full">

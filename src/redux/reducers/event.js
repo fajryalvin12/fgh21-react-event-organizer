@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   boxEvent: [],
+  listEvent: {}
 };
 
 const event = createSlice({
@@ -11,8 +12,11 @@ const event = createSlice({
     addEvent: (state, action) => {
       state.boxEvent = action.payload;
     },
+    selectEventId: (state, action) => {
+      state.listEvent = action.payload
+    }
   },
 });
 
-export const { addEvent } = event.actions;
+export const { addEvent, selectEventId } = event.actions;
 export default event.reducer;
