@@ -1,17 +1,6 @@
 import React, { useEffect } from "react";
 import Footer from "../components/Footer";
-import AvatarProfile from "../assets/icons/avatar-profile.png";
-import { Link } from "react-router-dom";
-import {
-  FaCircleUser,
-  FaCreditCard,
-  FaUserPen,
-  FaLock,
-  FaRectangleList,
-  FaHeart,
-  FaGear,
-  FaArrowRightFromBracket,
-} from "react-icons/fa6";
+import Antony from "../assets/images/antony.png";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -19,27 +8,27 @@ import { logout } from "../redux/reducers/auth";
 import { removeProfile } from "../redux/reducers/profile";
 import Loading from "../components/Loading";
 import axios from "axios";
-import {addProfile} from "../redux/reducers/profile"
+import { addProfile } from "../redux/reducers/profile";
 import Sidebar from "./Sidebar";
 
 function ContentProfile() {
   const profile = useSelector((state) => state.profile.data);
   const [profession, setProfession] = React.useState([]);
   const [nationalities, setNationalities] = React.useState([]);
-  const [national, setNational] = React.useState(profile.nationality)
+  const [national, setNational] = React.useState(profile.nationality);
   const [loading, setLoading] = React.useState(0);
   const [message, setMessage] = React.useState("");
   const token = useSelector((state) => state.auth.token);
-  console.log(profile)
+  console.log(profile);
 
-  const linkNat = "http://localhost:8888/nationalities"
-  const linkEdit = "http://localhost:8888/profile"
+  const linkNat = "http://localhost:8888/nationalities";
+  const linkEdit = "http://localhost:8888/profile";
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
-    getNation()
-  },[])
+    getNation();
+  }, []);
 
   function clickLogout(e) {
     e.preventDefault();
@@ -48,49 +37,47 @@ function ContentProfile() {
     navigate("/login");
   }
   function changeNations(e) {
-    setNational(e.target.value)
+    setNational(e.target.value);
   }
-  async function getNation () {
-    setLoading(1)
+  async function getNation() {
+    setLoading(1);
     const res = await fetch(linkNat, {
       headers: {
-        Authorization: `Bearer: ${token}`
-      }
-    })
-    const data = await res.json()
-    const nationName = data.results
-    setNationalities(nationName)
-    setLoading(0)
+        Authorization: `Bearer: ${token}`,
+      },
+    });
+    const data = await res.json();
+    const nationName = data.results;
+    setNationalities(nationName);
+    setLoading(0);
   }
-  const [notif, setNotif] = React.useState(0)
+  const [notif, setNotif] = React.useState(0);
   async function processProfile(e) {
     e.preventDefault();
     const fullname = e.target.fullname.value;
     const username = e.target.username.value;
     const email = e.target.email.value;
     const phone = e.target.phone.value;
-    const gender = e.target.gender.value
+    const gender = e.target.gender.value;
     const profession = e.target.profession.value;
     const birthdate = e.target.birthdate.value;
-    console.log(username)
 
-    const inputProfile = new URLSearchParams()
-    inputProfile.append("fullName", fullname)
-    inputProfile.append("username", username)
-    inputProfile.append("email", email)
-    inputProfile.append("gender", gender)
-    inputProfile.append("phoneNumber", phone)
-    inputProfile.append("profession", profession)
-    inputProfile.append("nationality", national)
-    inputProfile.append("birthDate", birthdate)
+    const inputProfile = new URLSearchParams();
+    inputProfile.append("fullName", fullname);
+    inputProfile.append("username", username);
+    inputProfile.append("email", email);
+    inputProfile.append("gender", gender);
+    inputProfile.append("phoneNumber", phone);
+    inputProfile.append("profession", profession);
+    inputProfile.append("nationality", national);
+    inputProfile.append("birthDate", birthdate);
 
     try {
-      const data = await axios.patch(linkEdit, inputProfile, 
-      {
+      const data = await axios.patch(linkEdit, inputProfile, {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
+          Authorization: `Bearer ${token}`,
+        },
+      });
       // const res = await fetch (linkEdit, {
       //   method: "PATCH",
       //   body: inputProfile,
@@ -99,15 +86,15 @@ function ContentProfile() {
       //   }
       // })
       // const data = await res.json()
-    console.log(data.data.results)
+      console.log(data.data.results);
       // dispatch(addProfile(data.data.results))
     } catch (error) {
-      console.error("Failed to update profile!")
+      console.error("Failed to update profile!");
     }
   }
 
   if (token === null) {
-    navigate("/Login")
+    navigate("/Login");
   }
 
   return (
@@ -227,14 +214,15 @@ function ContentProfile() {
                   className="p-[10px] border rounded-xl w-2/3 outline-none text-[12px]"
                 >
                   {nationalities.map((nation) => {
-                    return(
+                    return (
                       <option
-                      key={nation.id}
-                      value={nation.id}
-                      selected={nation.id === profile.nationality}>
+                        key={nation.id}
+                        value={nation.id}
+                        selected={nation.id === profile.nationality}
+                      >
                         {nation.name}
                       </option>
-                    )
+                    );
                   })}
                 </select>
               </div>
@@ -262,8 +250,8 @@ function ContentProfile() {
           <div className="flex-1">
             <div className="flex items-center flex-col gap-[20px]">
               <img
-                className="h-[200px] w-[200px] rounded-full border-4 border-[#373a42bf]"
-                src={profile.picture}
+                className="h-[200px] w-[200px] rounded-full border-4 border-[#373a42bf] object-cover"
+                src={Antony}
               />
               <div>
                 <button

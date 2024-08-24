@@ -1,10 +1,9 @@
 import React, { useRef } from "react";
-import Logo from "../assets/icons/logo.png";
-import AvatarProfile from "../assets/icons/avatar-profile.png";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { FaAlignJustify } from "react-icons/fa6";
 import Brand from "../components/Brand";
+import Antony from "../assets/images/antony.png"
 
 function NavbarProfile() {
   const menuBar = useRef();
@@ -46,8 +45,8 @@ function NavbarProfile() {
         <div>
           <Link to={"/profile"}>
             <img
-              className="border border-[#373a42bf] rounded-full w-12 h-12"
-              src={profile.picture}
+              className="border border-[#373a42bf] rounded-full w-12 h-12 object-cover"
+              src={Antony}
               alt=""
             />
           </Link>

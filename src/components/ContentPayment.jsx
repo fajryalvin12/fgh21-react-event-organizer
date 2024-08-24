@@ -16,24 +16,52 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 
 function ContentPayment() {
-  const id = useParams().id;
   const navigate = useNavigate();
-  const [trx, setTrx] = useState([]);
-  const endpointTrx = "http://localhost:8888/transactions/" + id;
-  function processPayment() {
-    navigate("/MyBooking");
-  }
-  useEffect(() => {
-    (async () => {
-      const data = await axios.get(endpointTrx);
-      setTrx(data.data.results);
-    })();
-  }, []);
+  const endpointTrx = "http://localhost:8888/transactions";
   const token = useSelector((state) => state.auth.token);
-  console.log(token)
-  if (token === null) {
-    navigate("/Login")
+  const eventTitle = useSelector((state) => state.section.eventTitle);
+  const qty = useSelector((state) => state.section.qty);
+  const eventId = useSelector((state) => state.section.eventId);
+  const totalPayment = useSelector((state) => state.section.totalPayment);
+  const ticketSection = useSelector((state) => state.section.ticketSection);
+  const sectionId = useSelector((state) => state.section.sectionId);
+  const quantityArray = useSelector((state) => state.section.quantity);
+  const [payMethod, setPayMethod] = useState(0);
+  function tooglePayment(event) {
+    setPayMethod(event.target.value);
   }
+
+  async function processPayment() {
+    try {
+      const response = await axios.post(
+        endpointTrx,
+        {
+          eventId: parseInt(eventId),
+          paymentMethodId: parseInt(payMethod),
+          sectionId: sectionId,
+          ticketQty: quantityArray,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+    } catch (error) {
+      console.error("Error to proceed data");
+      navigate("/login");
+      return;
+    }
+    navigate("/my-booking");
+  }
+  // useEffect(() => {
+  //   (async () => {
+  //     const data = await axios.get(endpointTrx);
+  //   })();
+  // }, []);
+  // if (token === null) {
+  //   navigate("/Login")
+  // }
 
   return (
     <div className="bg-[#EEEEEE] p-0 md:py-[50px]">
@@ -45,11 +73,18 @@ function ContentPayment() {
             </div>
             <div className="flex items-center gap-[15px] justify-between">
               <div className="flex gap-[10px] items-center">
-                <input type="radio" id="card" name="payment" />
+                <input
+                  type="radio"
+                  id="card"
+                  name="payment"
+                  value={1}
+                  checked={payMethod === 1}
+                  onChange={tooglePayment}
+                />
                 <div className="p-[10px] bg-[#F1EAFF] text-[#884DFF] rounded-[10px]">
                   <FaCreditCard />
                 </div>
-                <label className="font-bold" for="card">
+                <label className="font-bold" htmlFor="card">
                   Card
                 </label>
               </div>
@@ -65,11 +100,18 @@ function ContentPayment() {
             </div>
             <div className="flex items-center gap-[15px] justify-between">
               <div className="flex gap-[10px] items-center">
-                <input type="radio" id="bank" name="payment" />
+                <input
+                  type="radio"
+                  id="bank"
+                  name="payment"
+                  value={2}
+                  // checked={payMethod === 2}
+                  onChange={tooglePayment}
+                />
                 <div className="p-[10px] bg-[#FFEAEF] text-[#FF3D71] rounded-[10px]">
                   <FaBuildingColumns />
                 </div>
-                <label className="font-bold" for="bank">
+                <label className="font-bold" htmlFor="bank">
                   Bank Transfer
                 </label>
               </div>
@@ -79,11 +121,18 @@ function ContentPayment() {
             </div>
             <div className="flex items-center gap-[15px] justify-between">
               <div className="flex gap-[10px]">
-                <input type="radio" id="retail" name="payment" />
+                <input
+                  type="radio"
+                  id="retail"
+                  name="payment"
+                  value={3}
+                  // checked={payMethod === 2}
+                  onChange={tooglePayment}
+                />
                 <div className="p-[10px] bg-[#FFF4E7] text-[#FF8900] rounded-[10px]">
                   <FaShop />
                 </div>
-                <label className="font-bold" for="retail">
+                <label className="font-bold" htmlFor="retail">
                   Retail
                 </label>
               </div>
@@ -93,11 +142,18 @@ function ContentPayment() {
             </div>
             <div className="flex items-center gap-[15px] justify-between">
               <div className="flex gap-[10px] items-center">
-                <input type="radio" id="money" name="payment" />
+                <input
+                  type="radio"
+                  id="money"
+                  name="payment"
+                  value={4}
+                  // checked={payMethod === 2}
+                  onChange={tooglePayment}
+                />
                 <div className="p-[10px] bg-[#D6E0FF] text-[#3366FF] rounded-[10px]">
                   <FaDollarSign />
                 </div>
-                <label className="font-bold" for="money">
+                <label className="font-bold" htmlFor="money">
                   E-Money
                 </label>
               </div>
@@ -115,19 +171,27 @@ function ContentPayment() {
             <div className="flex flex-col gap-[15px] font-semibold mb-[50px]">
               <div className="flex justify-between w-full">
                 <div>Event</div>
-                <div className="text-[#508C9B]">Name Event</div>
+                <div className="text-[#508C9B]">
+                  {eventId === 0 ? "-" : eventTitle}
+                </div>
               </div>
               <div className="flex justify-between w-full">
                 <div>Ticket Section</div>
-                <div className="text-[#508C9B]">Regular</div>
+                <div className="text-[#508C9B]">
+                  {ticketSection.length === 0 ? "-" : ticketSection.join(", ")}
+                </div>
               </div>
               <div className="flex justify-between w-full">
                 <div>Quantity</div>
-                <div className="text-[#508C9B]">10</div>
+                <div className="text-[#508C9B]">{qty === 0 ? "-" : qty}</div>
               </div>
               <div className="flex justify-between w-full">
                 <div>Total Payment</div>
-                <div className="text-[#508C9B]">Rp1.000.000</div>
+                <div className="text-[#508C9B]">
+                  {totalPayment === 0
+                    ? "-"
+                    : `Rp.${totalPayment.toLocaleString("id")}`}
+                </div>
               </div>
             </div>
             <div>

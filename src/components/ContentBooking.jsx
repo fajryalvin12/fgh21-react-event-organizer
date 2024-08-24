@@ -10,19 +10,19 @@ import {
 } from "react-icons/fa6";
 import axios from "axios";
 import TicketSection from "../components/TicketSection";
-import { 
-  addQty, 
-  addEventId, 
-  addEventTitle, 
-  addTotalPayment, 
-  addTicketSection, 
-  addSectionId, 
-  addQuantity 
-} from "../redux/reducers/section"
+import {
+  addQty,
+  addEventId,
+  addEventTitle,
+  addTotalPayment,
+  addTicketSection,
+  addSectionId,
+  addQuantity,
+} from "../redux/reducers/section";
 
 function ContentBooking() {
   const id = useParams().id;
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const endpointSection = "http://localhost:8888/events/section/" + id;
   const endpointEvent = "http://localhost:8888/events/" + id;
 
@@ -37,7 +37,7 @@ function ContentBooking() {
     })();
   }, []);
 
-  const [selectedSections, setSelectedSections] = useState([])
+  const [selectedSections, setSelectedSections] = useState([]);
 
   const ticketSection = selectedSections.reduce((prev, curr) => {
     const arr = prev;
@@ -46,7 +46,10 @@ function ContentBooking() {
     }
     return arr;
   }, []);
-  const quantity = selectedSections.reduce((prev, curr) => prev + curr.quantity, 0);
+  const quantity = selectedSections.reduce(
+    (prev, curr) => prev + curr.quantity,
+    0
+  );
   const price = selectedSections.reduce((prev, curr) => prev + curr.price, 0);
 
   const sectionId = selectedSections.reduce((prev, curr) => {
@@ -63,15 +66,14 @@ function ContentBooking() {
     }
     return arr;
   }, []);
-  console.log(price)
-  
-  dispatch(addQty(quantity))
-  dispatch(addEventId(id))
-  dispatch(addEventTitle(book.title))
-  dispatch(addTotalPayment(price))
-  dispatch(addTicketSection(ticketSection))
-  dispatch(addSectionId(sectionId))
-  dispatch(addQuantity(quantityArray))
+
+  dispatch(addQty(quantity));
+  dispatch(addEventId(id));
+  dispatch(addEventTitle(book.title));
+  dispatch(addTotalPayment(price));
+  dispatch(addTicketSection(ticketSection));
+  dispatch(addSectionId(sectionId));
+  dispatch(addQuantity(quantityArray));
 
   return (
     <div className="bg-[#EEEEEE] p-0 md:py-[50px]">
@@ -97,13 +99,15 @@ function ContentBooking() {
           </div>
           <div className="flex flex-col gap-[50px]">
             {section.map((item, index) => {
-              return <TicketSection
-              key={item.id}
-              data={item}
-              index={index}
-              currentData={selectedSections}
-              onChange={setSelectedSections} 
-              />;
+              return (
+                <TicketSection
+                  key={item.id}
+                  data={item}
+                  index={index}
+                  currentData={selectedSections}
+                  onChange={setSelectedSections}
+                />
+              );
             })}
           </div>
           <hr />
@@ -129,7 +133,7 @@ function ContentBooking() {
           </div>
           <div>
             <button className="w-full py-[16px] px-110px] text-[#ffff] font-semibold text-[16px] rounded-[15px] bg-[#201E43]">
-              <Link to={"/PaymentPage"}>Checkout</Link>
+              <Link to={"/payment"}>Checkout</Link>
             </button>
           </div>
         </div>

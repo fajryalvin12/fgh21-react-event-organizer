@@ -3,7 +3,7 @@ import Logo from "../assets/icons/logo.png";
 import { Link } from "react-router-dom";
 import { FaAlignJustify } from "react-icons/fa6";
 import { useSelector } from "react-redux";
-import AvatarProfile from "../assets/icons/avatar-profile.png";
+import Antony from "../assets/images/antony.png";
 import Brand from "../components/Brand";
 
 function Navbar() {
@@ -42,10 +42,10 @@ function Navbar() {
           ref={authButton}
           className="px-[10px] flex gap-[10px] flex-col md:flex-row"
         >
-          <button className="px-[50px] py-[10px] rounded-xl border font-semibold">
+          <button className="px-[50px] py-[10px] rounded-xl border font-semibold hover:bg-[#134B70] hover:text-white">
             <Link to={"/login"}>Login</Link>
           </button>
-          <button className="px-[50px] py-[10px] rounded-xl border font-semibold bg-[#134B70] text-white">
+          <button className="px-[50px] py-[10px] rounded-xl border font-semibold bg-[#134B70] text-white hover:bg-white hover:text-black">
             <Link to={"/signup"}>Sign Up</Link>
           </button>
         </div>
@@ -54,8 +54,8 @@ function Navbar() {
           <div>
             <Link to={"/profile"}>
               <img
-                className="border border-[#134B70] rounded-full h-12 w-12"
-                src={profile.picture}
+                className="border border-[#134B70] rounded-full h-12 w-12 object-cover"
+                src={Antony}
                 alt=""
               />
             </Link>

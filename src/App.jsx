@@ -42,7 +42,7 @@ const arrayRouter = [
     element: <BookingPage />,
   },
   {
-    path: "/PaymentPage",
+    path: "/payment",
     element: <PaymentPage />,
   },
   {
@@ -50,11 +50,11 @@ const arrayRouter = [
     element: <ProfilePage />,
   },
   {
-    path: "/ChangePassword",
+    path: "/change-password",
     element: <ChangePassword />,
   },
   {
-    path: "/MyBooking",
+    path: "/my-booking",
     element: <MyBooking />,
   },
   {

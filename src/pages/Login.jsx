@@ -17,7 +17,7 @@ function Login() {
   let [alert, setAlert] = React.useState(0);
   let [loading, setLoading] = React.useState(0);
   const [message, setMessage] = React.useState("");
-  const ilyas = useSelector((state)=>state.profile.data)
+  const ilyas = useSelector((state) => state.profile.data);
   async function processLogin(e) {
     e.preventDefault();
     const formEmail = e.target.email.value;
@@ -71,7 +71,7 @@ function Login() {
           className="flex flex-col justify-center gap-[20px] p-8 md:p-0 mt-28 md:m-[100px]"
         >
           <Link to={"/"}>
-          <Brand />
+            <Brand />
           </Link>
           <div className="text-2xl font-bold">Sign In</div>
           <div>Hi, Welcome back to Urticket!</div>
@@ -116,7 +116,7 @@ function Login() {
           </div>
           <div>
             <button
-              className="p-[10px] w-full text-[16px] bg-[#134B70] text-white rounded-xl font-semibold"
+              className="p-[10px] w-full text-[16px] bg-[#134B70] text-white rounded-xl font-semibold hover:text-[#134B70] hover:bg-white hover:border"
               type="submit"
             >
               Sign In
@@ -124,7 +124,7 @@ function Login() {
           </div>
           <div className="flex flex-col gap-[10px] justify-center items-center">
             <button
-              className="p-[10px] w-full text-[16px] bg-white border text-[#134B70] rounded-xl font-semibold"
+              className="p-[10px] w-full text-[16px] bg-white border text-[#134B70] rounded-xl font-semibold hover:bg-[#134B70] hover:text-white"
               type="submit"
             >
               <Link to={"/signup"}> Create New Account</Link>
