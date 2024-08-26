@@ -19,6 +19,7 @@ function Login() {
   const [message, setMessage] = React.useState("");
   const ilyas = useSelector((state) => state.profile.data);
   async function processLogin(e) {
+    setLoading(1);
     e.preventDefault();
     const formEmail = e.target.email.value;
     const formPass = e.target.password.value;
@@ -45,6 +46,7 @@ function Login() {
       const realData = await getData.json();
       dispatch(addProfile(realData));
       navigate("/");
+      setTimeout(() => setLoading(0), 5000);
     } else {
       setLoading(1);
       setMessage(data.message);

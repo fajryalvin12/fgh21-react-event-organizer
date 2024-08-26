@@ -53,6 +53,7 @@ function ContentProfile() {
   }
   const [notif, setNotif] = React.useState(0);
   async function processProfile(e) {
+    setLoading(1);
     e.preventDefault();
     const fullname = e.target.fullname.value;
     const username = e.target.username.value;
@@ -87,10 +88,11 @@ function ContentProfile() {
       // })
       // const data = await res.json()
       console.log(data.data.results);
-      // dispatch(addProfile(data.data.results))
+      // dispatch(addProfile(data.data.results));
     } catch (error) {
       console.error("Failed to update profile!");
     }
+    setTimeout(() => setLoading(0), 2000);
   }
 
   if (token === null) {

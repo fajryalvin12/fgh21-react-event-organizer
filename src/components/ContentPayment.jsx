@@ -14,6 +14,7 @@ import {
 } from "react-icons/fa6";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
+import Loading from "./Loading";
 
 function ContentPayment() {
   const navigate = useNavigate();
@@ -27,11 +28,13 @@ function ContentPayment() {
   const sectionId = useSelector((state) => state.section.sectionId);
   const quantityArray = useSelector((state) => state.section.quantity);
   const [payMethod, setPayMethod] = useState(0);
+  const [loading, setLoading] = React.useState(0);
   function tooglePayment(event) {
     setPayMethod(event.target.value);
   }
 
   async function processPayment() {
+    setLoading(1);
     try {
       const response = await axios.post(
         endpointTrx,
@@ -53,6 +56,7 @@ function ContentPayment() {
       return;
     }
     navigate("/my-booking");
+    setTimeout(() => setLoading(0), 5000);
   }
   // useEffect(() => {
   //   (async () => {
@@ -65,6 +69,7 @@ function ContentPayment() {
 
   return (
     <div className="bg-[#EEEEEE] p-0 md:py-[50px]">
+      {loading ? <Loading /> : ""}
       <div className="p-6 m-0 md:p-[100px] md:mx-[120px] bg-[#ffff] flex-col md:flex-row rounded-[30px] flex gap-[50px]">
         <div className="flex-1">
           <div className="flex flex-col gap-[50px]">
@@ -78,7 +83,7 @@ function ContentPayment() {
                   id="card"
                   name="payment"
                   value={1}
-                  checked={payMethod === 1}
+                  // checked={payMethod === 1}
                   onChange={tooglePayment}
                 />
                 <div className="p-[10px] bg-[#F1EAFF] text-[#884DFF] rounded-[10px]">

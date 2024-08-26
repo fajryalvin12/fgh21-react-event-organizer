@@ -14,16 +14,66 @@ function ContentCreateEvent() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [eventId, setEventId] = useState([]);
+  const [category, setCategory] = useState([]);
+  const [location, setLocation] = useState([]);
   const endpoint = "http://localhost:8888/events";
+  const urlCategories = "http://localhost:8888/categories";
+  const urlLocations = "http://localhost:8888/locations";
   async function dataEvent() {
     const data = await axios.get(endpoint);
     const listEvent = data.data.results;
     setEventId(listEvent);
   }
+  async function dataCategory() {
+    const data = await axios.get(urlCategories);
+    const listCategories = data.data.results;
+    setCategory(listCategories);
+  }
+  async function dataLocations() {
+    const data = await axios.get(urlLocations);
+    const listLocations = data.data.results;
+    setLocation(listLocations);
+  }
+  async function createEvent(e) {
+    const title = e.target.name.value;
+    const category = parseInt(e.target.category.value);
+    const location = parseInt(e.target.location.value);
+    const date = e.target.date.value;
+    const image = e.target.image.value;
+    const description = e.target.details.value;
+
+    // const inputEvent = new URLSearchParams();
+    // inputEvent.append("title", title);
+    // inputEvent.append("location_id", location);
+    // inputEvent.append("date", date);
+    // inputEvent.append("image", image);
+    // inputEvent.append("description", description);
+
+    try {
+      const response = await axios.post(
+        endpoint,
+        {
+          image: image,
+          title: title,
+          date: date,
+          description: description,
+          locationId: location,
+        },
+        {
+          headers: {
+            Authorization: `Bearer: ${token}`,
+          },
+        }
+      );
+    } catch (error) {
+      console.error("Failed to create new event");
+    }
+  }
   useEffect(() => {
     dataEvent();
+    dataCategory();
+    dataLocations();
   }, []);
-  console.log(eventId);
   function setPopUp() {
     const PopUp = document.getElementById("popup");
     PopUp.classList.toggle("hidden");
@@ -47,7 +97,7 @@ function ContentCreateEvent() {
         <div className="w-1/3 px-[100px] flex-col gap-[30px] hidden md:flex">
           <Sidebar />
         </div>
-        <div className="md:w-2/3 p-0 m-0 md:p-[100px] md:mr-[120px] bg-[#ffff]  rounded-none md:rounded-[30px] flex gap-[50px] flex-col">
+        <div className="md:w-2/3 p-0 m-0 md:p-[100px] md:mr-[120px] bg-[#ffff] rounded-none md:rounded-[30px] flex gap-[50px] flex-col h-[700px]">
           <div className="flex md:items-center items-start gap-8 p-4 md:p-0 justify-between flex-col md:flex-row">
             <div className="text-[20px] font-bold">Manage Event</div>
             <button
@@ -57,7 +107,7 @@ function ContentCreateEvent() {
               Create
             </button>
           </div>
-          <div className="flex flex-col gap-[20px]">
+          <div className="flex flex-col gap-[20px] overflow-y-scroll">
             {eventId.map((item) => {
               return (
                 <div className="flex justify-between">
@@ -99,39 +149,59 @@ function ContentCreateEvent() {
           className="bg-[#ffff] rounded-3xl p-4 m-8 md:p-20 md:m-20"
         >
           <div className="font-bold text-2xl mb-10">Update Event</div>
-          <form className="flex flex-col gap-2 md:gap-10">
+          <form
+            onSubmit={createEvent}
+            className="flex flex-col gap-2 md:gap-10"
+          >
             <div className="flex flex-col md:flex-row items-center gap-12">
               <div className="flex-1 flex flex-col gap-4">
                 <label htmlFor="">Name</label>
                 <input
-                  className="border p-5 w-full mr-10 rounded-xl"
+                  className="border p-5 w-full mr-10 rounded-xl outline-none"
                   type="text"
+                  name="name"
                   placeholder="Input name event..."
                 />
               </div>
               <div className="flex-1 flex flex-col gap-4">
-                <label htmlFor="">Category</label>
-                <input
-                  className="border p-5 w-full mr-10 rounded-xl"
-                  type="text"
-                  placeholder="Select Category"
-                />
+                <label htmlFor="category">Category</label>
+                <select
+                  className="border p-5 w-full mr-10 rounded-xl outline-none"
+                  name="category"
+                  id="category"
+                >
+                  {category.map((item) => {
+                    return (
+                      <option key={item.key} value={item.id}>
+                        {item.name}
+                      </option>
+                    );
+                  })}
+                </select>
               </div>
             </div>
             <div className="flex flex-col md:flex-row items-center gap-12">
               <div className="flex-1 flex flex-col gap-4">
-                <label htmlFor="">Location</label>
-                <input
-                  className="border p-5 w-full mr-10 rounded-xl"
-                  type="text"
-                  placeholder="Select Location"
-                />
+                <label htmlFor="location">Location</label>
+                <select
+                  className="border p-5 w-full mr-10 rounded-xl outline-none"
+                  name="location"
+                  id="location"
+                >
+                  {location.map((item) => {
+                    return (
+                      <option key={item.key} value={item.id}>
+                        {item.name}
+                      </option>
+                    );
+                  })}
+                </select>
               </div>
               <div className="flex-1 flex flex-col gap-4">
                 <label htmlFor="">Date/Time Show</label>
                 <input
-                  className="border p-5 w-full mr-10 rounded-xl"
-                  type="text"
+                  className="border p-5 w-full mr-10 rounded-xl outline-none"
+                  type="date"
                   placeholder="01/01/2022"
                 />
               </div>
@@ -140,7 +210,7 @@ function ContentCreateEvent() {
               <div className="flex-1 flex flex-col gap-4">
                 <label htmlFor="">Price</label>
                 <input
-                  className="border p-5 w-full mr-10 rounded-xl"
+                  className="border p-5 w-full mr-10 rounded-xl outline-none"
                   type="text"
                   placeholder="Input Price ..."
                 />
@@ -148,8 +218,9 @@ function ContentCreateEvent() {
               <div className="flex-1 flex flex-col gap-4">
                 <label htmlFor="">Image</label>
                 <input
-                  className="border p-5 w-full mr-10 rounded-xl"
+                  className="border p-5 w-full mr-10 rounded-xl outline-none"
                   type="text"
+                  name="image"
                   placeholder="Choose File ..."
                 />
               </div>
@@ -158,8 +229,9 @@ function ContentCreateEvent() {
               <div className="flex-1 flex flex-col gap-4">
                 <label htmlFor="">Detail</label>
                 <input
-                  className="border p-5 w-full mr-10 rounded-xl"
+                  className="border p-5 w-full mr-10 rounded-xl outline-none"
                   type="text"
+                  name="details"
                   placeholder="Input Details"
                 />
               </div>

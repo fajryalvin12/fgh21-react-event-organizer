@@ -16,18 +16,22 @@ import { logout } from "../redux/reducers/auth";
 import { removeProfile } from "../redux/reducers/profile";
 import { Link } from "react-router-dom";
 import Antony from "../assets/images/antony.png";
+import Loading from "../components/Loading";
 
 function Sidebar() {
   const token = useSelector((state) => state.auth.token);
   const profile = useSelector((state) => state.profile.data);
+  const [loading, setLoading] = React.useState(0);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   function clickLogout(e) {
+    setLoading(1);
     e.preventDefault();
     dispatch(logout(null));
     dispatch(removeProfile(null));
     navigate("/login");
+    setTimeout(() => setLoading(0), 2000);
   }
 
   return (

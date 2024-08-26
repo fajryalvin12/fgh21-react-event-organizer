@@ -3,6 +3,7 @@ import Footer from "./Footer";
 import { FaCalendarDays } from "react-icons/fa6";
 import { useSelector, useDispatch } from "react-redux";
 import Sidebar from "./Sidebar";
+import Loading from "./Loading";
 
 function ContentMyBooking() {
   const token = useSelector((state) => state.auth.token);
@@ -26,7 +27,7 @@ function ContentMyBooking() {
         <div className="w-1/3 px-[100px] flex-col gap-[30px] hidden md:flex">
           <Sidebar />
         </div>
-        <div className="md:w-2/3 p-0 m-0 md:p-[100px] md:mr-[120px] bg-[#ffff] rounded-none md:rounded-[30px] flex gap-[50px] flex-col">
+        <div className="md:w-2/3 p-0 m-0 md:p-[100px] md:mr-[120px] bg-[#ffff] rounded-none md:rounded-[30px] flex gap-[50px] flex-col h-[700px]">
           <div className="flex md:items-center items-start gap-8 p-4 md:p-0 justify-between flex-col md:flex-row">
             <div className="text-[20px] font-bold">My Booking</div>
             <div className="flex gap-[10px] items-center p-[20px] bg-[#D6E0FF] text-[#508C9B] rounded-[15px] font-semibold">
@@ -34,7 +35,7 @@ function ContentMyBooking() {
               <div>March</div>
             </div>
           </div>
-          <div className="flex flex-col gap-[20px] overflow-y-scroll h-[800px]">
+          <div className="flex flex-col gap-[20px] overflow-y-scroll">
             {detailBook.length > 0 ? (
               detailBook.map((item) => {
                 return (

@@ -29,7 +29,7 @@ function BoxWrapper() {
       {eventId.map((item) => {
         return (
           <div
-            className="flex w-[260px] h-[376px] items-center justify-center relative shrink-0" 
+            className="flex w-[260px] h-[376px] items-center justify-center relative shrink-0"
             key={item.id}
           >
             <img
