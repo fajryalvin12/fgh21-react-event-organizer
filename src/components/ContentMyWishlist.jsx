@@ -1,40 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AvatarProfile from "../assets/icons/avatar-profile.png";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
-import {
-  FaCircleUser,
-  FaCreditCard,
-  FaUserPen,
-  FaLock,
-  FaRectangleList,
-  FaHeart,
-  FaGear,
-  FaArrowRightFromBracket,
-  FaCalendarDays,
-  FaRegHeart,
-  FaCirclePlus,
-} from "react-icons/fa6";
+import { FaCalendarDays, FaRegHeart } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Sidebar from "./Sidebar";
+import axios from "axios";
 
 function ContentMyWishlist() {
   const navigate = useNavigate();
-  function clickLogout(e) {
-    e.preventDefault();
-    window.alert("Your account has been logged out!");
-    navigate("/Login");
+  const token = useSelector((state) => state.auth.token);
+  const getWishlist = "http://localhost:8888/wishlist";
+  const [wishlist, setWishlist] = useState([]);
+  // if (token === null) {
+  //   navigate("/login");
+  // }
+  // console.log(token);
+
+  async function userWishlist() {
+    const response = await axios.get(getWishlist, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    setWishlist(response.data.results);
   }
-  function clickEdit(e) {
-    e.preventDefault();
-    navigate("/ProfilePage");
-  }
-  function clickEvent(e) {
-    e.preventDefault();
-    navigate("/EventPage");
-  }
-  const profile = useSelector((state) => state.profile.data);
+
+  useEffect(() => {
+    userWishlist();
+  }, []);
 
   return (
     <div className="bg-[#EEEEEE] p-0 md:py-[50px]">
@@ -51,110 +46,47 @@ function ContentMyWishlist() {
             </button>
           </div>
           <div className="flex flex-col gap-[20px]">
-            <div className="flex justify-between">
-              <div className="flex gap-[25px]">
-                <div className="p-[10px] text-center font-semibold text-[#ff8900]">
-                  <div>15</div>
-                  <div className="text-gray-500">Wed</div>
-                </div>
-                <div className="flex flex-col gap-[15px]">
-                  <div className="text-[24px] font-bold">
-                    Sights & Sounds Exhibition
+            {wishlist.length > 0 ? (
+              wishlist.map((item) => {
+                return (
+                  <div className="flex justify-between">
+                    <div className="flex gap-[25px]">
+                      <div className="p-[10px] text-center font-semibold text-[#ff8900]">
+                        <div>15</div>
+                        <div className="text-gray-500">Wed</div>
+                      </div>
+                      <div className="flex flex-col gap-[15px]">
+                        <div className="text-[24px] font-bold">
+                          Sights & Sounds Exhibition
+                        </div>
+                        <div>
+                          <div className="text-gray-500">
+                            Jakarta, Indonesia
+                          </div>
+                          <div className="text-gray-500">
+                            Wed, 15 Nov, 4:00 PM
+                          </div>
+                        </div>
+                        <div className="text-[#508C9B] font-semibold">
+                          Details
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <FaRegHeart className="w-[36px] h-[36px]" />
+                    </div>
                   </div>
-                  <div>
-                    <div className="text-gray-500">Jakarta, Indonesia</div>
-                    <div className="text-gray-500">Wed, 15 Nov, 4:00 PM</div>
-                  </div>
-                  <div
-                    onClick={clickEvent}
-                    className="text-[#508C9B] font-semibold"
-                  >
-                    Details
-                  </div>
-                </div>
-              </div>
-              <div>
-                <FaRegHeart className="w-[36px] h-[36px]" />
-              </div>
-            </div>
-            <div className="flex justify-between">
-              <div className="flex gap-[25px]">
-                <div className="p-[10px] text-center font-semibold text-[#ff8900]">
-                  <div>15</div>
-                  <div className="text-gray-500">Wed</div>
-                </div>
-                <div className="flex flex-col gap-[15px]">
-                  <div className="text-[24px] font-bold">
-                    Sights & Sounds Exhibition
-                  </div>
-                  <div>
-                    <div className="text-gray-500">Jakarta, Indonesia</div>
-                    <div className="text-gray-500">Wed, 15 Nov, 4:00 PM</div>
-                  </div>
-                  <div
-                    onClick={clickEvent}
-                    className="text-[#508C9B] font-semibold"
-                  >
-                    Details
-                  </div>
+                );
+              })
+            ) : (
+              <div className="h-full w-full flex flex-col justify-center items-center gap-6">
+                <div className="text-2xl font-bold">No tickets bought</div>
+                <div>
+                  It appears you haven't bought any tickets yet. Maybe try
+                  searching else?
                 </div>
               </div>
-              <div>
-                <FaRegHeart className="w-[36px] h-[36px]" />
-              </div>
-            </div>
-            <div className="flex justify-between">
-              <div className="flex gap-[25px]">
-                <div className="p-[10px] text-center font-semibold text-[#ff8900]">
-                  <div>15</div>
-                  <div className="text-gray-500">Wed</div>
-                </div>
-                <div className="flex flex-col gap-[15px]">
-                  <div className="text-[24px] font-bold">
-                    Sights & Sounds Exhibition
-                  </div>
-                  <div>
-                    <div className="text-gray-500">Jakarta, Indonesia</div>
-                    <div className="text-gray-500">Wed, 15 Nov, 4:00 PM</div>
-                  </div>
-                  <div
-                    onClick={clickEvent}
-                    className="text-[#508C9B] font-semibold"
-                  >
-                    Details
-                  </div>
-                </div>
-              </div>
-              <div>
-                <FaRegHeart className="w-[36px] h-[36px]" />
-              </div>
-            </div>
-            <div className="flex justify-between">
-              <div className="flex gap-[25px]">
-                <div className="p-[10px] text-center font-semibold text-[#ff8900]">
-                  <div>15</div>
-                  <div className="text-gray-500">Wed</div>
-                </div>
-                <div className="flex flex-col gap-[15px]">
-                  <div className="text-[24px] font-bold">
-                    Sights & Sounds Exhibition
-                  </div>
-                  <div>
-                    <div className="text-gray-500">Jakarta, Indonesia</div>
-                    <div className="text-gray-500">Wed, 15 Nov, 4:00 PM</div>
-                  </div>
-                  <div
-                    onClick={clickEvent}
-                    className="text-[#508C9B] font-semibold"
-                  >
-                    Details
-                  </div>
-                </div>
-              </div>
-              <div>
-                <FaRegHeart className="w-[36px] h-[36px]" />
-              </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

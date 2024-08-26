@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import EventFour from "../assets/images/event-4.jpg";
-import { Link, useParams, useNavigate, ScrollRestoration } from "react-router-dom";
+import {
+  Link,
+  useParams,
+  useNavigate,
+  ScrollRestoration,
+} from "react-router-dom";
 import { FaRegHeart, FaLocationDot, FaClock } from "react-icons/fa6";
 import Attendee from "../components/Attendee";
 import { addEvent } from "../redux/reducers/event.js";
@@ -11,7 +16,9 @@ import axios from "axios";
 function ContentEvent() {
   const id = useParams().id;
   const newEvent = useSelector((state) => state.event.boxEvent);
+  const token = useSelector((state) => state.auth.token);
   const endpoint = "http://localhost:8888/events/" + id;
+  const userWishlist = "http://localhost:8888/wishlist";
   const navigate = useNavigate();
 
   const [event, setEvent] = useState({});
@@ -26,6 +33,24 @@ function ContentEvent() {
   function clickEvent(id) {
     navigate("/events/section/" + id);
   }
+
+  async function addWishlist() {
+    try {
+      const getWish = await axios.post(
+        userWishlist,
+        {
+          eventId: parseInt(id.id),
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+    } catch (error) {
+      console.error("failed to listing the event");
+    }
+  }
   return (
     <div className="bg-[#EEEEEE] md:py-[50px] py-0">
       <div className="p-0 md:p-[100px] mx-0 md:mx-[120px] bg-[#ffff] flex flex-col md:flex-row rounded-none md:rounded-[30px] gap-[50px]">
@@ -36,11 +61,15 @@ function ContentEvent() {
             alt=""
           />
           <div className="flex items-center gap-[10px]">
-            <div>
+            <button
+              onClick={addWishlist}
+              disabled={token === null}
+              className="hover:text-red-400"
+            >
               <FaRegHeart />
-            </div>
+            </button>
             <div className="font-semibold">
-              <Link to={"/MyWishlist"}> Add to Wishlist</Link>
+              <Link to={"/wishlist"}> Add to Wishlist</Link>
             </div>
           </div>
         </div>

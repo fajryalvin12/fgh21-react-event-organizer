@@ -1,44 +1,29 @@
-import React from "react";
-import AvatarProfile from "../assets/icons/avatar-profile.png";
+import React, { useState, useEffect } from "react";
 import Footer from "./Footer";
 import { Link, ScrollRestoration } from "react-router-dom";
-import {
-  FaCircleUser,
-  FaCreditCard,
-  FaUserPen,
-  FaLock,
-  FaRectangleList,
-  FaHeart,
-  FaGear,
-  FaArrowRightFromBracket,
-  FaCalendarDays,
-  FaRegHeart,
-  FaCirclePlus,
-} from "react-icons/fa6";
+import { FaRegHeart } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../redux/reducers/auth";
 import { removeProfile } from "../redux/reducers/profile";
 import { useSelector } from "react-redux";
 import Sidebar from "./Sidebar";
+import axios from "axios";
 
 function ContentCreateEvent() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  function clickLogout(e) {
-    e.preventDefault();
-    dispatch(logout(null));
-    dispatch(removeProfile(null));
-    navigate("/Login");
+  const [eventId, setEventId] = useState([]);
+  const endpoint = "http://localhost:8888/events";
+  async function dataEvent() {
+    const data = await axios.get(endpoint);
+    const listEvent = data.data.results;
+    setEventId(listEvent);
   }
-  function clickEdit(e) {
-    e.preventDefault();
-    navigate("/ProfilePage");
-  }
-  function clickEvent(e) {
-    e.preventDefault();
-    navigate("/EventPage");
-  }
+  useEffect(() => {
+    dataEvent();
+  }, []);
+  console.log(eventId);
   function setPopUp() {
     const PopUp = document.getElementById("popup");
     PopUp.classList.toggle("hidden");
@@ -51,10 +36,10 @@ function ContentCreateEvent() {
   }
   const profile = useSelector((state) => state.profile.data);
   const token = useSelector((state) => state.auth.token);
-  if (token === null) {
-    navigate("/login")
-  }
-  console.log(token)
+  // if (token === null) {
+  //   navigate("/login");
+  // }
+  console.log(token);
 
   return (
     <div className="bg-[#EEEEEE] p-0 md:py-[50px]">
@@ -73,114 +58,33 @@ function ContentCreateEvent() {
             </button>
           </div>
           <div className="flex flex-col gap-[20px]">
-            <div className="flex justify-between">
-              <div className="flex gap-[25px]">
-                <div className="p-[10px] text-center font-semibold text-[#ff8900]">
-                  <div>15</div>
-                  <div className="text-gray-500">Wed</div>
-                </div>
-                <div className="flex flex-col gap-[15px]">
-                  <div className="text-[24px] font-bold">
-                    Cek Khodam Kak Mudryk
+            {eventId.map((item) => {
+              return (
+                <div className="flex justify-between">
+                  <div className="flex gap-[25px]">
+                    <div className="p-[10px] text-center font-semibold text-[#ff8900] border max-h-20 rounded-xl">
+                      <div>00</div>
+                      <div className="text-gray-500">XXX</div>
+                    </div>
+                    <div className="flex flex-col gap-[15px]">
+                      <div className="text-[24px] font-bold">{item.title}</div>
+                      <div>
+                        <div className="text-gray-500">Jakarta, Indonesia</div>
+                        <div className="text-gray-500">{item.date}</div>
+                      </div>
+                      <div className="flex gap-5 font-semibold">
+                        <div className="text-[#508C9B]">Details</div>
+                        <div className="text-[#508C9B]">Update</div>
+                        <div className="text-[#508C9B]">Delete</div>
+                      </div>
+                    </div>
                   </div>
                   <div>
-                    <div className="text-gray-500">Jakarta, Indonesia</div>
-                    <div className="text-gray-500">Wed, 15 Nov, 4:00 PM</div>
-                  </div>
-                  <div className="flex gap-5 font-semibold">
-                    <div onClick={clickEvent} className="text-[#508C9B]">
-                      Details
-                    </div>
-                    <div className="text-[#508C9B]">Update</div>
-                    <div className="text-[#508C9B]">Delete</div>
+                    <FaRegHeart className="w-[36px] h-[36px]" />
                   </div>
                 </div>
-              </div>
-              <div>
-                <FaRegHeart className="w-[36px] h-[36px]" />
-              </div>
-            </div>
-            <div className="flex justify-between">
-              <div className="flex gap-[25px]">
-                <div className="p-[10px] text-center font-semibold text-[#ff8900]">
-                  <div>15</div>
-                  <div className="text-gray-500">Wed</div>
-                </div>
-                <div className="flex flex-col gap-[15px]">
-                  <div className="text-[24px] font-bold">
-                    Sights & Sounds Exhibition
-                  </div>
-                  <div>
-                    <div className="text-gray-500">Jakarta, Indonesia</div>
-                    <div className="text-gray-500">Wed, 15 Nov, 4:00 PM</div>
-                  </div>
-                  <div className="flex gap-5 font-semibold">
-                    <div onClick={clickEvent} className="text-[#508C9B]">
-                      Details
-                    </div>
-                    <div className="text-[#508C9B]">Update</div>
-                    <div className="text-[#508C9B]">Delete</div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <FaRegHeart className="w-[36px] h-[36px]" />
-              </div>
-            </div>
-            <div className="flex justify-between">
-              <div className="flex gap-[25px]">
-                <div className="p-[10px] text-center font-semibold text-[#ff8900]">
-                  <div>15</div>
-                  <div className="text-gray-500">Wed</div>
-                </div>
-                <div className="flex flex-col gap-[15px]">
-                  <div className="text-[24px] font-bold">
-                    Sights & Sounds Exhibition
-                  </div>
-                  <div>
-                    <div className="text-gray-500">Jakarta, Indonesia</div>
-                    <div className="text-gray-500">Wed, 15 Nov, 4:00 PM</div>
-                  </div>
-                  <div className="flex gap-5 font-semibold">
-                    <div onClick={clickEvent} className="text-[#508C9B]">
-                      Details
-                    </div>
-                    <div className="text-[#508C9B]">Update</div>
-                    <div className="text-[#508C9B]">Delete</div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <FaRegHeart className="w-[36px] h-[36px]" />
-              </div>
-            </div>
-            <div className="flex justify-between">
-              <div className="flex gap-[25px]">
-                <div className="p-[10px] text-center font-semibold text-[#ff8900]">
-                  <div>15</div>
-                  <div className="text-gray-500">Wed</div>
-                </div>
-                <div className="flex flex-col gap-[15px]">
-                  <div className="text-[24px] font-bold">
-                    Sights & Sounds Exhibition
-                  </div>
-                  <div>
-                    <div className="text-gray-500">Jakarta, Indonesia</div>
-                    <div className="text-gray-500">Wed, 15 Nov, 4:00 PM</div>
-                  </div>
-                  <div className="flex gap-5 font-semibold">
-                    <div onClick={clickEvent} className="text-[#508C9B]">
-                      Details
-                    </div>
-                    <div className="text-[#508C9B]">Update</div>
-                    <div className="text-[#508C9B]">Delete</div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <FaRegHeart className="w-[36px] h-[36px]" />
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
       </div>

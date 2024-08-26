@@ -5,9 +5,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { addQty, addSection } from "../redux/reducers/section";
 
 function TicketSection(props) {
-  const dispatch = useDispatch();
   const [num, setNum] = useState(0);
-  const price = props.data.price
+  const price = props.data.price;
 
   useEffect(() => {
     const current = props.currentData;
@@ -71,7 +70,7 @@ function TicketSection(props) {
               <div className="flex gap-[20px] w-full items-center">
                 <div className="flex gap-[20px] w-full items-center flex-end">
                   <button
-                    onClick={()=> setNum(num -1)}
+                    onClick={() => setNum(num - 1)}
                     className="p-[5px] border border-[#c1c5d0] bg-[#ffff] rounded-[7px]"
                     disabled={num === 0}
                   >

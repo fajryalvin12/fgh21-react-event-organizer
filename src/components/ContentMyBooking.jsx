@@ -34,7 +34,7 @@ function ContentMyBooking() {
               <div>March</div>
             </div>
           </div>
-          <div className="flex flex-col gap-[20px]">
+          <div className="flex flex-col gap-[20px] overflow-y-scroll h-[800px]">
             {detailBook.length > 0 ? (
               detailBook.map((item) => {
                 return (
