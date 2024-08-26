@@ -17,7 +17,7 @@ function ContentMyWishlist() {
   //   navigate("/login");
   // }
   // console.log(token);
-
+  console.log(wishlist);
   async function userWishlist() {
     const response = await axios.get(getWishlist, {
       headers: {
@@ -49,7 +49,7 @@ function ContentMyWishlist() {
             {wishlist.length > 0 ? (
               wishlist.map((item) => {
                 return (
-                  <div className="flex justify-between">
+                  <div key={item.id} className="flex justify-between">
                     <div className="flex gap-[25px]">
                       <div className="p-[10px] text-center font-semibold text-[#ff8900]">
                         <div>15</div>
@@ -57,15 +57,13 @@ function ContentMyWishlist() {
                       </div>
                       <div className="flex flex-col gap-[15px]">
                         <div className="text-[24px] font-bold">
-                          Sights & Sounds Exhibition
+                          {item.title}
                         </div>
                         <div>
                           <div className="text-gray-500">
                             Jakarta, Indonesia
                           </div>
-                          <div className="text-gray-500">
-                            Wed, 15 Nov, 4:00 PM
-                          </div>
+                          <div className="text-gray-500">{item.date}</div>
                         </div>
                         <div className="text-[#508C9B] font-semibold">
                           Details

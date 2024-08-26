@@ -15,7 +15,6 @@ import axios from "axios";
 
 function ContentEvent() {
   const id = useParams().id;
-  const newEvent = useSelector((state) => state.event.boxEvent);
   const token = useSelector((state) => state.auth.token);
   const endpoint = "http://localhost:8888/events/" + id;
   const userWishlist = "http://localhost:8888/wishlist";
@@ -39,7 +38,7 @@ function ContentEvent() {
       const getWish = await axios.post(
         userWishlist,
         {
-          eventId: parseInt(id.id),
+          eventId: parseInt(id),
         },
         {
           headers: {
