@@ -14,8 +14,8 @@ import Loading from "../components/Loading";
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  let [alert, setAlert] = React.useState(0);
-  let [loading, setLoading] = React.useState(0);
+  const [alert, setAlert] = React.useState(0);
+  const [loading, setLoading] = React.useState(0);
   const [message, setMessage] = React.useState("");
   const ilyas = useSelector((state) => state.profile.data);
   async function processLogin(e) {

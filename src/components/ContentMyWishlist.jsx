@@ -11,24 +11,46 @@ import axios from "axios";
 function ContentMyWishlist() {
   const navigate = useNavigate();
   const token = useSelector((state) => state.auth.token);
-  const getWishlist = "http://localhost:8888/wishlist";
+  const urlWishlist = "http://localhost:8888/wishlist";
   const [wishlist, setWishlist] = useState([]);
-  // if (token === null) {
-  //   navigate("/login");
-  // }
-  // console.log(token);
-  console.log(wishlist);
-  async function userWishlist() {
-    const response = await axios.get(getWishlist, {
+  const [message, setMessage] = React.useState("");
+  const [alert, setAlert] = React.useState(0);
+  if (token === null) {
+    navigate("/login");
+  }
+  async function seeWishlist() {
+    const response = await axios.get(urlWishlist, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
     setWishlist(response.data.results);
   }
+  async function deleteWishlist(id) {
+    try {
+      const response = await axios.delete(
+        "http://localhost:8888/wishlist/" + id,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (response.data.success) {
+        setMessage(response.data.message);
+        setAlert(1);
+      } else {
+        setMessage(response.data.message);
+        setAlert(1);
+      }
+      console.log(response.data.success);
+    } catch (error) {
+      console.error("Failed to delete wishlist");
+    }
+  }
 
   useEffect(() => {
-    userWishlist();
+    seeWishlist();
   }, []);
 
   return (
@@ -65,9 +87,33 @@ function ContentMyWishlist() {
                           </div>
                           <div className="text-gray-500">{item.date}</div>
                         </div>
-                        <div className="text-[#508C9B] font-semibold">
-                          Details
+                        <div className="flex gap-4">
+                          <div className="text-[#508C9B] font-semibold">
+                            Details
+                          </div>
+                          <button
+                            onClick={() => deleteWishlist(item.id)}
+                            className="text-[#508C9B] font-semibold"
+                          >
+                            Delete
+                          </button>
                         </div>
+                        {alert ? (
+                          <div className="h-12 flex-1 bg-white flex items-center pl-4 justify-between">
+                            {message ? (
+                              <button
+                                onClick={() => setAlert(0)}
+                                className="text-green-500"
+                              >
+                                {message}
+                              </button>
+                            ) : (
+                              ""
+                            )}
+                          </div>
+                        ) : (
+                          ""
+                        )}
                       </div>
                     </div>
                     <div>

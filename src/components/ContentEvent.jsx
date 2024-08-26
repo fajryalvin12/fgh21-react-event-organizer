@@ -19,6 +19,8 @@ function ContentEvent() {
   const endpoint = "http://localhost:8888/events/" + id;
   const userWishlist = "http://localhost:8888/wishlist";
   const navigate = useNavigate();
+  const [message, setMessage] = React.useState("");
+  const [alert, setAlert] = React.useState(0);
 
   const [event, setEvent] = useState({});
   async function eventDetails() {
@@ -46,6 +48,13 @@ function ContentEvent() {
           },
         }
       );
+      if (getWish.data.success) {
+        setMessage(getWish.data.message);
+        setAlert(1);
+      } else {
+        setMessage(getWish.data.message);
+        setAlert(1);
+      }
     } catch (error) {
       console.error("failed to listing the event");
     }
@@ -71,6 +80,19 @@ function ContentEvent() {
               <Link to={"/wishlist"}> Add to Wishlist</Link>
             </div>
           </div>
+          {alert ? (
+            <div className="h-12 flex-1 bg-white flex items-center pl-4 justify-between">
+              {message ? (
+                <button onClick={() => setAlert(0)} className="text-green-500">
+                  {message}
+                </button>
+              ) : (
+                ""
+              )}
+            </div>
+          ) : (
+            ""
+          )}
         </div>
         <div className="flex-1 flex flex-col gap-[30px] py-8 px-8">
           <div className="flex flex-col gap-[30px]">

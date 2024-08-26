@@ -18,6 +18,7 @@ function ContentProfile() {
   const [national, setNational] = React.useState(profile.nationality);
   const [loading, setLoading] = React.useState(0);
   const [message, setMessage] = React.useState("");
+  const [alert, setAlert] = React.useState(0);
   const token = useSelector((state) => state.auth.token);
   console.log(profile);
 
@@ -30,17 +31,10 @@ function ContentProfile() {
     getNation();
   }, []);
 
-  function clickLogout(e) {
-    e.preventDefault();
-    dispatch(logout(null));
-    dispatch(removeProfile(null));
-    navigate("/login");
-  }
   function changeNations(e) {
     setNational(e.target.value);
   }
   async function getNation() {
-    setLoading(1);
     const res = await fetch(linkNat, {
       headers: {
         Authorization: `Bearer: ${token}`,
@@ -49,9 +43,7 @@ function ContentProfile() {
     const data = await res.json();
     const nationName = data.results;
     setNationalities(nationName);
-    setLoading(0);
   }
-  const [notif, setNotif] = React.useState(0);
   async function processProfile(e) {
     setLoading(1);
     e.preventDefault();
@@ -79,20 +71,19 @@ function ContentProfile() {
           Authorization: `Bearer ${token}`,
         },
       });
-      // const res = await fetch (linkEdit, {
-      //   method: "PATCH",
-      //   body: inputProfile,
-      //   headers: {
-      //     Authorization: `Bearer ${token}`
-      //   }
-      // })
-      // const data = await res.json()
-      console.log(data.data.results);
+      if (data.data.success) {
+        setMessage(data.data.message);
+        setAlert(1);
+      } else {
+        setMessage(data.data.message);
+        setAlert(1);
+      }
+      console.log(data.data.success);
       // dispatch(addProfile(data.data.results));
     } catch (error) {
       console.error("Failed to update profile!");
     }
-    setTimeout(() => setLoading(0), 2000);
+    setTimeout(() => setLoading(0), 1000);
   }
 
   if (token === null) {
@@ -115,6 +106,22 @@ function ContentProfile() {
               <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row md:justify-between text-[20px] font-bold">
                 Profile
               </div>
+              {alert ? (
+                <div className="h-12 flex-1 bg-white flex items-center pl-4 justify-between">
+                  {message ? (
+                    <button
+                      onClick={() => setAlert(0)}
+                      className="text-green-500"
+                    >
+                      {message}
+                    </button>
+                  ) : (
+                    ""
+                  )}
+                </div>
+              ) : (
+                ""
+              )}
               <div className="flex gap-10 p-4 md:p-0 flex-col md:flex-row md:justify-between font-semibold md:items-center">
                 <label for="name" className="w-1/3">
                   Name
