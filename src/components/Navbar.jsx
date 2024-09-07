@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import Logo from "../assets/icons/logo.png";
+import DefaultUser from "../assets/icons/user.png";
 import { Link } from "react-router-dom";
 import { FaAlignJustify } from "react-icons/fa6";
 import { useSelector } from "react-redux";
@@ -18,7 +18,7 @@ function Navbar() {
   const profile = useSelector((state) => state.profile.data);
 
   return (
-    <div className=" fixed flex flex-col md:flex-row gap-8 md:gap-0 justify-between items-center p-4 bg-white w-full z-10">
+    <div className="flex flex-col md:flex-row gap-8 md:gap-0 justify-between items-center p-4 bg-white w-full">
       <div className="flex gap-8">
         <div className="flex items-center text-2xl font-bold">
           <Brand />
@@ -31,7 +31,9 @@ function Navbar() {
         ref={menuBar}
         className="flex list-none gap-[50px] font-semibold flex-col md:flex-row items-center"
       >
-        <li className="hover:text-[#508C9B]">Home</li>
+        <li className="hover:text-[#508C9B]">
+          <Link to={"/"}>Home</Link>
+        </li>
         <li className="hover:text-[#508C9B]">
           <Link to={"/create-event"}>Create Event</Link>
         </li>
@@ -55,7 +57,7 @@ function Navbar() {
             <Link to={"/profile"}>
               <img
                 className="border border-[#134B70] rounded-full h-12 w-12 object-cover"
-                src={Antony}
+                src={DefaultUser}
                 alt=""
               />
             </Link>

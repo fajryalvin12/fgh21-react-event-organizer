@@ -2,20 +2,16 @@ import React, { useState, useEffect } from "react";
 import Footer from "./Footer";
 import { Link, ScrollRestoration } from "react-router-dom";
 import { FaRegHeart } from "react-icons/fa6";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { logout } from "../redux/reducers/auth";
-import { removeProfile } from "../redux/reducers/profile";
 import { useSelector } from "react-redux";
+import Loading from "../components/Loading";
 import Sidebar from "./Sidebar";
 import axios from "axios";
 
 function ContentCreateEvent() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [eventId, setEventId] = useState([]);
   const [category, setCategory] = useState([]);
   const [location, setLocation] = useState([]);
+  const [modals, setModals] = useState(false);
   const endpoint = "http://localhost:8888/events";
   const urlCategories = "http://localhost:8888/categories";
   const urlLocations = "http://localhost:8888/locations";
@@ -35,20 +31,13 @@ function ContentCreateEvent() {
     setLocation(listLocations);
   }
   async function createEvent(e) {
+    e.preventDefault();
     const title = e.target.name.value;
-    const category = parseInt(e.target.category.value);
-    const location = parseInt(e.target.location.value);
+    // const category = parseInt(e.target.category.value);
+    // const location = parseInt(e.target.location.value);
     const date = e.target.date.value;
     const image = e.target.image.value;
     const description = e.target.details.value;
-
-    // const inputEvent = new URLSearchParams();
-    // inputEvent.append("title", title);
-    // inputEvent.append("location_id", location);
-    // inputEvent.append("date", date);
-    // inputEvent.append("image", image);
-    // inputEvent.append("description", description);
-
     try {
       const response = await axios.post(
         endpoint,
@@ -57,14 +46,14 @@ function ContentCreateEvent() {
           title: title,
           date: date,
           description: description,
-          locationId: location,
         },
         {
           headers: {
-            Authorization: `Bearer: ${token}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
+      console.log(response);
     } catch (error) {
       console.error("Failed to create new event");
     }
@@ -74,14 +63,15 @@ function ContentCreateEvent() {
     dataCategory();
     dataLocations();
   }, []);
-  function setPopUp() {
+  function showModals() {
     const PopUp = document.getElementById("popup");
     PopUp.classList.toggle("hidden");
   }
   function standBy(e) {
     e.stopPropagation();
   }
-  function setPopUp2() {
+  function hideModals() {
+    const PopUp = document.getElementById("popup");
     PopUp.classList.toggle("hidden");
   }
   const profile = useSelector((state) => state.profile.data);
@@ -101,7 +91,7 @@ function ContentCreateEvent() {
           <div className="flex md:items-center items-start gap-8 p-4 md:p-0 justify-between flex-col md:flex-row">
             <div className="text-[20px] font-bold">Manage Event</div>
             <button
-              onClick={setPopUp}
+              onClick={showModals}
               className="flex gap-[10px] items-center p-[20px] bg-[#D6E0FF] text-[#508C9B] rounded-[15px] font-semibold"
             >
               Create
@@ -139,16 +129,17 @@ function ContentCreateEvent() {
         </div>
       </div>
       <Footer />
-      <div
-        onClick={setPopUp2}
-        className="bg-[#0000007e] absolute top-0 hidden w-full"
-        id="popup"
-      >
+      <div className="bg-[#0000007e] absolute top-0 hidden w-full" id="popup">
         <div
           onClick={standBy}
           className="bg-[#ffff] rounded-3xl p-4 m-8 md:p-20 md:m-20"
         >
-          <div className="font-bold text-2xl mb-10">Update Event</div>
+          <div className="flex justify-between font-bold text-2xl mb-10">
+            <h2>Update Event</h2>
+            <button type="button" onClick={hideModals}>
+              X
+            </button>
+          </div>
           <form
             onSubmit={createEvent}
             className="flex flex-col gap-2 md:gap-10"
@@ -159,8 +150,9 @@ function ContentCreateEvent() {
                 <input
                   className="border p-5 w-full mr-10 rounded-xl outline-none"
                   type="text"
-                  name="name"
+                  name="title"
                   placeholder="Input name event..."
+                  id="name"
                 />
               </div>
               <div className="flex-1 flex flex-col gap-4">
@@ -203,6 +195,7 @@ function ContentCreateEvent() {
                   className="border p-5 w-full mr-10 rounded-xl outline-none"
                   type="date"
                   placeholder="01/01/2022"
+                  name="date"
                 />
               </div>
             </div>
@@ -238,7 +231,7 @@ function ContentCreateEvent() {
             </div>
             <div>
               <button
-                className="w-full py-[16px] px-110px] text-[#ffff] font-semibold text-[16px] rounded-[15px] bg-[#3366ff]"
+                className="w-full py-[16px] px-110px] text-[#ffff] font-semibold text-[16px] rounded-[15px] bg-[#508C9B]"
                 type="submit"
               >
                 Save

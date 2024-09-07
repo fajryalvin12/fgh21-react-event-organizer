@@ -19,6 +19,7 @@ import {
   addSectionId,
   addQuantity,
 } from "../redux/reducers/section";
+import Layout from "../components/Layout.jsx";
 
 function ContentBooking() {
   const id = useParams().id;
@@ -76,70 +77,71 @@ function ContentBooking() {
   dispatch(addQuantity(quantityArray));
 
   return (
-    <div className="bg-[#EEEEEE] p-0 md:py-[50px]">
-      <div className="flex-col md:flex-row p-0 md:p-[100px] m-0 md:mx-[120px] bg-[#ffff] flex rounded-[30px]">
-        <div className="flex-1">
-          <img
-            className="w-full h-full md:w-[475px] md:h-[586px] object-cover	rounded-none md:rounded-[40px] brightness-50"
-            src={book.image}
-            alt="stadium"
-          />
-        </div>
-        <div className="flex flex-col gap-[25px] w-full flex-1 p-8 md:p-0">
-          <div className="flex justify-between items-center ">
-            <div className="font-semibold text-[20px]">{book.title}</div>
-            <div className="flex gap-[15px] items-center text-[12px] font-semibold text-[#ff3d71]">
-              <div>BY PRICE</div>
-              <button>
-                <span>
-                  <FaArrowDownUpAcrossLine />
-                </span>
+    <Layout>
+      <div className="bg-[#EEEEEE] p-0 md:py-[50px]">
+        <div className="flex-col md:flex-row p-0 md:p-[100px] m-0 md:mx-[120px] bg-[#ffff] flex rounded-[30px] shadow-md">
+          <div className="flex-1">
+            <img
+              className="w-full h-full md:w-[475px] md:h-[586px] object-cover	rounded-none md:rounded-[40px] brightness-50"
+              src={book.image}
+              alt="stadium"
+            />
+          </div>
+          <div className="flex flex-col gap-[25px] w-full flex-1 p-8 md:p-0">
+            <div className="flex justify-between items-center ">
+              <div className="font-semibold text-[20px]">{book.title}</div>
+              <div className="flex gap-[15px] items-center text-[12px] font-semibold text-[#ff3d71]">
+                <div>BY PRICE</div>
+                <button>
+                  <span>
+                    <FaArrowDownUpAcrossLine />
+                  </span>
+                </button>
+              </div>
+            </div>
+            <div className="flex flex-col gap-[50px]">
+              {section.map((item, index) => {
+                return (
+                  <TicketSection
+                    key={item.id}
+                    data={item}
+                    index={index}
+                    currentData={selectedSections}
+                    onChange={setSelectedSections}
+                  />
+                );
+              })}
+            </div>
+            <hr />
+            <div className="flex flex-col gap-[15px] font-semibold mb-[50px]">
+              <div className="flex justify-between w-full items-center">
+                <div>Ticket Section</div>
+                <div className="text-[#508C9B] flex items-center">
+                  {ticketSection.length == 0 ? "-" : ticketSection.join(", ")}
+                </div>
+              </div>
+              <div className="flex justify-between w-full items-center">
+                <div>Quantity</div>
+                <div className="text-[#508C9B] flex items-center">
+                  {quantity === 0 ? "-" : quantity}
+                </div>
+              </div>
+              <div className="flex justify-between w-full items-center">
+                <div>Total Payment</div>
+                <div className="text-[#508C9B] flex items-center">
+                  {price === 0 ? "-" : `Rp. ${price.toLocaleString("id")}`}
+                </div>
+              </div>
+            </div>
+            <div>
+              <button className="w-full py-[16px] px-110px] text-[#ffff] font-semibold text-[16px] rounded-[15px] bg-[#201E43]">
+                <Link to={"/payment"}>Checkout</Link>
               </button>
             </div>
           </div>
-          <div className="flex flex-col gap-[50px]">
-            {section.map((item, index) => {
-              return (
-                <TicketSection
-                  key={item.id}
-                  data={item}
-                  index={index}
-                  currentData={selectedSections}
-                  onChange={setSelectedSections}
-                />
-              );
-            })}
-          </div>
-          <hr />
-          <div className="flex flex-col gap-[15px] font-semibold mb-[50px]">
-            <div className="flex justify-between w-full items-center">
-              <div>Ticket Section</div>
-              <div className="text-[#508C9B] flex items-center">
-                {ticketSection.length == 0 ? "-" : ticketSection.join(", ")}
-              </div>
-            </div>
-            <div className="flex justify-between w-full items-center">
-              <div>Quantity</div>
-              <div className="text-[#508C9B] flex items-center">
-                {quantity === 0 ? "-" : quantity}
-              </div>
-            </div>
-            <div className="flex justify-between w-full items-center">
-              <div>Total Payment</div>
-              <div className="text-[#508C9B] flex items-center">
-                {price === 0 ? "-" : `Rp. ${price.toLocaleString("id")}`}
-              </div>
-            </div>
-          </div>
-          <div>
-            <button className="w-full py-[16px] px-110px] text-[#ffff] font-semibold text-[16px] rounded-[15px] bg-[#201E43]">
-              <Link to={"/payment"}>Checkout</Link>
-            </button>
-          </div>
         </div>
       </div>
-      <Footer />
-    </div>
+    </Layout>
   );
 }
 

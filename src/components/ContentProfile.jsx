@@ -4,12 +4,10 @@ import Antony from "../assets/images/antony.png";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { logout } from "../redux/reducers/auth";
-import { removeProfile } from "../redux/reducers/profile";
 import Loading from "../components/Loading";
 import axios from "axios";
-import { addProfile } from "../redux/reducers/profile";
 import Sidebar from "./Sidebar";
+import DefaultUser from "../assets/icons/user.png";
 
 function ContentProfile() {
   const profile = useSelector((state) => state.profile.data);
@@ -20,7 +18,6 @@ function ContentProfile() {
   const [message, setMessage] = React.useState("");
   const [alert, setAlert] = React.useState(0);
   const token = useSelector((state) => state.auth.token);
-  console.log(profile);
 
   const linkNat = "http://localhost:8888/nationalities";
   const linkEdit = "http://localhost:8888/profile";
@@ -74,16 +71,18 @@ function ContentProfile() {
       if (data.data.success) {
         setMessage(data.data.message);
         setAlert(1);
+        setTimeout(() => setAlert(0), 1000);
       } else {
         setMessage(data.data.message);
         setAlert(1);
+        setTimeout(() => setAlert(0), 1000);
       }
       console.log(data.data.success);
       // dispatch(addProfile(data.data.results));
     } catch (error) {
       console.error("Failed to update profile!");
     }
-    setTimeout(() => setLoading(0), 1000);
+    setTimeout(() => setLoading(0), 500);
   }
 
   if (token === null) {
@@ -97,7 +96,7 @@ function ContentProfile() {
         <div className="w-1/3 px-[100px] flex-col gap-[30px] hidden md:flex">
           <Sidebar />
         </div>
-        <div className="md:w-2/3 md:p-[100px] md:mr-[120px] md:flex-row w-full p-0 m-0 bg-[#ffff] rounded-none flex gap-[50px] flex-col-reverse md:rounded-3xl">
+        <div className="md:w-2/3 md:p-[100px] md:mr-[120px] md:flex-row w-full p-0 m-0 bg-[#ffff] rounded-none flex gap-[50px] flex-col-reverse md:rounded-3xl shadow-md">
           <div className="flex-1">
             <form
               onSubmit={processProfile}
@@ -260,7 +259,7 @@ function ContentProfile() {
             <div className="flex items-center flex-col gap-[20px]">
               <img
                 className="h-[200px] w-[200px] rounded-full border-4 border-[#373a42bf] object-cover"
-                src={Antony}
+                src={DefaultUser}
               />
               <div>
                 <button

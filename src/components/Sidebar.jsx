@@ -16,7 +16,7 @@ import { logout } from "../redux/reducers/auth";
 import { removeProfile } from "../redux/reducers/profile";
 import { Link } from "react-router-dom";
 import Antony from "../assets/images/antony.png";
-import Loading from "../components/Loading";
+import DefaultUser from "../assets/icons/user.png";
 
 function Sidebar() {
   const token = useSelector((state) => state.auth.token);
@@ -38,7 +38,7 @@ function Sidebar() {
     <div className="flex flex-col gap-8">
       <div className="flex gap-[20px]">
         <img
-          src={Antony}
+          src={DefaultUser}
           alt=""
           className="border border-[#373a42bf] rounded-full w-12 h-12 object-cover"
         />
@@ -54,7 +54,7 @@ function Sidebar() {
         </div>
         <div className="pl-[50px] flex gap-[25px] items-center hover:text-[#508C9B]">
           <FaCreditCard />
-          <div className="stroke-zinc-600">Card</div>
+          <div className="line-through">Card</div>
         </div>
         <div className="pl-[50px] flex gap-[25px] text-[#373a42bf] items-center hover:text-[#508C9B]">
           <FaUserPen />

@@ -1,5 +1,4 @@
 import React from "react";
-import Logo from "../assets/icons/logo.png";
 import FooterLogo from "../assets/icons/footer-socmed.png";
 import { Link } from "react-router-dom";
 import Brand from "../components/Brand";
@@ -30,9 +29,7 @@ function Footer() {
         <div className="flex flex-col gap-[20px]">
           <div className="font-semibold">Features</div>
           <ul className="p-none m-none flex flex-col gap-[15px] text-[#c1c5d0]">
-            <li>
-             Booking
-            </li>
+            <li>Booking</li>
             <li>
               <Link to={"/create-event"}>Create Event</Link>
             </li>
