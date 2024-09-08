@@ -35,7 +35,7 @@ function Sidebar() {
   }
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-8 bg-white p-8 rounded-3xl shadow-md">
       <div className="flex gap-[20px]">
         <img
           src={DefaultUser}

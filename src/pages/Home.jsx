@@ -9,21 +9,21 @@ import Category from "../components/Category";
 import CategoryContent from "../components/CategoryContent";
 import Partner from "../components/Partner";
 import Footer from "../components/Footer";
-import Loading from "../components/Loading";
+import Layout from "../components/Layout";
 
 function Home() {
   return (
     <div className="bg-[#EEEEEE]">
-      <Navbar />
-      <Cover />
-      <Event />
-      <DateGrid />
-      <BoxWrapper />
-      <Location />
-      <Category />
-      <CategoryContent />
-      <Partner />
-      <Footer />
+      <Layout>
+        <Cover />
+        <Event />
+        <DateGrid />
+        <BoxWrapper />
+        <Location />
+        <Category />
+        <CategoryContent />
+        <Partner />
+      </Layout>
     </div>
   );
 }

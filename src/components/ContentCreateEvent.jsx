@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import Loading from "../components/Loading";
 import Sidebar from "./Sidebar";
 import axios from "axios";
+import Layout from "../components/Layout";
 
 function ContentCreateEvent() {
   const [eventId, setEventId] = useState([]);
@@ -240,7 +241,6 @@ function ContentCreateEvent() {
           </form>
         </div>
       </div>
-      <ScrollRestoration />
     </div>
   );
 }

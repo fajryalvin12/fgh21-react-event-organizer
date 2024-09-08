@@ -4,10 +4,9 @@ import ContentEvent from "../components/ContentEvent";
 
 function Home() {
   return (
-    <div>
-      <NavbarProfile />
+    <>
       <ContentEvent />
-    </div>
+    </>
   );
 }
 

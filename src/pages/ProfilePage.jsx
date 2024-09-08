@@ -5,7 +5,6 @@ import ContentProfile from "../components/ContentProfile";
 function ProfilePage() {
   return (
     <div>
-      <NavbarProfile />
       <ContentProfile />
     </div>
   );
