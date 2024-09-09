@@ -1,32 +1,18 @@
 import React, { useEffect, useState } from "react";
-import AvatarProfile from "../assets/icons/avatar-profile.png";
-import Footer from "./Footer";
-import { Link } from "react-router-dom";
 import { FaCalendarDays, FaRegHeart } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Sidebar from "./Sidebar";
 import axios from "axios";
 import Layout from "../components/Layout";
+import { useShowWishlistQuery } from "../redux/services/wishlist";
 
 function ContentMyWishlist() {
   const navigate = useNavigate();
   const token = useSelector((state) => state.auth.token);
-  const urlWishlist = "http://localhost:8888/wishlist";
-  const [wishlist, setWishlist] = useState([]);
   const [message, setMessage] = React.useState("");
   const [alert, setAlert] = React.useState(0);
-  if (token === null) {
-    navigate("/login");
-  }
-  async function seeWishlist() {
-    const response = await axios.get(urlWishlist, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    setWishlist(response.data.results);
-  }
+  const { data, err, isLoading } = useShowWishlistQuery(token);
   async function deleteWishlist(id) {
     try {
       const response = await axios.delete(
@@ -50,10 +36,6 @@ function ContentMyWishlist() {
     }
   }
 
-  useEffect(() => {
-    seeWishlist();
-  }, []);
-
   return (
     <Layout>
       <div className="bg-[#EEEEEE] p-0 md:py-[50px]">
@@ -70,8 +52,8 @@ function ContentMyWishlist() {
               </button>
             </div>
             <div className="flex flex-col gap-[20px] overflow-y-scroll">
-              {wishlist.length > 0 ? (
-                wishlist.map((item) => {
+              {data?.results.length > 0 ? (
+                data?.results.map((item) => {
                   return (
                     <div key={item.id} className="flex justify-between">
                       <div className="flex gap-[25px]">

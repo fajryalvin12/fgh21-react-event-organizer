@@ -15,6 +15,10 @@ import Attendee from "./components/Attendee";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore } from "redux-persist";
+
+let persist = persistStore(store);
 
 const arrayRouter = [
   {
@@ -76,7 +80,9 @@ const router = createBrowserRouter(arrayRouter);
 function App() {
   return (
     <Provider store={store}>
-      <RouterProvider router={router} />;
+      <PersistGate persistor={persist}>
+        <RouterProvider router={router} />;
+      </PersistGate>
     </Provider>
   );
 }

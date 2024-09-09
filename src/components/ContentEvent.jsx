@@ -1,36 +1,20 @@
 import React, { useEffect, useState } from "react";
-import Footer from "../components/Footer";
-import EventFour from "../assets/images/event-4.jpg";
-import {
-  Link,
-  useParams,
-  useNavigate,
-  ScrollRestoration,
-} from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { FaRegHeart, FaLocationDot, FaClock } from "react-icons/fa6";
 import Attendee from "../components/Attendee";
-import { addEvent } from "../redux/reducers/event.js";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import axios from "axios";
 import Layout from "../components/Layout.jsx";
+import { useGetOneEventQuery } from "../redux/services/event.js";
 
 function ContentEvent() {
   const id = useParams().id;
   const token = useSelector((state) => state.auth.token);
-  const endpoint = "http://localhost:8888/events/" + id;
   const userWishlist = "http://localhost:8888/wishlist";
   const navigate = useNavigate();
   const [message, setMessage] = React.useState("");
   const [alert, setAlert] = React.useState(0);
-
-  const [event, setEvent] = useState({});
-  async function eventDetails() {
-    const getData = await axios.get(endpoint);
-    setEvent(getData.data.results);
-  }
-  useEffect(() => {
-    eventDetails();
-  }, []);
+  const { data, err, isLoading } = useGetOneEventQuery(id);
 
   function clickEvent(id) {
     navigate("/events/section/" + id);
@@ -69,7 +53,7 @@ function ContentEvent() {
           <div className="flex-1 flex flex-col items-center gap-[50px]">
             <img
               className="w-full h-full md:w-[375px] md:h-[486px] object-cover	rounded-none md:rounded-[40px] brightness-50"
-              src={event.image}
+              src={data?.results.image}
               alt=""
             />
             <div className="flex items-center gap-[10px]">
@@ -104,7 +88,7 @@ function ContentEvent() {
           <div className="flex-1 flex flex-col gap-[30px] py-8 px-8">
             <div className="flex flex-col gap-[30px]">
               <div className="font-bold text-[24px] max-w-[233px]">
-                {event.title}
+                {data?.results.title}
               </div>
               <div className="flex justify-between font-semibold flex-col md:flex-row gap-6">
                 <div className="flex gap-[5px]">
@@ -117,7 +101,7 @@ function ContentEvent() {
                   <div className="text-red-500 items-center flex">
                     <FaClock />
                   </div>
-                  <div>{event.date}</div>
+                  <div>{data?.results.date}</div>
                 </div>
               </div>
               <div className="flex flex-col gap-[10px] font-semibold">
@@ -131,7 +115,9 @@ function ContentEvent() {
             <div className="flex flex-col gap-[30px]">
               <div className="flex flex-col gap-[10px]">
                 <div className="font-semibold text-[20px]">Event Detail</div>
-                <div className="text-[#373a42bf]">{event.description}</div>
+                <div className="text-[#373a42bf]">
+                  {data?.results.description}
+                </div>
                 <div className="text-[#3366ff]">Read More</div>
               </div>
               <div className="flex flex-col gap-[50px] items-center md:items-start">
@@ -146,7 +132,7 @@ function ContentEvent() {
                 </div>
                 <div>
                   <button
-                    onClick={() => clickEvent(event.id)}
+                    onClick={() => clickEvent(data?.results.id)}
                     className="py-[15px] px-[82px] font-semibold text-[#ffff] bg-[#201E43] rounded-[15px] text-[16px] w-full"
                   >
                     <Link to={"/BookingPage"}>Buy Tickets</Link>

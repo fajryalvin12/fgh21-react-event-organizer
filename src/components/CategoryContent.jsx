@@ -1,25 +1,21 @@
 import React, { useEffect } from "react";
-import EventOne from "../assets/images/event-1.png";
-import { useSelector, useDispatch } from "react-redux";
-import { addEvent } from "../redux/reducers/event.js";
-import axios from "axios";
+import { useListEventsQuery } from "../redux/services/event.js";
 
 function CategoryContent() {
-  const selectCategory = useSelector((state) => state.event.boxEvent);
-  const endpoint = "http://localhost:8888/events";
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    (async () => {
-      const data = await axios.get(endpoint);
-      const categoryEvent = data.data.results;
-      dispatch(addEvent(categoryEvent));
-    })();
-  }, []);
+  const { data, err, isLoading } = useListEventsQuery();
+  // const selectCategory = useSelector((state) => state.event.boxEvent);
+  // const endpoint = "http://localhost:8888/events";
+  // useEffect(() => {
+  //   (async () => {
+  //     const data = await axios.get(endpoint);
+  //     const categoryEvent = data.data.results;
+  //     dispatch(addEvent(categoryEvent));
+  //   })();
+  // }, []);
 
   return (
     <div className="flex gap-12 items-center mb-[175px] mx-[100px] overflow-x-scroll md:justify-center">
-      {selectCategory.map((item) => {
+      {data?.results.map((item) => {
         return (
           <div className="flex flex-col w-[300px] h-[350px] bg-[#134B70] rounded-[30px] overflow-hidden shrink-0">
             <img

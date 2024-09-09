@@ -8,25 +8,15 @@ import AvatarFour from "../assets/images/avatar4.png";
 import axios from "axios";
 
 function BoxWrapper() {
-  const [eventId, setEventId] = useState([]);
   const navigate = useNavigate();
   async function clickEvent(id) {
     navigate("/events/" + id);
   }
   const { data, err, isLoading } = useListEventsQuery();
-  // const endpoint = "http://localhost:8888/events";
-  // async function dataEvent() {
-  //   const response = await axios.get(endpoint);
-  //   const listEvent = response.data.results;
-  //   setEventId(listEvent);
-  // }
-  // useEffect(() => {
-  //   dataEvent();
-  // }, []);
 
   return (
     <div className="flex gap-[50px] mb-[50px] mx-[50px] overflow-x-scroll">
-      {data.results.map((item) => {
+      {data?.results.map((item) => {
         return (
           <div
             className="flex w-[260px] h-[376px] items-center justify-center relative shrink-0"
