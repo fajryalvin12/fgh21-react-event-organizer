@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { addEvent } from "../redux/reducers/event.js";
-import { useSelector, useDispatch } from "react-redux";
+import { useListEventsQuery } from "../redux/services/event";
 import AvatarOne from "../assets/images/avatar1.png";
 import AvatarTwo from "../assets/images/avatar2.png";
 import AvatarThree from "../assets/images/avatar3.png";
@@ -10,23 +9,24 @@ import axios from "axios";
 
 function BoxWrapper() {
   const [eventId, setEventId] = useState([]);
-  const endpoint = "http://localhost:8888/events";
   const navigate = useNavigate();
-  async function dataEvent() {
-    const data = await axios.get(endpoint);
-    const listEvent = data.data.results;
-    setEventId(listEvent);
-  }
-  useEffect(() => {
-    dataEvent();
-  }, []);
-
   async function clickEvent(id) {
     navigate("/events/" + id);
   }
+  const { data, err, isLoading } = useListEventsQuery();
+  // const endpoint = "http://localhost:8888/events";
+  // async function dataEvent() {
+  //   const response = await axios.get(endpoint);
+  //   const listEvent = response.data.results;
+  //   setEventId(listEvent);
+  // }
+  // useEffect(() => {
+  //   dataEvent();
+  // }, []);
+
   return (
-    <div className="flex gap-[50px] mb-[50px] ml-[50px] overflow-scroll">
-      {eventId.map((item) => {
+    <div className="flex gap-[50px] mb-[50px] mx-[50px] overflow-x-scroll">
+      {data.results.map((item) => {
         return (
           <div
             className="flex w-[260px] h-[376px] items-center justify-center relative shrink-0"

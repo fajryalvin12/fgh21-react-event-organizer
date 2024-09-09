@@ -5,7 +5,7 @@ import Brand from "../components/Brand";
 
 function Footer() {
   return (
-    <div className="flex flex-col gap-[75px] py-8 px-8 md:py-[160px] md:px-[220px] bg-[#EEEEEE]">
+    <div className="flex flex-col gap-[75px] py-8 px-8 md:py-[160px] md:px-[220px] bg-inherit">
       <div className="flex gap-[30px] justify-between flex-col md:flex-row">
         <div className="flex flex-col gap-[30px]">
           <Brand />

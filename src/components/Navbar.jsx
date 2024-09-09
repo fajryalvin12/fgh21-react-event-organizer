@@ -52,7 +52,10 @@ function Navbar() {
           </button>
         </div>
       ) : (
-        <div className="px-[10px] flex gap-[10px] items-center font-semibold">
+        <div
+          ref={authButton}
+          className="px-[10px] flex gap-[10px] items-center font-semibold"
+        >
           <div>
             <Link to={"/profile"}>
               <img

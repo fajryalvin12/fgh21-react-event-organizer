@@ -28,7 +28,7 @@ function ContentMyBooking() {
           <div className="w-1/3 px-[100px] flex-col gap-[30px] hidden md:flex">
             <Sidebar />
           </div>
-          <div className="md:w-2/3 p-0 m-0 md:p-[100px] md:mr-[120px] bg-[#ffff] rounded-none md:rounded-[30px] flex gap-[50px] flex-col h-[700px] shadow-md">
+          <div className=" p-0 m-0 bg-[#ffff] rounded-none flex gap-[50px] flex-col h-[700px] md:shadow-md md:w-2/3 md:p-[100px] md:mr-[120px] md:rounded-3xl w-full">
             <div className="flex md:items-center items-start gap-8 p-4 md:p-0 justify-between flex-col md:flex-row">
               <div className="text-[20px] font-bold">My Booking</div>
               <div className="flex gap-[10px] items-center p-[20px] bg-[#D6E0FF] text-[#508C9B] rounded-[15px] font-semibold">
