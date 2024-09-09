@@ -9,10 +9,10 @@ import axios from "axios";
 import Sidebar from "./Sidebar";
 import DefaultUser from "../assets/icons/user.png";
 import Layout from "../components/Layout";
+import { addProfile } from "../redux/reducers/profile";
 
 function ContentProfile() {
   const profile = useSelector((state) => state.profile.data);
-  const [profession, setProfession] = React.useState([]);
   const [nationalities, setNationalities] = React.useState([]);
   const [national, setNational] = React.useState(profile.nationality);
   const [loading, setLoading] = React.useState(0);
@@ -69,7 +69,10 @@ function ContentProfile() {
           Authorization: `Bearer ${token}`,
         },
       });
+      const profileData = data.data.results;
+      console.log(profileData);
       if (data.data.success) {
+        dispatch(addProfile(profileData));
         setMessage(data.data.message);
         setAlert(1);
         setTimeout(() => setAlert(0), 1000);
@@ -78,7 +81,6 @@ function ContentProfile() {
         setAlert(1);
         setTimeout(() => setAlert(0), 1000);
       }
-      console.log(data.data.success);
       // dispatch(addProfile(data.data.results));
     } catch (error) {
       console.error("Failed to update profile!");

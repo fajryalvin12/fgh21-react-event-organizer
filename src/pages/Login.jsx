@@ -10,6 +10,8 @@ import { login } from "../redux/reducers/auth";
 import { addProfile, removeProfile } from "../redux/reducers/profile";
 import Brand from "../components/Brand";
 import Loading from "../components/Loading";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 function Login() {
   const navigate = useNavigate();
@@ -17,12 +19,27 @@ function Login() {
   const [alert, setAlert] = React.useState(0);
   const [loading, setLoading] = React.useState(0);
   const [message, setMessage] = React.useState("");
-  const ilyas = useSelector((state) => state.profile.data);
-  async function processLogin(e) {
+
+  const formik = useFormik({
+    onSubmit: processLogin,
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: Yup.object().shape({
+      email: Yup.string()
+        .email("Input the proper email!")
+        .required("Required!"),
+      password: Yup.string()
+        .required("Required!")
+        .min(8, "Minimum 8 characters!"),
+    }),
+  });
+  async function processLogin() {
     setLoading(1);
-    e.preventDefault();
-    const formEmail = e.target.email.value;
-    const formPass = e.target.password.value;
+    // e.preventDefault();
+    const formEmail = formik.values.email;
+    const formPass = formik.values.password;
 
     const inputData = new URLSearchParams();
     inputData.append("email", formEmail);
@@ -36,6 +53,7 @@ function Login() {
     if (data.success) {
       const token = data.results.token;
       setLoading(1);
+      console.log(token);
       dispatch(login(token));
       const user = "http://localhost:8888/profile";
       const getData = await fetch(user, {
@@ -44,7 +62,8 @@ function Login() {
         },
       });
       const realData = await getData.json();
-      dispatch(addProfile(realData));
+      console.log(realData.results);
+      dispatch(addProfile(realData.results));
       navigate("/");
       setTimeout(() => setLoading(0), 5000);
     } else {
@@ -69,7 +88,7 @@ function Login() {
       <div className="bg-[#201E43] flex-[60%] hidden md:flex justify-center items-center"></div>
       <div className="flex-[40%]">
         <form
-          onSubmit={processLogin}
+          onSubmit={formik.handleSubmit}
           className="flex flex-col justify-center gap-[20px] p-8 md:p-0 mt-28 md:m-[100px]"
         >
           <Link to={"/"}>
@@ -92,17 +111,26 @@ function Login() {
           )}
           <div className="flex flex-col gap-[10px]">
             <input
-              className="border rounded-xl h-16 pl-4 outline-none"
               name="email"
               type="email"
               placeholder="Email"
+              onChange={formik.handleChange}
+              className={
+                formik.errors.email && formik.touched.email
+                  ? "border rounded-xl h-16 pl-4 outline-none"
+                  : "border rounded-xl h-16 pl-4 outline-none"
+              }
             />
+            {formik.errors.email && formik.touched.email && (
+              <p className="text-red-700">{formik.errors.email}</p>
+            )}
             <div className="flex border rounded-xl h-16 pl-4 items-center justify-center overflow-hidden">
               <input
                 className="flex-1 h-16 outline-none"
                 name="password"
                 type={pass}
                 placeholder="Password"
+                onChange={formik.handleChange}
               />
               <button
                 className="flex w-16 h-16 justify-center items-center overflow-hidden"
@@ -112,6 +140,9 @@ function Login() {
                 <FaEye />
               </button>
             </div>
+            {formik.errors.password && formik.touched.password && (
+              <p className="text-red-700">{formik.errors.password}</p>
+            )}
           </div>
           <div className="text-right text-[#508C9B]">
             <Link to={"/forgot-password"}>Forgot Password?</Link>
