@@ -1,13 +1,10 @@
 import React from "react";
-import Google from "../assets/icons/google.png";
-import Facebook from "../assets/icons/facebook.png";
-import Mascot from "../assets/images/mascot.png";
 import { useNavigate } from "react-router-dom";
 import { FaEye } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { login } from "../redux/reducers/auth";
-import { addProfile, removeProfile } from "../redux/reducers/profile";
+import { addProfile } from "../redux/reducers/profile";
 import Brand from "../components/Brand";
 import Loading from "../components/Loading";
 import { useFormik } from "formik";
@@ -37,7 +34,6 @@ function Login() {
   });
   async function processLogin() {
     setLoading(1);
-    // e.preventDefault();
     const formEmail = formik.values.email;
     const formPass = formik.values.password;
 
