@@ -3,21 +3,15 @@ import { useListEventsQuery } from "../redux/services/event.js";
 
 function CategoryContent() {
   const { data, err, isLoading } = useListEventsQuery();
-  // const selectCategory = useSelector((state) => state.event.boxEvent);
-  // const endpoint = "http://localhost:8888/events";
-  // useEffect(() => {
-  //   (async () => {
-  //     const data = await axios.get(endpoint);
-  //     const categoryEvent = data.data.results;
-  //     dispatch(addEvent(categoryEvent));
-  //   })();
-  // }, []);
 
   return (
-    <div className="flex gap-12 items-center mb-[175px] mx-[100px] overflow-x-scroll md:justify-center">
+    <div className="flex gap-12 items-center mb-[175px] min-w-[1000px] w-full mx-20 overflow-x-scroll ">
       {data?.results.map((item) => {
         return (
-          <div className="flex flex-col w-[300px] h-[350px] bg-[#134B70] rounded-[30px] overflow-hidden shrink-0">
+          <div
+            key={item.id}
+            className="flex flex-col w-[300px] h-[350px] bg-[#134B70] rounded-[30px] overflow-hidden shrink-0"
+          >
             <img
               className="relative h-[175px] object-cover"
               src={item.image}

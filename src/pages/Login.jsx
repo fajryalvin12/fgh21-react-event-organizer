@@ -61,12 +61,12 @@ function Login() {
       console.log(realData.results);
       dispatch(addProfile(realData.results));
       navigate("/");
-      setTimeout(() => setLoading(0), 5000);
+      setTimeout(() => setLoading(0), 3000);
     } else {
       setLoading(1);
       setMessage(data.message);
       setAlert(1);
-      setLoading(0);
+      setTimeout(() => setLoading(0), 1000);
     }
   }
   let [pass, setPass] = React.useState("password");
@@ -93,7 +93,7 @@ function Login() {
           <div className="text-2xl font-bold">Sign In</div>
           <div>Hi, Welcome back to Urticket!</div>
           {alert ? (
-            <div className="h-12 flex-1 bg-red-400 flex items-center pl-4 justify-between">
+            <div className="h-12 flex-1 text-red-400 flex items-center pl-4 justify-between">
               {message ? <div>{message}</div> : ""}
               <button
                 onClick={() => setAlert(0)}

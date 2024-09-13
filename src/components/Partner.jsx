@@ -23,7 +23,7 @@ function Partner() {
       <div className="mb-[50px]">Here's the partner :</div>
       <div className="grid grid-cols-2 md:grid-cols-6 gap-12 pb-16 px-8 text-16 max-w-[300px] md:max-w-[700px] ">
         {part.map((item) => {
-          return <img className="flex" src={item.images} />;
+          return <img key={item.id} className="flex" src={item.images} />;
         })}
       </div>
     </div>

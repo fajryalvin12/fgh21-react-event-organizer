@@ -28,9 +28,9 @@ function ContentMyBooking() {
           <div className="w-1/3 px-[100px] flex-col gap-[30px] hidden md:flex">
             <Sidebar />
           </div>
-          <div className=" p-0 m-0 bg-[#ffff] rounded-none flex gap-[50px] flex-col h-[700px] md:shadow-md md:w-2/3 md:p-[100px] md:mr-[120px] md:rounded-3xl w-full">
+          <div className=" p-0 m-0 bg-[#ffff] rounded-none flex gap-[50px] flex-col max-h-[600px] md:w-2/3 md:p-[90px] md:mr-[120px] md:rounded-3xl md:shadow-xl w-full">
             <div className="flex md:items-center items-start gap-8 p-4 md:p-0 justify-between flex-col md:flex-row">
-              <div className="text-[20px] font-bold">My Booking</div>
+              <div className="text-2xl font-bold">My Booking</div>
               <div className="flex gap-[10px] items-center p-[20px] bg-[#D6E0FF] text-[#508C9B] rounded-[15px] font-semibold">
                 <FaCalendarDays />
                 <div>March</div>
@@ -41,7 +41,7 @@ function ContentMyBooking() {
                 detailBook.map((item) => {
                   return (
                     <div className="flex gap-[25px]">
-                      <div className="p-[10px] text-center font-semibold text-[#ff8900]">
+                      <div className="p-[10px] text-center font-semibold text-[#ff8900] max-h-20 border rounded-xl">
                         <div>15</div>
                         <div className="text-gray-500">Wed</div>
                       </div>
@@ -55,7 +55,9 @@ function ContentMyBooking() {
                           </div>
                           <div className="text-gray-500">{item.date}</div>
                         </div>
-                        <div className="text-[#508C9B]">Details</div>
+                        <div className="text-[#508C9B] font-semibold">
+                          Details
+                        </div>
                       </div>
                     </div>
                   );

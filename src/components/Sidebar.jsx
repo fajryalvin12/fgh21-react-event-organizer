@@ -35,16 +35,20 @@ function Sidebar() {
   }
 
   return (
-    <div className="flex flex-col gap-8 bg-white p-8 rounded-3xl shadow-md">
+    <div className="flex flex-col gap-8 bg-white p-8 rounded-3xl shadow-lg min-h-[600px]">
       <div className="flex gap-[20px]">
         <img
-          src={DefaultUser}
+          src={
+            profile?.picture == undefined
+              ? "https://cdn-icons-png.flaticon.com/512/21/21104.png"
+              : profile?.picture
+          }
           alt=""
           className="border border-[#373a42bf] rounded-full w-12 h-12 object-cover"
         />
         <div>
-          <div className="font-semibold">{profile.fullName}</div>
-          <div>{profile.profession}</div>
+          <div className="font-semibold">{profile?.fullName}</div>
+          <div>{profile?.profession}</div>
         </div>
       </div>
       <div className="flex flex-col gap-[30px] text-[#373a42bf] font-semibold">

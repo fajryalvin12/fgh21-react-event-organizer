@@ -15,6 +15,7 @@ function ContentEvent() {
   const [message, setMessage] = React.useState("");
   const [alert, setAlert] = React.useState(0);
   const { data, err, isLoading } = useGetOneEventQuery(id);
+  console.log(id);
 
   function clickEvent(id) {
     navigate("/events/section/" + id);

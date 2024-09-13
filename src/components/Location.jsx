@@ -21,14 +21,12 @@ function Location() {
 
   return (
     <div className="p-[50px] bg-[#201E43] rounded-[50px] font-semibold text-[#EEEEEE] mb-[50px] mx-[40px]">
-      <div>
-        <div className="bg-[rgba(255,255,255,0.25)] h-[30px] w-[150px] py-[5px] px-[30px] items-center text-[#ffff] rounded-[30px] flex justify-center mb-[25px] ml-0 md:ml-[68px]">
-          <div>Location</div>
-        </div>
+      <div className="bg-[rgba(255,255,255,0.25)] h-[30px] w-[150px] py-[5px] px-[30px] items-center text-[#ffff] rounded-[30px] flex justify-center mb-[25px] ml-0 md:ml-[68px]">
+        Location
       </div>
       <div className="grid md:grid-cols-4 grid-cols-2 gap-12">
-        <div className="flex flex-col items-center gap-1 mb-4 text-3xl max-w-[246px] pl-14">
-          Explore the Place Abroad
+        <div className="flex flex-col items-center gap-1 mb-4 text-3xl max-w-[228px] pl-14">
+          <div>Explore the Place Abroad</div>
         </div>
         <div className="flex flex-col items-center gap-1 mb-4">
           <img src={Jakarta} alt="jkt" />

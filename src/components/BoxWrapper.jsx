@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useListEventsQuery } from "../redux/services/event";
 import AvatarOne from "../assets/images/avatar1.png";
 import AvatarTwo from "../assets/images/avatar2.png";
 import AvatarThree from "../assets/images/avatar3.png";
 import AvatarFour from "../assets/images/avatar4.png";
-import axios from "axios";
 
 function BoxWrapper() {
   const navigate = useNavigate();

@@ -84,7 +84,7 @@ function ContentPass() {
           <div className="w-1/3 px-[100px] flex-col gap-[30px] hidden md:flex">
             <Sidebar />
           </div>
-          <div className="w-full md:w-2/3 p-0 md:p-[80px] m-0 md:mr-[120px] bg-[#ffff] rounded-[30px] flex flex-col gap-[50px] shadow-md">
+          <div className="w-full md:w-2/3 p-8 m-0 md:p-[90px] md:mr-[120px] bg-[#ffff] rounded-none flex gap-[50px] flex-col md:rounded-3xl shadow-xl ">
             <div className="font-bold text-2xl">Change Password</div>
             <form
               onSubmit={changePassword}

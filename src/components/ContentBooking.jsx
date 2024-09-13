@@ -79,7 +79,7 @@ function ContentBooking() {
   return (
     <Layout>
       <div className="bg-[#EEEEEE] p-0 md:py-[50px]">
-        <div className="flex-col md:flex-row p-0 md:p-[100px] m-0 md:mx-[120px] bg-[#ffff] flex rounded-[30px] shadow-md">
+        <div className="flex-col md:flex-row p-0 md:p-[100px] m-0 md:mx-[120px] bg-[#ffff] flex rounded-[30px] shadow-md gap-16">
           <div className="flex-1">
             <img
               className="w-full h-full md:w-[475px] md:h-[586px] object-cover	rounded-none md:rounded-[40px] brightness-50"

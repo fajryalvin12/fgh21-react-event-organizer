@@ -3,7 +3,6 @@ import DefaultUser from "../assets/icons/user.png";
 import { Link } from "react-router-dom";
 import { FaAlignJustify } from "react-icons/fa6";
 import { useSelector } from "react-redux";
-import Antony from "../assets/images/antony.png";
 import Brand from "../components/Brand";
 
 function Navbar() {
@@ -18,7 +17,7 @@ function Navbar() {
   const profile = useSelector((state) => state.profile.data);
 
   return (
-    <div className="flex flex-col md:flex-row gap-8 md:gap-0 justify-between items-center p-4 bg-white w-full">
+    <nav className="flex flex-col md:flex-row gap-8 md:gap-0 justify-between items-center p-4 bg-white w-full border-b-4">
       <div className="flex gap-8">
         <div className="flex items-center text-2xl font-bold">
           <Brand />
@@ -38,6 +37,9 @@ function Navbar() {
           <Link to={"/create-event"}>Create Event</Link>
         </li>
         <li className="hover:text-[#508C9B]">Location</li>
+        <li className="hover:text-[#508C9B]">
+          <Link to={"/my-booking"}>My Booking</Link>
+        </li>
       </div>
       {token === null ? (
         <div
@@ -60,15 +62,19 @@ function Navbar() {
             <Link to={"/profile"}>
               <img
                 className="border border-[#134B70] rounded-full h-12 w-12 object-cover"
-                src={DefaultUser}
+                src={
+                  profile?.picture == undefined
+                    ? "https://cdn-icons-png.flaticon.com/512/21/21104.png"
+                    : profile?.picture
+                }
                 alt=""
               />
             </Link>
           </div>
-          <div className="hidden md:block">{profile.fullName}</div>
+          <div className="hidden md:block">{profile?.fullName}</div>
         </div>
       )}
-    </div>
+    </nav>
   );
 }
 
