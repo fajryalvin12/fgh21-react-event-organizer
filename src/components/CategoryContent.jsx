@@ -5,7 +5,7 @@ function CategoryContent() {
   const { data, err, isLoading } = useListEventsQuery();
 
   return (
-    <div className="flex gap-12 items-center mb-[175px] min-w-[1000px] w-full mx-20 overflow-x-scroll ">
+    <div className="flex gap-12 items-center mb-[175px] mx-20 overflow-x-scroll ">
       {data?.results.map((item) => {
         return (
           <div

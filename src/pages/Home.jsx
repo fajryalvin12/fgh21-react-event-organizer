@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "../components/Navbar";
 import Cover from "../components/Cover";
 import Event from "../components/Event";
 import DateGrid from "../components/DateGrid";
@@ -8,7 +7,6 @@ import Location from "../components/Location";
 import Category from "../components/Category";
 import CategoryContent from "../components/CategoryContent";
 import Partner from "../components/Partner";
-import Footer from "../components/Footer";
 import Layout from "../components/Layout";
 
 function Home() {
