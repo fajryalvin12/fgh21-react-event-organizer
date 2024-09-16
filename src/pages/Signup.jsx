@@ -47,7 +47,7 @@ function Signup() {
     register.append("password", formPass);
     register.append("confirmPassword", formConfirm);
 
-    const endpoint = "http://localhost:8888/auth/register";
+    const endpoint = "http://103.93.58.89:21212/auth/register";
 
     const response = await fetch(endpoint, {
       method: "POST",

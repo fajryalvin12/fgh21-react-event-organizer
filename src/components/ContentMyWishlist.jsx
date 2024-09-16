@@ -16,7 +16,7 @@ function ContentMyWishlist() {
   async function deleteWishlist(id) {
     try {
       const response = await axios.delete(
-        "http://localhost:8888/wishlist/" + id,
+        "http://103.93.58.89:21212/wishlist/" + id,
         {
           headers: {
             Authorization: `Bearer ${token}`,

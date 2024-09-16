@@ -11,7 +11,7 @@ function ContentMyBooking() {
   console.log(detailBook);
   useEffect(() => {
     (async () => {
-      const response = await fetch("http://localhost:8888/transactions", {
+      const response = await fetch("http://103.93.58.89:21212/transactions", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

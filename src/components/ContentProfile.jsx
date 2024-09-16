@@ -23,8 +23,8 @@ function ContentProfile() {
     setPic(URL.createObjectURL(e.target.files[0]));
   }
 
-  const linkEdit = "http://localhost:8888/profile";
-  const link = "http://localhost:8888";
+  const linkEdit = "http://103.93.58.89:21212/profile";
+  const link = "http://103.93.58.89:21212";
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -36,7 +36,7 @@ function ContentProfile() {
     console.log("jalan");
     e.preventDefault();
     const fullname = e.target.fullname.value;
-    const username = e.target.username.value;
+    const username = e.target.userName.value;
     const email = e.target.email.value;
     const phone = e.target.phone.value;
     const gender = e.target.gender.value;
@@ -45,7 +45,7 @@ function ContentProfile() {
 
     const inputProfile = new URLSearchParams();
     inputProfile.append("fullName", fullname);
-    inputProfile.append("username", username);
+    inputProfile.append("userName", username);
     inputProfile.append("email", email);
     inputProfile.append("gender", gender);
     inputProfile.append("phoneNumber", phone);
@@ -168,7 +168,7 @@ function ContentProfile() {
                     type="text"
                     placeholder="@jhont0"
                     id="username"
-                    name="username"
+                    name="userName"
                     defaultValue={profile?.username}
                   />
                 </div>

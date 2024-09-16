@@ -19,7 +19,7 @@ import Layout from "../components/Layout";
 
 function ContentPayment() {
   const navigate = useNavigate();
-  const endpointTrx = "http://localhost:8888/transactions";
+  const endpointTrx = "http://103.93.58.89:21212/transactions";
   const token = useSelector((state) => state.auth.token);
   const eventTitle = useSelector((state) => state.section.eventTitle);
   const qty = useSelector((state) => state.section.qty);

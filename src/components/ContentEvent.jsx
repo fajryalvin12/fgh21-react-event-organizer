@@ -10,7 +10,7 @@ import { useGetOneEventQuery } from "../redux/services/event.js";
 function ContentEvent() {
   const id = useParams().id;
   const token = useSelector((state) => state.auth.token);
-  const userWishlist = "http://localhost:8888/wishlist";
+  const userWishlist = "http://103.93.58.89:21212/wishlist";
   const navigate = useNavigate();
   const [message, setMessage] = React.useState("");
   const [alert, setAlert] = React.useState(0);

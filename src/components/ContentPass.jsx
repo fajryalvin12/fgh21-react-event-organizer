@@ -16,7 +16,7 @@ function ContentPass() {
   const [alert, setAlert] = React.useState(0);
   const [loading, setLoading] = React.useState(0);
   const token = useSelector((state) => state.auth.token);
-  const urlChangePass = "http://localhost:8888/users/change-password";
+  const urlChangePass = "http://103.93.58.89:21212/users/change-password";
   function oldPassword() {
     if (oldPass === "password") {
       setOldPass("text");

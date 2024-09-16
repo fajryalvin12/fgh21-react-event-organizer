@@ -20,8 +20,8 @@ function ContentCreateEvent() {
   const [alert, setAlert] = React.useState(0);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const urlCategories = "http://localhost:8888/categories";
-  const urlLocations = "http://localhost:8888/locations";
+  const urlCategories = "http://103.93.58.89:21212/categories";
+  const urlLocations = "http://103.93.58.89:21212/locations";
   const { data, err, isLoading } = useListEventsQuery();
 
   async function clickEvent(id) {
@@ -79,7 +79,7 @@ function ContentCreateEvent() {
   async function deleteEvent(id) {
     try {
       const response = await axios.delete(
-        "http://localhost:8888/events/" + id,
+        "http://103.93.58.89:21212/events/" + id,
         {
           headers: {
             Authorization: `Bearer ${token}`,

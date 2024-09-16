@@ -41,7 +41,7 @@ function Login() {
     inputData.append("email", formEmail);
     inputData.append("password", formPass);
 
-    const response = await fetch("http://localhost:8888/auth/login", {
+    const response = await fetch("http://103.93.58.89:21212/auth/login", {
       method: "POST",
       body: inputData,
     });
@@ -51,7 +51,7 @@ function Login() {
       setLoading(1);
       console.log(token);
       dispatch(login(token));
-      const user = "http://localhost:8888/profile";
+      const user = "http://103.93.58.89:21212/profile";
       const getData = await fetch(user, {
         headers: {
           Authorization: "Bearer " + token,

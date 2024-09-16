@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaGitlab } from "react-icons/fa6";
 
 function Partner() {
-  const endpoint = "http://localhost:8888/partners";
+  const endpoint = "http://103.93.58.89:21212/partners";
   const [part, setPart] = useState([]);
 
   async function showPartners() {

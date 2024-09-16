@@ -24,8 +24,8 @@ import Layout from "../components/Layout.jsx";
 function ContentBooking() {
   const id = useParams().id;
   const dispatch = useDispatch();
-  const endpointSection = "http://localhost:8888/events/section/" + id;
-  const endpointEvent = "http://localhost:8888/events/" + id;
+  const endpointSection = "http://103.93.58.89:21212/events/section/" + id;
+  const endpointEvent = "http://103.93.58.89:21212/events/" + id;
 
   const [book, setBook] = useState([]);
   const [section, setSection] = useState([]);
