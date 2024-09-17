@@ -16,11 +16,17 @@ Tickhub is an easy way to order an event from a distance place. Without order on
 <h2>Config / installation process</h2>
 
 <h3>1. Install React :</h3>
-  npm create vite@latest react-namefile -- -- template react
+  
+```sh 
+npm create vite@latest react-namefile -- -- template react
+```
 
 <h3>2. Install Tailwind :</h3>
+
+```sh
   npm install -D tailwindcss postcss autoprefixer
   npx tailwindcss init -p
+```
 
 <h3>3. Config TailwindCSS :</h3>
   /** @type {import('tailwindcss').Config} \*/
@@ -36,17 +42,28 @@ Tickhub is an easy way to order an event from a distance place. Without order on
   }
 
 <h3>4. Add the Tailwind directives to your CSS</h3>
-  @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 <h3>5. Run the program</h3>
+
+```sh
   npm run dev
+```
 
 <h3>6. Build an image in Docker using dockerfile</h3>
+
+```sh
   docker build -t <images name> <dest>
+```
 
 <h3>7. Run the images in the Docker's Container</h3>
+
+```sh
   docker run -d -p 21212:5000 --name <name container> <images name>
+```
 
 <h2>Project display screenshot from Tickhub:</h2>
 
