@@ -1,4 +1,4 @@
-<div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 20px; grid-template-rows: auto auto; align-items: center; justify-items: center">
+<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; grid-template-rows: auto auto; align-items: center; justify-items: center">
   <img src="/src/assets/portfolio/Tickhub_AuthLogin.png" alt="login" width="300">
   <img src="/src/assets/portfolio/Tickhub_BookingPage.png" alt="Booking" width="300">
   <img src="/src/assets/portfolio/Tickhub_DetailEvent.png" alt="Event" width="300">
@@ -60,11 +60,3 @@ Tickhub is an easy way to order an event from a distance place. Without order on
 ```sh
   docker run -d -p 21212:5000 --name <name container> <images name>
 ```
-
-  <img src="/src/assets/portfolio/Tickhub_AuthLogin.png" alt="login" width="300">
-  <img src="/src/assets/portfolio/Tickhub_BookingPage.png" alt="Booking" width="300">
-  <img src="/src/assets/portfolio/Tickhub_ChangePass.png" alt="Password" width="300">
-  <img src="/src/assets/portfolio/Tickhub_DetailEvent.png" alt="Event" width="300">
-  <img src="/src/assets/portfolio/Tickhub_MyBooking.png" alt="MyBooking" width="300">
-  <img src="/src/assets/portfolio/Tickhub_Payment.png" alt="Payment" width="300">
-  <img src="/src/assets/portfolio/Tickhub_Profile.png" alt="Profile" width="300">
