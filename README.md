@@ -48,7 +48,7 @@ Config / installation process :
 
 - Project display screenshot from Tickhub.
   <img src="/src/assets/portfolio/Tickhub_AuthLogin.png" alt="login" width="300">
-  <img src="/src/assets/portfolio/BookingPage.png" alt="Booking" width="300">
+  <img src="/src/assets/portfolio/Tickhub_BookingPage.png" alt="Booking" width="300">
   <img src="/src/assets/portfolio/Tickhub_ChangePass.png" alt="Password" width="300">
   <img src="/src/assets/portfolio/Tickhub_DetailEvent.png" alt="Event" width="300">
   <img src="/src/assets/portfolio/Tickhub_MyBooking.png" alt="MyBooking" width="300">
