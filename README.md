@@ -1,6 +1,8 @@
 Project Description
 
-- This individual project provided online booking ticket in a frontend-side, named as Tickhub
+Let me introduce my awesome online-based ticket booking, TickHub. This repository utilized Node.js for package and React.js as library for development.
+
+Tickhub is an easy way to order an event from a distance place. Without order on the spot, we can choose the event as we want with the simple process and various payment. Also, we can save the listed event as the wishlist.
 
 Tech Stack :
 
@@ -46,7 +48,8 @@ Config / installation process :
 - Run the images in the Docker's Container
   docker run -d -p 21212:5000 --name <name container> <images name>
 
-- Project display screenshot from Tickhub.
+- Project display screenshot from Tickhub:
+
   <img src="/src/assets/portfolio/Tickhub_AuthLogin.png" alt="login" width="300">
   <img src="/src/assets/portfolio/Tickhub_BookingPage.png" alt="Booking" width="300">
   <img src="/src/assets/portfolio/Tickhub_ChangePass.png" alt="Password" width="300">
