@@ -118,7 +118,7 @@ function ContentProfile() {
       <div className="bg-[#EEEEEE] p-0 md:py-[50px]">
         {loading ? <Loading /> : ""}
         <div className="flex justify-center">
-          <div className="w-1/3 px-[100px] flex-col gap-[30px] hidden md:flex">
+          <div className="px-[100px] flex-col gap-[30px] hidden md:flex">
             <Sidebar />
           </div>
           <div className="md:w-2/3 md:p-[100px] md:mr-[120px] md:flex-row w-full p-0 m-0 bg-[#ffff] rounded-none flex gap-[50px] flex-col-reverse md:rounded-3xl shadow-xl">

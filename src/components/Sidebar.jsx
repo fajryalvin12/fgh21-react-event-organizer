@@ -15,8 +15,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { logout } from "../redux/reducers/auth";
 import { removeProfile } from "../redux/reducers/profile";
 import { Link } from "react-router-dom";
-import Antony from "../assets/images/antony.png";
-import DefaultUser from "../assets/icons/user.png";
 
 function Sidebar() {
   const token = useSelector((state) => state.auth.token);
