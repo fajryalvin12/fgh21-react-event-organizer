@@ -17,6 +17,7 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
+import SearchPage from "./pages/SearchPage";
 
 let persist = persistStore(store);
 
@@ -70,8 +71,8 @@ const arrayRouter = [
     element: <CreateEvent />,
   },
   {
-    path: "/Attendee",
-    element: <Attendee />,
+    path: "/search",
+    element: <SearchPage />,
   },
 ];
 

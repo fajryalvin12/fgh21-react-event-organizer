@@ -36,7 +36,9 @@ function Navbar() {
         <li className="hover:text-[#508C9B]">
           <Link to={"/create-event"}>Create Event</Link>
         </li>
-        <li className="hover:text-[#508C9B]">Location</li>
+        <li className="hover:text-[#508C9B]">
+          <Link to={"/search"}>Search</Link>
+        </li>
         <li className="hover:text-[#508C9B]">
           <Link to={"/my-booking"}>My Booking</Link>
         </li>
