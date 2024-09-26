@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import Layout from "../components/Layout.jsx";
 import { useGetOneEventQuery } from "../redux/services/event.js";
+import { useGetOneLocationQuery } from "../redux/services/locations.js";
 
 function ContentEvent() {
   const id = useParams().id;
@@ -15,7 +16,8 @@ function ContentEvent() {
   const [message, setMessage] = React.useState("");
   const [alert, setAlert] = React.useState(0);
   const { data, err, isLoading } = useGetOneEventQuery(id);
-  console.log(id);
+  const { location } = useGetOneLocationQuery(id);
+  console.log(location);
 
   function clickEvent(id) {
     navigate("/events/section/" + id);
@@ -96,7 +98,7 @@ function ContentEvent() {
                   <div className="text-red-500 items-center flex">
                     <FaLocationDot />
                   </div>
-                  <div>London, England</div>
+                  <div>{data?.results.location_id}, Indonesia</div>
                 </div>
                 <div className="flex gap-[5px]">
                   <div className="text-red-500 items-center flex">
