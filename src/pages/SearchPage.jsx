@@ -23,8 +23,6 @@ const SearchPage = () => {
     setEvent(data?.results || []);
   }, [isLoading]);
 
-  console.log(event);
-
   return (
     <>
       <Navbar />
@@ -57,7 +55,9 @@ const SearchPage = () => {
                   );
                 })
               ) : (
-                <p>No Events Found</p>
+                <div className="h-full w-full flex flex-col justify-center items-center gap-6">
+                  <div className="text-2xl font-semibold">Events not found</div>
+                </div>
               )}
             </div>
             <div className="join flex justify-center">

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useListEventsQuery } from "../redux/services/event.js";
 
 function CategoryContent() {
-  const { data, err, isLoading } = useListEventsQuery();
+  const { data, err, isLoading } = useListEventsQuery([1, 10]);
 
   return (
     <div className="flex gap-12 items-center mb-[175px] mx-20 overflow-x-scroll ">
