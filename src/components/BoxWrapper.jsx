@@ -11,7 +11,7 @@ function BoxWrapper() {
   async function clickEvent(id) {
     navigate("/events/" + id);
   }
-  const { data, err, isLoading } = useListEventsQuery();
+  const { data, err, isLoading } = useListEventsQuery([1, 10]);
 
   return (
     <div className="flex gap-[50px] mb-[50px] mx-[50px] overflow-x-scroll">

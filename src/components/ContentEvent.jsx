@@ -6,7 +6,10 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import Layout from "../components/Layout.jsx";
 import { useGetOneEventQuery } from "../redux/services/event.js";
-import { useGetOneLocationQuery } from "../redux/services/locations.js";
+import {
+  useGetOneLocationQuery,
+  useListLocationsQuery,
+} from "../redux/services/locations.js";
 
 function ContentEvent() {
   const id = useParams().id;
@@ -15,9 +18,18 @@ function ContentEvent() {
   const navigate = useNavigate();
   const [message, setMessage] = React.useState("");
   const [alert, setAlert] = React.useState(0);
-  const { data, err, isLoading } = useGetOneEventQuery(id);
-  const { location } = useGetOneLocationQuery(id);
-  console.log(location);
+  const { data } = useGetOneEventQuery(id);
+  // const { location } = useListLocationsQuery();
+  // console.log(location);
+  const urlLocation = "http://103.93.58.89:21212/locations";
+  async function location() {
+    const getLocation = await axios.get(urlLocation);
+    const eventLoc = getLocation.data.results;
+    console.log(eventLoc);
+  }
+  useEffect(() => {
+    location();
+  }, []);
 
   function clickEvent(id) {
     navigate("/events/section/" + id);

@@ -5,7 +5,7 @@ export const event = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "http://103.93.58.89:21212" }),
   endpoints: (builder) => ({
     listEvents: builder.query({
-      query: () => `/events`,
+      query: ([page, limit]) => `/events?page=${page}&limit=${limit}`,
     }),
     getOneEvent: builder.query({
       query: (id) => `/events/${id}`,
