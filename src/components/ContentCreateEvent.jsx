@@ -119,8 +119,6 @@ function ContentCreateEvent() {
   if (token === null) {
     navigate("/login");
   }
-  console.log(data);
-
   return (
     <Layout>
       <div className="bg-[#EEEEEE] p-0 md:py-[50px]">

@@ -30,35 +30,35 @@ function Location() {
         </div>
         <div className="flex flex-col items-center gap-1 mb-4">
           <img src={Jakarta} alt="jkt" />
-          <div className="text-center text-[#508C9B] mt-[15px]">Jakarta</div>
+          <div className="text-center text-white mt-[15px]">Jakarta</div>
         </div>
         <div className="flex flex-col items-center gap-1 mb-4">
           <img src={Bandung} alt="jkt" />
-          <div className="text-center mt-[15px] text-[#508C9B]">Bandung</div>
+          <div className="text-center mt-[15px] text-white">Bandung</div>
         </div>
         <div ref={bali} className="flex flex-col items-center gap-1 mb-4">
           <img src={Bali} alt="jkt" />
-          <div className="text-center mt-[15px] text-[#508C9B]">Bali</div>
+          <div className="text-center mt-[15px] text-white">Bali</div>
         </div>
         <div ref={aceh} className="flex flex-col items-center gap-1 mb-4">
           <img src={Aceh} alt="jkt" />
-          <div className="text-center mt-[15px] text-[#508C9B]">Aceh</div>
+          <div className="text-center mt-[15px] text-white">Aceh</div>
         </div>
         <div className="flex flex-col items-center gap-1 mb-4">
           <img src={Solo} alt="jkt" />
-          <div className="text-center mt-[15px] text-[#508C9B]">Solo</div>
+          <div className="text-center mt-[15px] text-white">Solo</div>
         </div>
         <div ref={jogja} className="flex flex-col items-center gap-1 mb-4">
           <img src={Yogyakarta} alt="jkt" />
-          <div className="text-center mt-[15px] text-[#508C9B]">Yogyakarta</div>
+          <div className="text-center mt-[15px] text-white">Yogyakarta</div>
         </div>
         <div ref={semarang} className="flex flex-col items-center gap-1 mb-4">
           <img src={Semarang} alt="jkt" />
-          <div className="text-center mt-[15px] text-[#508C9B]">Semarang</div>
+          <div className="text-center mt-[15px] text-white">Semarang</div>
         </div>
       </div>
       <div onClick={swipeLocation} className="flex justify-center">
-        <button className="pt-[10px] pr-[99px] pb-[9px] pl-[97px] rounded-[10px] text-[#508C9B] bg-[#ffff]">
+        <button className="pt-[10px] pr-[99px] pb-[9px] pl-[97px] rounded-[10px] border border-[#EEEEEE] border-4 text-[#508C9B] bg-[#ffff]">
           See All
         </button>
       </div>

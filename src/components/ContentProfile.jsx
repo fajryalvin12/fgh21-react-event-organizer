@@ -88,7 +88,7 @@ function ContentProfile() {
         formData,
         {
           headers: {
-            Authorization: "Bearer " + token,
+            Authorization: `Bearer ${token}`,
             "Content-Type": "multipart/form-data",
           },
         }
@@ -110,7 +110,7 @@ function ContentProfile() {
   }
 
   if (token === null) {
-    navigate("/Login");
+    navigate("/login");
   }
 
   return (
@@ -292,7 +292,7 @@ function ContentProfile() {
                     src={
                       profile?.picture == undefined
                         ? "https://cdn-icons-png.flaticon.com/512/21/21104.png"
-                        : profile?.picture
+                        : link + profile?.picture
                     }
                   />
                 </label>

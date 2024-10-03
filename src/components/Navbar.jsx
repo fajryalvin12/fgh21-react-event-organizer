@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import Brand from "../components/Brand";
 
 function Navbar() {
+  const url = "http://103.93.58.89:21212";
   const menuBar = useRef();
   const authButton = useRef();
   function toggleBar() {
@@ -67,7 +68,7 @@ function Navbar() {
                 src={
                   profile?.picture == undefined
                     ? "https://cdn-icons-png.flaticon.com/512/21/21104.png"
-                    : profile?.picture
+                    : url + profile?.picture
                 }
                 alt=""
               />

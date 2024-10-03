@@ -7,7 +7,8 @@ import FilterBar from "../components/FilterBar";
 
 const SearchPage = () => {
   const [event, setEvent] = useState([]);
-  const { data, err, isLoading } = useListEventsQuery([1, 10]);
+  const [page, setPage] = useState(1);
+  const { data, err, isLoading } = useListEventsQuery([1, 5]);
   const navigate = useNavigate();
   async function clickEvent(id) {
     navigate("/events/" + id);
@@ -19,9 +20,20 @@ const SearchPage = () => {
     const listFiltered = await filtered.json();
     setEvent(listFiltered.results);
   }
+  async function eventPagination(event) {
+    event.preventDefault();
+    const pagination = await fetch(
+      `http://103.93.58.89:21212/events?page=${page}`
+    );
+    const listPage = await pagination.json();
+    setEvent(listPage.results);
+  }
   useEffect(() => {
     setEvent(data?.results || []);
   }, [isLoading]);
+  useEffect(() => {
+    eventPagination();
+  }, [page]);
 
   return (
     <>
@@ -60,33 +72,23 @@ const SearchPage = () => {
                 </div>
               )}
             </div>
-            <div className="join flex justify-center">
-              <input
-                className="join-item btn btn-square"
-                type="radio"
-                name="options"
-                aria-label="1"
-                defaultChecked
-              />
-              <input
-                className="join-item btn btn-square"
-                type="radio"
-                name="options"
-                aria-label="2"
-              />
-              <input
-                className="join-item btn btn-square"
-                type="radio"
-                name="options"
-                aria-label="3"
-              />
-              <input
-                className="join-item btn btn-square"
-                type="radio"
-                name="options"
-                aria-label="4"
-              />
-            </div>
+            <form onSubmit={eventPagination}>
+              <div className="join flex justify-center">
+                <button
+                  onClick={() => setPage(page - 1)}
+                  className="join-item btn"
+                >
+                  «
+                </button>
+                <button className="join-item btn">Page {page}</button>
+                <button
+                  onClick={() => setPage(page + 1)}
+                  className="join-item btn"
+                >
+                  »
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -96,9 +98,3 @@ const SearchPage = () => {
 };
 
 export default SearchPage;
-
-// {data?.results.map((item) => {
-//   return (
-
-//   );
-// })}

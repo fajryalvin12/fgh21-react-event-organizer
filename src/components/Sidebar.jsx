@@ -17,6 +17,7 @@ import { removeProfile } from "../redux/reducers/profile";
 import { Link } from "react-router-dom";
 
 function Sidebar() {
+  const url = "http://103.93.58.89:21212";
   const token = useSelector((state) => state.auth.token);
   const profile = useSelector((state) => state.profile.data);
   const [loading, setLoading] = React.useState(0);
@@ -31,7 +32,6 @@ function Sidebar() {
     navigate("/login");
     setTimeout(() => setLoading(0), 2000);
   }
-
   return (
     <div className="flex flex-col gap-8 bg-white p-8 rounded-3xl shadow-lg min-h-[600px]">
       <div className="flex gap-[20px]">
@@ -39,7 +39,7 @@ function Sidebar() {
           src={
             profile?.picture == undefined
               ? "https://cdn-icons-png.flaticon.com/512/21/21104.png"
-              : profile?.picture
+              : url + profile?.picture
           }
           alt=""
           className="border border-[#373a42bf] rounded-full w-12 h-12 object-cover"
