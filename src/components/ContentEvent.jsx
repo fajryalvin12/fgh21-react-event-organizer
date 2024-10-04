@@ -6,27 +6,21 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import Layout from "../components/Layout.jsx";
 import { useGetOneEventQuery } from "../redux/services/event.js";
-import {
-  useGetOneLocationQuery,
-  useListLocationsQuery,
-} from "../redux/services/locations.js";
 
 function ContentEvent() {
-  const id = useParams().id;
-  const token = useSelector((state) => state.auth.token);
-  const userWishlist = "http://103.93.58.89:21212/wishlist";
-  const navigate = useNavigate();
   const [message, setMessage] = React.useState("");
   const [alert, setAlert] = React.useState(0);
+  const id = useParams().id;
+  const token = useSelector((state) => state.auth.token);
+  const navigate = useNavigate();
   const { data } = useGetOneEventQuery(id);
-  // const { location } = useListLocationsQuery();
-  // console.log(location);
+  const userWishlist = "http://103.93.58.89:21212/wishlist";
   const urlLocation = "http://103.93.58.89:21212/locations";
   async function location() {
     const getLocation = await axios.get(urlLocation);
     const eventLoc = getLocation.data.results;
-    console.log(eventLoc);
   }
+  console.log(data);
   useEffect(() => {
     location();
   }, []);
@@ -110,7 +104,7 @@ function ContentEvent() {
                   <div className="text-red-500 items-center flex">
                     <FaLocationDot />
                   </div>
-                  <div>{data?.results.location_id}, Indonesia</div>
+                  <div>{data?.results.location}, Indonesia</div>
                 </div>
                 <div className="flex gap-[5px]">
                   <div className="text-red-500 items-center flex">

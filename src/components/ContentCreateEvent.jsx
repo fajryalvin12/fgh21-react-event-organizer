@@ -12,7 +12,6 @@ import { useListEventsQuery } from "../redux/services/event";
 
 function ContentCreateEvent() {
   const id = useParams();
-  console.log(id);
   const [category, setCategory] = useState([]);
   const [location, setLocation] = useState([]);
   const [loading, setLoading] = React.useState(0);
@@ -22,7 +21,8 @@ function ContentCreateEvent() {
   const navigate = useNavigate();
   const urlCategories = "http://103.93.58.89:21212/categories";
   const urlLocations = "http://103.93.58.89:21212/locations";
-  const { data, err, isLoading } = useListEventsQuery();
+  const url = "http://103.93.58.89:21212/events";
+  const { data, err, isLoading } = useListEventsQuery([1, 10]);
 
   async function clickEvent(id) {
     navigate("/events/" + id);
@@ -46,7 +46,7 @@ function ContentCreateEvent() {
     const description = e.target.details.value;
     try {
       const response = await axios.post(
-        endpoint,
+        url,
         {
           image: image,
           title: title,
@@ -72,7 +72,7 @@ function ContentCreateEvent() {
         setTimeout(() => setAlert(0), 1000);
       }
     } catch (error) {
-      console.error("Failed to create new event");
+      console.error(error);
     }
     setTimeout(() => setLoading(0), 1000);
   }

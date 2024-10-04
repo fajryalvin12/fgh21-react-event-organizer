@@ -97,7 +97,7 @@ function Signup() {
           <div className="text-2xl font-bold">Sign Up</div>
           <div className="flex">
             <div>Already have an account?</div>
-            <div className="text-[#508C9B] font-semibold">
+            <div className="text-[#134B70] font-semibold">
               <Link to={"/login"}>Login</Link>
             </div>
           </div>

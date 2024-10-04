@@ -140,7 +140,7 @@ function Login() {
               <p className="text-red-700">{formik.errors.password}</p>
             )}
           </div>
-          <div className="text-right text-[#508C9B]">
+          <div className="text-right text-[#134B70]">
             <Link to={"/forgot-password"}>Forgot Password?</Link>
           </div>
           <div>
